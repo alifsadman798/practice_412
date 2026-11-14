@@ -1,0 +1,116 @@
+﻿Train_No,Train_Name,From_District,To_District,Off_Day,Departure,Arrival,Day_Offset
+701,Suborna Express,Chattogram,Dhaka,Monday,7:00,11:50,0
+702,Suborna Express,Dhaka,Chattogram,Monday,16:30,21:25,0
+703,Mahanagar Godhuli,Chattogram,Dhaka,No off,15:00,20:45,0
+704,Mahanagar Provati,Dhaka,Chattogram,No off,7:45,13:35,0
+705,Ekota Express,Dhaka,Panchagarh,No off,10:15,21:00,0
+706,Ekota Express,Panchagarh,Dhaka,No off,21:10,7:20,1
+707,Tista Express,Dhaka,Jamalpur,Monday,7:30,12:50,0
+708,Tista Express,Jamalpur,Dhaka,Monday,15:00,20:30,0
+709,Parabat Express,Dhaka,Sylhet,Monday,6:30,13:00,0
+710,Parabat Express,Sylhet,Dhaka,Monday,16:00,22:40,0
+711,Upakul Express,Noakhali,Dhaka,Wednesday,6:00,11:20,0
+712,Upakul Express,Dhaka,Noakhali,Tuesday,15:10,20:40,0
+713,Korotoa Express,Santahar,Burimari,Wednesday,9:25,16:00,0
+714,Korotoa Express,Burimari,Santahar,Wednesday,16:20,22:40,0
+715,Kapotaksha Express,Khulna,Rajshahi,Friday,6:45,12:20,0
+716,Kapotaksha Express,Rajshahi,Khulna,Friday,14:30,20:25,0
+717,Jayantika Express,Dhaka,Sylhet,Tuesday,11:15,19:00,0
+718,Jayantika Express,Sylhet,Dhaka,Thursday,12:00,19:15,0
+719,Paharika Express,Chattogram,Sylhet,Monday,7:50,15:55,0
+720,Paharika Express,Sylhet,Chattogram,Wednesday,10:15,18:55,0
+721,Mahanagar Express,Chattogram,Dhaka,Sunday,12:30,18:40,0
+722,Mahanagar Express,Dhaka,Chattogram,Sunday,21:20,3:30,1
+723,Udayan Express,Chattogram,Sylhet,Wednesday,21:45,5:45,1
+724,Udayan Express,Sylhet,Chattogram,Sunday,22:00,5:35,1
+725,Sundarban Express,Khulna,Dhaka,Tuesday,21:45,5:10,1
+726,Sundarban Express,Dhaka,Khulna,Wednesday,8:00,15:40,0
+727,Rupsha Express,Khulna,Chilahati,Thursday,7:15,17:00,0
+728,Rupsha Express,Chilahati,Khulna,Thursday,8:30,18:25,0
+729,Meghna Express,Chattogram,Chandpur,No off,17:15,21:25,0
+730,Meghna Express,Chandpur,Chattogram,No off,5:00,9:00,0
+731,Barendra Express,Rajshahi,Chilahati,Sunday,15:00,21:30,0
+732,Barendra Express,Chilahati,Rajshahi,Sunday,5:00,11:10,0
+733,Titumir Express,Rajshahi,Chilahati,Wednesday,6:20,13:00,0
+734,Titumir Express,Chilahati,Rajshahi,Wednesday,15:00,21:30,0
+735,Agnibina Express,Dhaka,Jamalpur,No off,11:00,15:42,0
+736,Agnibina Express,Jamalpur,Dhaka,No off,18:38,22:55,0
+737,Egarosindhur Provati,Dhaka,Kishoreganj,Wednesday,7:15,11:10,0
+738,Egarosindhur Provati,Kishoreganj,Dhaka,No off,6:30,10:25,0
+739,Upaban Express,Dhaka,Sylhet,Wednesday,22:00,5:00,1
+740,Upaban Express,Sylhet,Dhaka,Monday,23:30,5:40,1
+747,Simanta Express,Khulna,Chilahati,Monday,21:15,6:45,1
+748,Simanta Express,Chilahati,Khulna,Monday,18:30,4:10,1
+750,Egarosindhur Godhuli,Kishoreganj,Dhaka,Wednesday,12:50,16:45,0
+751,Lalmoni Express,Dhaka,Lalmonirhat,Friday,21:45,7:20,1
+752,Lalmoni Express,Lalmonirhat,Dhaka,Friday,9:50,19:45,0
+753,Silk City Express,Dhaka,Rajshahi,Sunday,14:30,20:20,0
+754,Silk City Express,Rajshahi,Dhaka,Sunday,7:40,13:10,0
+755,Madhumati Express,Dhaka,Rajshahi,Saturday,15:00,22:30,0
+756,Madhumati Express,Rajshahi,Dhaka,Saturday,6:40,14:00,0
+757,Drutojan Express,Dhaka,Panchagarh,No off,20:45,7:10,1
+758,Drutojan Express,Panchagarh,Dhaka,No off,7:20,18:55,0
+759,Padma Express,Dhaka,Rajshahi,Tuesday,22:45,4:00,1
+760,Padma Express,Rajshahi,Dhaka,Tuesday,16:00,21:15,0
+761,Sagardari Express,Khulna,Rajshahi,Monday,16:00,22:00,0
+762,Sagardari Express,Rajshahi,Khulna,Monday,6:00,12:10,0
+763,Chitra Express,Khulna,Dhaka,Sunday,9:00,18:05,0
+764,Chitra Express,Dhaka,Khulna,Sunday,19:30,4:40,1
+765,Nilsagar Express,Dhaka,Chilahati,Wednesday,6:45,16:00,0
+766,Nilsagar Express,Chilahati,Dhaka,Tuesday,20:00,5:25,1
+767,Dolonchapa Express,Santahar,Panchagarh,No off,11:00,20:40,0
+768,Dolonchapa Express,Panchagarh,Santahar,No off,6:00,16:15,0
+769,Dhumketu Express,Dhaka,Rajshahi,Thursday,5:25,10:47,0
+770,Dhumketu Express,Rajshahi,Dhaka,Wednesday,23:20,4:40,1
+771,Rangpur Express,Dhaka,Rangpur,Monday,9:10,19:00,0
+772,Rangpur Express,Rangpur,Dhaka,Sunday,20:00,6:00,1
+773,Kalani Express,Dhaka,Sylhet,Friday,15:00,21:30,0
+774,Kalani Express,Sylhet,Dhaka,Friday,6:15,12:55,0
+775,Sirajganj Express,Sirajganj Bazar,Dhaka,Saturday,6:00,10:15,0
+776,Sirajganj Express,Dhaka,Sirajganj Bazar,Saturday,16:15,20:10,0
+777,Haor Express,Dhaka,Netrokona,Friday,22:15,4:20,1
+778,Haor Express,Netrokona,Dhaka,Saturday,8:00,13:55,0
+779,Dhalarchar Express,Dhalarchar,Rajshahi,Thursday,6:30,10:25,0
+780,Dhalarchar Express,Rajshahi,Dhalarchar,Wednesday,17:20,21:15,0
+781,Kishoreganj Express,Dhaka,Kishoreganj,Tuesday,10:30,14:10,0
+782,Kishoreganj Express,Kishoreganj,Dhaka,Tuesday,16:00,20:00,0
+783,Tungipara Express,Gobra,Rajshahi,Tuesday,6:20,11:40,0
+784,Tungipara Express,Rajshahi,Gobra,Monday,15:30,22:10,0
+785,Bijoy Express,Chattogram,Jamalpur,Tuesday,9:15,18:00,0
+786,Bijoy Express,Jamalpur,Chattogram,Tuesday,20:00,5:00,1
+787,Sonar Bangla Express,Chattogram,Dhaka,Tuesday,17:00,21:55,0
+788,Sonar Bangla Express,Dhaka,Chattogram,Wednesday,7:00,11:40,0
+789,Mohanganj Express,Dhaka,Netrokona,Wednesday,13:15,18:40,0
+790,Mohanganj Express,Netrokona,Dhaka,Wednesday,23:00,4:45,1
+791,Banalata Express,Dhaka,Chapainawabganj,Friday,13:30,19:15,0
+792,Banalata Express,Chapainawabganj,Dhaka,Friday,6:00,11:35,0
+793,Panchagarh Express,Dhaka,Panchagarh,No off,23:30,9:50,1
+794,Panchagarh Express,Panchagarh,Dhaka,No off,12:10,22:10,0
+795,Benapole Express,Benapole,Dhaka,Wednesday,12:25,20:30,0
+796,Benapole Express,Dhaka,Benapole,Wednesday,23:30,7:00,1
+797,Kurigram Express,Dhaka,Kurigram,Tuesday,20:00,5:10,1
+798,Kurigram Express,Kurigram,Dhaka,Tuesday,7:10,17:05,0
+799,Jamalpur Express,Dhaka,Jamalpur,Sunday,10:00,14:27,0
+800,Jamalpur Express,Jamalpur,Dhaka,Sunday,19:22,23:55,0
+801,Chattala Express,Chattogram,Dhaka,Friday,6:00,12:40,0
+802,Chattala Express,Dhaka,Chattogram,Friday,14:15,20:30,0
+803,Banglabandha Express,Rajshahi,Panchagarh,Friday,21:00,4:40,1
+804,Banglabandha Express,Panchagarh,Rajshahi,Saturday,9:00,17:15,0
+805,Chilahati (Express),Dhaka,Chilahati,Saturday,17:00,2:45,1
+806,Chilahati (Express),Chilahati,Dhaka,Saturday,6:00,14:55,0
+807,Express (name not legible in source),Dhaka,Pabna,Wednesday,15:25,21:00,0
+808,Express (name not legible in source),Pabna,Dhaka,Wednesday,8:25,14:10,0
+809,Burimari Express,Dhaka,Burimari,Wednesday,8:30,20:20,0
+810,Burimari Express,Burimari,Dhaka,Tuesday,21:20,8:50,1
+813,Coxs Bazar Express,Coxs Bazar,Dhaka,Tuesday,12:30,21:10,0
+814,Coxs Bazar Express,Dhaka,Coxs Bazar,Monday,23:30,7:20,1
+815,Poryotok Express,Coxs Bazar,Dhaka,Wednesday,20:00,4:30,1
+816,Poryotok Express,Dhaka,Coxs Bazar,Wednesday,6:15,15:00,0
+821,Saikat Express,Chattogram,Coxs Bazar,Monday,6:15,9:50,0
+822,Probal Express,Coxs Bazar,Chattogram,Monday,10:20,14:10,0
+823,Probal Express,Chattogram,Coxs Bazar,Monday,14:10,19:00,0
+824,Saikat Express,Coxs Bazar,Chattogram,Monday,20:00,23:50,0
+825,Jahanabad Express,Khulna,Dhaka,Monday,6:00,9:45,0
+826,Jahanabad Express,Dhaka,Khulna,Monday,20:00,23:45,0
+827,Pashchimanchal Express (transliterated),Benapole,Dhaka,Monday,15:25,19:00,0
+828,Pashchimanchal Express (transliterated),Dhaka,Benapole,Monday,10:45,14:25,0

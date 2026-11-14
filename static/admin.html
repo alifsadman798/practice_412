@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Operations Portal — SmartRoute BD</title>
+  <link rel="stylesheet" href="/static/app.css">
+  <script src="/static/admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <div class="app-layout">
+    <!-- Mobile Topbar (< 900px) -->
+    <header class="mobile-header">
+      <button type="button" class="mobile-menu-btn" id="mobile-sidebar-toggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="mobile-brand" href="/admin">
+        <span class="brand-mark">
+          <span class="bd-sun-circle"></span>
+          <span class="mark-letter">S</span>
+        </span>
+        <span class="brand-text">SmartRoute <b class="bd-tag">BD</b> <span class="admin-badge-tag">ADMIN</span></span>
+      </a>
+      <a href="/" class="admin-mobile-exit-btn" title="Back to Public Journey Planner">
+        ⬅ Exit
+      </a>
+    </header>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Fixed Vertical Left Sidebar -->
+    <aside class="app-sidebar" id="app-sidebar" aria-label="Admin Navigation">
+      <div class="sidebar-header">
+        <a class="sidebar-brand" href="/admin">
+          <span class="brand-mark">
+            <span class="bd-sun-circle"></span>
+            <span class="mark-letter">S</span>
+          </span>
+          <div class="brand-title-wrap">
+            <span class="brand-text">SmartRoute <b class="bd-tag">BD</b></span>
+            <span class="brand-sub admin-sub">ADMIN PORTAL</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close sidebar">&times;</button>
+      </div>
+
+      <!-- Bangladesh River/Corridor Motif Accent Line -->
+      <div class="sidebar-river-accent" aria-hidden="true"></div>
+
+      <div class="sidebar-content">
+        <!-- PORTAL NAVIGATION SECTION -->
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">PORTAL NAVIGATION</span>
+          <nav class="sidebar-nav" aria-label="Portal Navigation">
+            <a class="sidebar-nav-item return-link" href="/" title="Return to public user application">
+              <span class="sidebar-icon">⬅️</span>
+              <span class="sidebar-label">Public Journey Planner</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- ADMIN WORKSPACE SECTION -->
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">ADMIN WORKSPACE</span>
+          <nav class="sidebar-nav" aria-label="Admin Workspace">
+            <button type="button" class="sidebar-nav-item active" data-admin-tab="overview">
+              <span class="sidebar-icon">📊</span>
+              <span class="sidebar-label">Admin Overview</span>
+            </button>
+            <button type="button" class="sidebar-nav-item" data-admin-tab="records">
+              <span class="sidebar-icon">🚍</span>
+              <span class="sidebar-label">Database Records</span>
+            </button>
+            <button type="button" class="sidebar-nav-item" data-admin-tab="disruptions">
+              <span class="sidebar-icon">⚠️</span>
+              <span class="sidebar-label">Transport Disruptions</span>
+              <span id="sidebar-disruptions-badge" class="notif-badge hidden">0</span>
+            </button>
+            <button type="button" class="sidebar-nav-item" data-admin-tab="reports">
+              <span class="sidebar-icon">🚩</span>
+              <span class="sidebar-label">User Issue Reports</span>
+              <span id="sidebar-reports-badge" class="notif-badge hidden">0</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- SECURITY & GOVERNANCE SECTION -->
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">SECURITY & GOVERNANCE</span>
+          <nav class="sidebar-nav" aria-label="Security & Governance">
+            <button type="button" class="sidebar-nav-item" data-admin-tab="users">
+              <span class="sidebar-icon">👥</span>
+              <span class="sidebar-label">User Moderation</span>
+            </button>
+            <button type="button" class="sidebar-nav-item" data-admin-tab="audit">
+              <span class="sidebar-icon">📜</span>
+              <span class="sidebar-label">Audit Logs</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      <!-- SIDEBAR FOOTER (Admin Profile Area) -->
+      <div class="sidebar-footer">
+        <div id="admin-user-info" class="sidebar-admin-card hidden">
+          <div class="user-avatar-sm admin-avatar">🔐</div>
+          <div class="user-meta" style="flex: 1; min-width: 0;">
+            <span id="admin-display-name" class="user-name" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">Administrator</span>
+            <span class="user-id admin-tag">System Admin</span>
+          </div>
+        </div>
+        <button type="button" id="admin-logout-btn" class="sidebar-btn logout-btn hidden" style="width: 100%;">Log Out</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Viewport -->
+    <div class="app-main-viewport">
+      <main class="shell admin-shell">
+        <!-- Admin Page Header -->
+        <div class="admin-page-header">
+          <div class="admin-header-copy">
+            <div class="admin-security-pill">
+              <span>🔒 Secure Administrative Environment</span>
+            </div>
+            <h1>Transport Operations Portal</h1>
+            <p class="admin-header-subtext">Maintain official bus and train schedules in PostgreSQL, monitor real-time transport disruptions, investigate passenger reports, and moderate user accounts with full audit tracking.</p>
+          </div>
+        </div>
+
+        <!-- Login Card -->
+        <section id="login-section" class="admin-login-card">
+          <div class="login-card-inner">
+            <div class="login-header-icon">🔐</div>
+            <h2>Admin Authentication</h2>
+            <p class="login-subtext">Enter your administrator credentials to access database management, transport disruption publishing, and user moderation controls.</p>
+            <form id="login-form" style="display: flex; flex-direction: column; gap: 14px;">
+              <label style="display: flex; flex-direction: column; gap: 4px; font-weight: 700; font-size: 0.85rem; color: var(--primary-text);">
+                Admin Username
+                <input id="username" autocomplete="username" value="admin" required style="height: 42px; padding: 0 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem;">
+              </label>
+              <label style="display: flex; flex-direction: column; gap: 4px; font-weight: 700; font-size: 0.85rem; color: var(--primary-text);">
+                Admin Password
+                <input id="password" type="password" autocomplete="current-password" value="12345678" required style="height: 42px; padding: 0 12px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem;">
+              </label>
+              <button class="button primary" type="submit" style="margin-top: 8px; height: 42px; font-size: 0.95rem; font-weight: 700;">Login to Portal ➔</button>
+            </form>
+          </div>
+        </section>
+
+        <div id="admin-status" class="status" role="status" aria-live="polite"></div>
+
+        <!-- Main Admin Workspace -->
+        <section id="admin-workspace" class="admin-workspace-panel hidden">
+          <!-- 0. Admin Overview Tab -->
+          <div id="tab-pane-overview" class="admin-tab-pane">
+            <div class="admin-toolbar">
+              <div>
+                <h2>System Overview &amp; Operations Summary</h2>
+                <p>Live health metrics across transport schedules, active disruptions, and user moderation queues.</p>
+              </div>
+              <button id="overview-refresh-btn" class="button secondary small" type="button" style="height: 36px;">🔄 Refresh Metrics</button>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="kpi-grid">
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-icon warning">⚠️</span>
+                  <span class="status-pill active" style="font-size: 0.7rem;">Live</span>
+                </div>
+                <div>
+                  <div class="kpi-val" id="kpi-active-disruptions">-</div>
+                  <div class="kpi-label">Active Disruptions</div>
+                  <div class="kpi-sub" id="kpi-disruptions-sub">Routes currently impacted</div>
+                </div>
+                <button type="button" class="kpi-action-btn" data-goto-tab="disruptions">Manage Disruptions ➔</button>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-icon reports">🚩</span>
+                  <span class="status-pill pending" style="font-size: 0.7rem;">Queue</span>
+                </div>
+                <div>
+                  <div class="kpi-val" id="kpi-pending-reports">-</div>
+                  <div class="kpi-label">Pending Issue Reports</div>
+                  <div class="kpi-sub" id="kpi-reports-sub">Awaiting admin review</div>
+                </div>
+                <button type="button" class="kpi-action-btn" data-goto-tab="reports">Review Reports ➔</button>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-icon users">👥</span>
+                  <span class="status-pill active" style="font-size: 0.7rem;">Registered</span>
+                </div>
+                <div>
+                  <div class="kpi-val" id="kpi-total-users">-</div>
+                  <div class="kpi-label">User Accounts</div>
+                  <div class="kpi-sub" id="kpi-users-sub">0 suspended / blocked</div>
+                </div>
+                <button type="button" class="kpi-action-btn" data-goto-tab="users">Moderate Users ➔</button>
+              </div>
+
+              <div class="kpi-card">
+                <div class="kpi-header">
+                  <span class="kpi-icon database">🚍</span>
+                  <span class="status-pill active" style="font-size: 0.7rem;">PostgreSQL</span>
+                </div>
+                <div>
+                  <div class="kpi-val" id="kpi-transit-records">-</div>
+                  <div class="kpi-label">Bus Schedules</div>
+                  <div class="kpi-sub">Inter-district transit network</div>
+                </div>
+                <button type="button" class="kpi-action-btn" data-goto-tab="records">Browse Records ➔</button>
+              </div>
+            </div>
+
+            <!-- Overview Panels Grid -->
+            <div class="overview-panels-grid">
+              <div class="overview-card">
+                <div class="overview-card-header">
+                  <span class="overview-card-title">Recent Administrative Activity</span>
+                  <button type="button" class="button outline small" style="font-size: 0.76rem; padding: 2px 8px;" data-goto-tab="audit">View All Logs ➔</button>
+                </div>
+                <div id="overview-recent-audit" class="overview-audit-list">
+                  <div style="padding: 14px; text-align: center; color: var(--secondary-text); font-size: 0.85rem;">Loading recent activity...</div>
+                </div>
+              </div>
+
+              <div class="overview-card">
+                <div class="overview-card-header">
+                  <span class="overview-card-title">Quick Operational Actions</span>
+                </div>
+                <div class="quick-action-list">
+                  <button type="button" class="quick-action-item" id="overview-quick-create-disruption">
+                    <span>⚠️</span>
+                    <span>Create New Disruption Alert</span>
+                  </button>
+                  <button type="button" class="quick-action-item" data-goto-tab="reports">
+                    <span>🚩</span>
+                    <span>Review Pending Passenger Reports</span>
+                  </button>
+                  <button type="button" class="quick-action-item" data-goto-tab="records">
+                    <span>🚍</span>
+                    <span>Edit Bus &amp; Train Schedules</span>
+                  </button>
+                  <button type="button" class="quick-action-item" data-goto-tab="users">
+                    <span>👥</span>
+                    <span>Search &amp; Moderate User Accounts</span>
+                  </button>
+                  <a href="/" class="quick-action-item" style="text-decoration: none;">
+                    <span>🗺️</span>
+                    <span>Open Public Journey Planner</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1. Operational Transport Records Tab -->
+          <div id="tab-pane-records" class="admin-tab-pane hidden">
+            <div class="admin-toolbar">
+              <div>
+                <h2>Operational Transport Records</h2>
+                <p>Edits are committed directly into PostgreSQL and immediately affect live route queries.</p>
+              </div>
+              <div style="display: flex; gap: 12px; align-items: flex-end;">
+                <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; font-weight: 700;">
+                  Manage Table
+                  <select id="entity" style="height: 38px; padding: 0 10px; border: 1.5px solid var(--border); border-radius: 6px;"></select>
+                </label>
+                <button id="reload" class="button secondary" type="button" style="height: 38px;">Refresh Table</button>
+              </div>
+            </div>
+
+            <form id="record-form" class="record-form"></form>
+            <div id="record-list" class="table-card"></div>
+            <p class="fine-print">⚠️ Modifications take effect immediately. Edits and deletions directly update the live routing engine and transit lookup tables.</p>
+          </div>
+
+      <!-- 2. Transport Disruptions Tab -->
+      <div id="tab-pane-disruptions" class="admin-tab-pane hidden">
+        <div class="admin-toolbar" style="flex-wrap: wrap; gap: 14px; align-items: flex-end;">
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy);">⚠️ Transport Disruption & Incident Alerts</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Manually create, publish, and manage transport disruption alerts that dynamically warn travelers on affected routes.</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap;">
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Status Filter
+              <select id="admin-disruption-filter-status" style="height: 36px; padding: 0 8px; border: 1.5px solid var(--border); border-radius: 6px;">
+                <option value="all">All Statuses</option>
+                <option value="ACTIVE">ACTIVE</option>
+                <option value="INACTIVE">INACTIVE</option>
+                <option value="DRAFT">DRAFT</option>
+                <option value="RESOLVED">RESOLVED</option>
+                <option value="CANCELLED">CANCELLED</option>
+              </select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Transport Mode
+              <select id="admin-disruption-filter-mode" style="height: 36px; padding: 0 8px; border: 1.5px solid var(--border); border-radius: 6px;">
+                <option value="all">All Modes</option>
+                <option value="BUS">Bus Only</option>
+                <option value="TRAIN">Train Only</option>
+                <option value="BOTH">Both (Bus & Train)</option>
+              </select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Search
+              <input id="admin-disruption-search" type="search" placeholder="ID, title, location..." style="height: 36px; padding: 0 10px; border: 1.5px solid var(--border); border-radius: 6px; width: 170px;">
+            </label>
+            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; height: 36px; cursor: pointer;">
+              <input id="admin-disruption-include-deleted" type="checkbox"> Show Soft-Deleted
+            </label>
+            <button id="admin-disruption-reload-btn" class="button secondary small" type="button" style="height: 36px;">Refresh</button>
+            <button id="admin-disruption-create-btn" class="button primary small" type="button" style="height: 36px; background: #ea580c; border-color: #ea580c;">+ Create Disruption Alert</button>
+          </div>
+        </div>
+
+        <div id="admin-disruptions-table" class="table-card" style="margin-top: 14px;"></div>
+      </div>
+
+      <!-- 3. User Issue Reports Tab -->
+      <div id="tab-pane-reports" class="admin-tab-pane hidden">
+        <div class="admin-toolbar" style="flex-wrap: wrap; gap: 14px; align-items: flex-end;">
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy);">User Issue Reports & Complaints</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Review user-submitted errors, verify factual changes, or reject spam/false reports.</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap;">
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Status
+              <select id="admin-report-filter-status" style="height: 36px; padding: 0 8px; border: 1.5px solid var(--border); border-radius: 6px;">
+                <option value="all">All Statuses</option>
+                <option value="PENDING">Pending Only</option>
+                <option value="VERIFIED">Verified</option>
+                <option value="REJECTED">Rejected</option>
+              </select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Category
+              <select id="admin-report-filter-cat" style="height: 36px; padding: 0 8px; border: 1.5px solid var(--border); border-radius: 6px;">
+                <option value="all">All Categories</option>
+                <option value="Incorrect Bus Fare">Incorrect Bus Fare</option>
+                <option value="Incorrect Train Fare">Incorrect Train Fare</option>
+                <option value="Wrong Departure Time">Wrong Departure Time</option>
+                <option value="Wrong Arrival Time">Wrong Arrival Time</option>
+                <option value="Route Information">Route Information</option>
+                <option value="Station / Stop Error">Station / Stop Error</option>
+                <option value="Incorrect Destination">Incorrect Destination</option>
+                <option value="Broken Functionality">Broken Functionality</option>
+                <option value="Search or Route Calculation Problem">Search / Route Problem</option>
+                <option value="General Complaint or Suggestion">General Suggestion</option>
+              </select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Search
+              <input id="admin-report-search" type="search" placeholder="ID, title, user..." style="height: 36px; padding: 0 10px; border: 1.5px solid var(--border); border-radius: 6px; width: 170px;">
+            </label>
+            <label style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 600; height: 36px; cursor: pointer;">
+              <input id="admin-report-include-deleted" type="checkbox"> Show Soft-Deleted
+            </label>
+            <button id="admin-report-reload-btn" class="button secondary small" type="button" style="height: 36px;">Refresh</button>
+          </div>
+        </div>
+
+        <div id="admin-reports-table" class="table-card" style="margin-top: 14px;"></div>
+      </div>
+
+      <!-- 3. User Accounts & Moderation Tab -->
+      <div id="tab-pane-users" class="admin-tab-pane hidden">
+        <div class="admin-toolbar" style="flex-wrap: wrap; gap: 14px; align-items: flex-end;">
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy);">User Account Moderation</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Manage registered users, issue official warnings, and suspend or unblock accounts.</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: flex-end; flex-wrap: wrap;">
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Status Filter
+              <select id="admin-user-filter-status" style="height: 36px; padding: 0 8px; border: 1.5px solid var(--border); border-radius: 6px;">
+                <option value="all">All Accounts</option>
+                <option value="active">Active Only</option>
+                <option value="blocked">Suspended / Blocked</option>
+                <option value="warned">Users with Warnings</option>
+              </select>
+            </label>
+            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600;">
+              Search
+              <input id="admin-user-search" type="search" placeholder="Name, email, SRU-..." style="height: 36px; padding: 0 10px; border: 1.5px solid var(--border); border-radius: 6px; width: 190px;">
+            </label>
+            <button id="admin-user-reload-btn" class="button secondary small" type="button" style="height: 36px;">Refresh Users</button>
+          </div>
+        </div>
+
+        <div id="admin-users-table" class="table-card" style="margin-top: 14px;"></div>
+      </div>
+
+      <!-- 4. Audit Logs Tab -->
+      <div id="tab-pane-audit" class="admin-tab-pane hidden">
+        <div class="admin-toolbar">
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--navy);">Administrative Audit Logs</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Chronological record of all administrative decisions, settings updates, and database mutations.</p>
+          </div>
+          <button id="reload-audit-btn" class="button secondary small" type="button">Refresh Logs</button>
+        </div>
+        <div id="admin-audit-list" class="table-card" style="margin-top: 14px;"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="padding: 24px 28px; border-top: 1px solid var(--border); margin-top: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: var(--secondary-text);">
+    <p>SmartRoute BD • Admin Operations Dashboard. Confidential transport management console.</p>
+    <p><a href="/" class="button secondary small" style="display: inline-flex; align-items: center; gap: 6px; font-weight: 700; text-decoration: none;">⬅ Return to Public Website</a></p>
+  </footer>
+</div>
+</div>
+
+<!-- Admin Modals -->
+
+  <!-- 1. Admin Report Review & Decision Modal -->
+  <div id="admin-report-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 640px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">🚩</span>
+          <div>
+            <h3>Review User Report</h3>
+            <p id="adm-rep-id" class="modal-subtext">REP-XXXXXXXX</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-report-modal">&times;</button>
+      </div>
+
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span id="adm-rep-status-badge" class="status-pill pending">PENDING</span>
+            <span id="adm-rep-deleted-badge" class="status-pill rejected hidden">SOFT DELETED</span>
+          </div>
+          <span id="adm-rep-date" style="font-size: 0.85rem; color: var(--text-muted);">2026-11-13</span>
+        </div>
+
+        <!-- Reporter user info box -->
+        <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <strong>Reporting User:</strong>
+            <span id="adm-rep-user-name" style="font-weight: 600; margin-left: 4px;">User</span>
+            <span id="adm-rep-user-id" style="font-family: monospace; color: var(--teal); margin-left: 6px;">SRU-XXXXXXXX</span>
+            <div id="adm-rep-user-email" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">user@example.com</div>
+          </div>
+          <div style="display: flex; gap: 6px;">
+            <button type="button" id="adm-rep-quick-warn-btn" class="button secondary small" style="font-size: 0.75rem; height: 28px;">⚠️ Warn User</button>
+            <button type="button" id="adm-rep-quick-block-btn" class="button danger small" style="font-size: 0.75rem; height: 28px;">⛔ Block User</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.88rem;">
+          <div><strong>Category:</strong> <span id="adm-rep-category">Incorrect Bus Fare</span></div>
+          <div><strong>Transport Mode:</strong> <span id="adm-rep-mode">Bus</span></div>
+          <div style="grid-column: 1 / -1;"><strong>Related Info:</strong> <span id="adm-rep-route">Dhaka to Cumilla</span></div>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.9rem; margin-bottom: 4px;">Subject:</strong>
+          <div id="adm-rep-title" style="font-weight: 700; color: var(--navy); font-size: 0.95rem;">Fare is wrong</div>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.9rem; margin-bottom: 4px;">Detailed Description:</strong>
+          <div id="adm-rep-description" style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 0.88rem; line-height: 1.45; white-space: pre-wrap;"></div>
+        </div>
+
+        <div id="adm-rep-evidence-box" class="hidden">
+          <strong style="display: block; font-size: 0.9rem; margin-bottom: 4px;">Supporting Evidence:</strong>
+          <a id="adm-rep-evidence-link" href="#" target="_blank" class="button outline small" style="display: inline-flex; align-items: center; gap: 6px;">
+            📎 View Attached Evidence
+          </a>
+        </div>
+
+        <!-- Past Admin Review if any -->
+        <div id="adm-rep-past-review" class="hidden" style="background: #f1f5f9; border-left: 3px solid var(--teal); padding: 10px 14px; border-radius: 4px;">
+          <strong style="font-size: 0.85rem; color: var(--navy); display: block;">Past Review Record:</strong>
+          <p id="adm-rep-past-response" style="margin: 4px 0 0 0; font-size: 0.85rem;"></p>
+          <small id="adm-rep-past-meta" style="color: var(--text-muted); font-size: 0.78rem; display: block; margin-top: 4px;"></small>
+        </div>
+
+        <!-- Admin Decision Section -->
+        <div style="border-top: 1.5px solid var(--border); padding-top: 14px; margin-top: 4px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Review Decision</h4>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <label style="font-size: 0.85rem; font-weight: 600;">
+              Admin Response / Note (Optional for verification, mandatory reason if rejecting):
+              <textarea id="adm-decision-note" rows="3" placeholder="Provide note for user or rejection reason..." style="width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 8px 10px; font-size: 0.88rem;"></textarea>
+            </label>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 6px;">
+              <button type="button" id="adm-rep-soft-delete-btn" class="button outline small" style="color: #dc2626; border-color: #fca5a5;">
+                🗑️ Soft Delete from Admin View
+              </button>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" id="adm-rep-reject-btn" class="button danger" style="height: 38px;">
+                  ✕ Reject Report
+                </button>
+                <button type="button" id="adm-rep-verify-btn" class="button primary" style="height: 38px; background: #16a34a; border-color: #16a34a;">
+                  ✓ Verify Report
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Issue User Warning Modal -->
+  <div id="admin-warn-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">⚠️</span>
+          <div>
+            <h3>Issue Official Warning</h3>
+            <p id="adm-warn-user-label" class="modal-subtext">User: Name (SRU-XXXXXXXX)</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-warn-modal">&times;</button>
+      </div>
+      <form id="admin-warn-form" class="modal-form">
+        <label>Reason for Official Warning
+          <textarea id="adm-warn-reason" rows="3" required placeholder="Explain why this user is receiving a warning (e.g. repeated submission of false fare info, spamming reports)..."></textarea>
+        </label>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
+          An official warning notification will be immediately dispatched to the user's account and permanently recorded in their profile.
+        </p>
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+          <button type="button" class="button outline small" data-close="admin-warn-modal">Cancel</button>
+          <button type="submit" class="button secondary">Send Warning Notice</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. View Past Warnings Modal -->
+  <div id="admin-view-warnings-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 580px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">📜</span>
+          <div>
+            <h3>User Warning History</h3>
+            <p id="adm-vw-user-label" class="modal-subtext">User: SRU-XXXXXXXX</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-view-warnings-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="adm-warnings-table" class="table-card" style="max-height: 380px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Block User Modal -->
+  <div id="admin-block-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">⛔</span>
+          <div>
+            <h3>Suspend / Block User Account</h3>
+            <p id="adm-block-user-label" class="modal-subtext">User: Name (SRU-XXXXXXXX)</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-block-modal">&times;</button>
+      </div>
+      <form id="admin-block-form" class="modal-form">
+        <label>Reason for Account Suspension
+          <textarea id="adm-block-reason" rows="3" required placeholder="Explain reason for account restriction (e.g. repeated malicious spam, policy violation)..."></textarea>
+        </label>
+        <p style="font-size: 0.82rem; color: #dc2626; margin-top: 4px;">
+          The user will receive HTTP 403 Forbidden on report submission and will be shown this suspension notice in their dashboard.
+        </p>
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+          <button type="button" class="button outline small" data-close="admin-block-modal">Cancel</button>
+          <button type="submit" class="button danger">Confirm & Block Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. View Block History Modal -->
+  <div id="admin-block-history-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 600px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">🔒</span>
+          <div>
+            <h3>Account Block / Unblock Audit Trail</h3>
+            <p id="adm-bh-user-label" class="modal-subtext">User: SRU-XXXXXXXX</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-block-history-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="adm-block-history-table" class="table-card" style="max-height: 380px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Create / Edit Transport Disruption Modal (Simplified AI/Automated Route Detection) -->
+  <div id="admin-create-disruption-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 720px; max-height: 90vh; overflow-y: auto;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">⚠️</span>
+          <div>
+            <h3 id="adm-dis-modal-title">Create Transport Disruption Alert</h3>
+            <p class="modal-subtext">Describe the incident naturally. The system automatically identifies parameters and detects affected routes.</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-create-disruption-modal">&times;</button>
+      </div>
+      <form id="admin-create-disruption-form" class="modal-form" style="display: flex; flex-direction: column; gap: 14px;">
+        <input type="hidden" id="adm-dis-edit-id" value="">
+
+        <!-- 1. Incident Description Field -->
+        <div>
+          <label style="font-size: 0.88rem; font-weight: 700; color: var(--navy); display: block; margin-bottom: 4px;">
+            Incident Description <span style="color: #dc2626;">*</span>
+          </label>
+          <textarea id="adm-dis-desc" rows="3" required placeholder="Describe the incident naturally in your own words (e.g. A railway accident near Cumilla has suspended train movement...)" style="width: 100%; border: 1.5px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 0.9rem; line-height: 1.45;"></textarea>
+          
+          <!-- Helper Examples -->
+          <div style="margin-top: 6px; display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 0.76rem; color: var(--text-muted); font-weight: 600;">💡 Example Scenarios (Click to test):</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <button type="button" class="adm-dis-example-pill button outline small" data-example="A railway accident has occurred near Cumilla, causing train movement to be suspended on the affected railway section until further notice." style="height: 26px; padding: 0 10px; font-size: 0.75rem; border-radius: 14px;">🚆 Railway Accident near Cumilla</button>
+              <button type="button" class="adm-dis-example-pill button outline small" data-example="A major road accident near Cumilla has blocked the Dhaka–Chittagong highway. Bus movement is currently disrupted." style="height: 26px; padding: 0 10px; font-size: 0.75rem; border-radius: 14px;">🚍 Road Accident on Highway near Cumilla</button>
+              <button type="button" class="adm-dis-example-pill button outline small" data-example="Severe flooding near Cumilla has disrupted both road and railway movement." style="height: 26px; padding: 0 10px; font-size: 0.75rem; border-radius: 14px;">🌧️ Flooding near Cumilla (Road &amp; Rail)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Optional Source / Reference -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <label style="font-size: 0.82rem; font-weight: 600;">Optional Source / Authority
+            <input id="adm-dis-source-name" placeholder="e.g. Bangladesh Railway / Highway Police" style="height: 36px; padding: 0 10px; border: 1.5px solid var(--border); border-radius: 6px;">
+          </label>
+          <label style="font-size: 0.82rem; font-weight: 600;">Optional Notice URL
+            <input id="adm-dis-source-url" type="url" placeholder="https://..." style="height: 36px; padding: 0 10px; border: 1.5px solid var(--border); border-radius: 6px;">
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+          <button type="button" id="adm-dis-analyze-btn" class="button secondary" style="height: 38px; display: inline-flex; align-items: center; gap: 6px;">
+            🔍 Analyze Incident &amp; Detect Routes
+          </button>
+          <span style="font-size: 0.78rem; color: var(--text-muted);">Real-time network path inspection</span>
+        </div>
+
+        <!-- 3. Dynamic Analysis & Automatic Detection Preview Container -->
+        <div id="adm-dis-preview-container" class="hidden" style="display: flex; flex-direction: column; gap: 12px; border-top: 1.5px solid var(--border); padding-top: 12px;">
+          
+          <!-- Clarification prompt if ambiguous -->
+          <div id="adm-dis-clarify-box" class="hidden" style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 8px; padding: 10px 14px; font-size: 0.85rem; color: #92400e; display: flex; align-items: flex-start; gap: 8px;">
+            <span style="font-size: 1.1rem; line-height: 1;">⚠️</span>
+            <div>
+              <strong>Clarification Needed:</strong>
+              <p id="adm-dis-clarify-msg" style="margin: 2px 0 0 0;"></p>
+            </div>
+          </div>
+
+          <!-- Detected Incident Information Card -->
+          <div style="background: #f8fafc; border: 1.5px solid var(--border); border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <strong style="font-size: 0.9rem; color: var(--navy);">Detected Incident Information</strong>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span id="adm-dis-prev-confidence" class="status-pill active" style="font-size: 0.72rem;">CONFIDENT MATCH</span>
+                <span id="adm-dis-preview-sev-badge" class="status-pill moderate">MODERATE</span>
+              </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 0.82rem;">
+              <!-- Detected Location with Optional Correction -->
+              <div style="background: white; border: 1.5px solid var(--border); border-radius: 6px; padding: 8px 10px; grid-column: span 2;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span style="display: block; font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">DETECTED LOCATION</span>
+                  <strong id="adm-dis-prev-loc" style="color: var(--navy); font-size: 0.88rem;">-</strong>
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center; margin-top: 6px;">
+                  <input id="adm-dis-corrected-loc" placeholder="Optional: Correct location if needed (e.g. Cumilla, Dhaka, Feni)..." style="flex: 1; height: 32px; padding: 0 10px; font-size: 0.82rem; border: 1px solid var(--border); border-radius: 4px;">
+                  <button type="button" id="adm-dis-reanalyze-loc-btn" class="button secondary small" style="height: 32px; font-size: 0.76rem; padding: 0 10px; white-space: nowrap;">Update Routes</button>
+                </div>
+                <span style="display: block; font-size: 0.7rem; color: var(--text-muted); margin-top: 3px;">Location is extracted automatically from your description. Edit above only if you want to override.</span>
+              </div>
+
+              <!-- Detected Transport Mode -->
+              <div style="background: white; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px;">
+                <span style="display: block; font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">DETECTED TRANSPORT MODE</span>
+                <strong id="adm-dis-prev-mode" style="color: var(--teal); font-size: 0.88rem;">-</strong>
+              </div>
+
+              <!-- Detected Incident Type -->
+              <div style="background: white; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px;">
+                <span style="display: block; font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">DETECTED INCIDENT TYPE</span>
+                <strong id="adm-dis-prev-type" style="color: #ea580c; font-size: 0.88rem;">-</strong>
+              </div>
+
+              <!-- Detected Operational Impact -->
+              <div style="background: white; border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; grid-column: span 2;">
+                <span style="display: block; font-size: 0.7rem; color: var(--text-muted); font-weight: 700;">DETECTED OPERATIONAL IMPACT</span>
+                <strong id="adm-dis-prev-impact" style="color: #dc2626; font-size: 0.88rem;">-</strong>
+              </div>
+            </div>
+
+            <div style="margin-top: 10px;">
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: 700; margin-bottom: 2px;">PUBLIC ALERT MESSAGE PREVIEW</span>
+              <div id="adm-dis-prev-alert-msg" style="background: #fff7ed; border-left: 3px solid #ea580c; border-radius: 4px; padding: 8px 10px; font-size: 0.85rem; color: #431407;"></div>
+            </div>
+          </div>
+
+          <!-- Automatically Detected Affected Routes Preview -->
+          <div style="background: #f8fafc; border: 1.5px solid var(--border); border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 0.86rem; color: var(--navy);">Automatically Detected Affected Routes</strong>
+              <span id="adm-dis-route-count-badge" class="status-pill active" style="font-size: 0.72rem;">0 Routes Detected</span>
+            </div>
+            <div id="adm-dis-detected-routes-list" style="max-height: 180px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;"></div>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px;">
+          <button type="button" class="button outline small" data-close="admin-create-disruption-modal">Cancel</button>
+          <button type="submit" id="adm-dis-submit-btn" class="button primary" style="background: #ea580c; border-color: #ea580c;">
+            Publish Alert ➔
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 7. Disruption Detail & Actions Modal -->
+  <div id="admin-disruption-detail-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 640px; max-height: 90vh; overflow-y: auto;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">⚠️</span>
+          <div>
+            <h3 id="adm-dd-title">Disruption Alert Details</h3>
+            <p id="adm-dd-id" class="modal-subtext">DIS-XXXXXXXX</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-disruption-detail-modal">&times;</button>
+      </div>
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span id="adm-dd-status-badge" class="status-pill pending">ACTIVE</span>
+            <span id="adm-dd-mode-badge" class="pill BUS">BUS</span>
+            <span id="adm-dd-severity-badge" class="status-pill rejected">CRITICAL</span>
+          </div>
+          <span id="adm-dd-dates" style="font-size: 0.82rem; color: var(--text-muted);">Created: 2026-11-13</span>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;">Public Alert Message (Shown to users):</strong>
+          <div id="adm-dd-alert-msg" style="background: #fff7ed; border-left: 4px solid #ea580c; border-radius: 4px; padding: 10px 12px; font-size: 0.88rem; font-weight: 500;"></div>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;">Description:</strong>
+          <div id="adm-dd-desc" style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 0.88rem; line-height: 1.45; white-space: pre-wrap;"></div>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;">Affected Network Segments:</strong>
+          <div id="adm-dd-segments" style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 0.85rem;"></div>
+        </div>
+
+        <div id="adm-dd-meta-box" style="font-size: 0.82rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;"></div>
+
+        <!-- Disruption Status Operations -->
+        <div style="border-top: 1.5px solid var(--border); padding-top: 14px; margin-top: 6px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 10px;">Lifecycle &amp; Status Actions</h4>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: space-between;">
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button type="button" id="adm-dd-activate-btn" class="button primary small" style="background: #16a34a; border-color: #16a34a;">⚡ Activate</button>
+              <button type="button" id="adm-dd-deactivate-btn" class="button outline small">⏸️ Deactivate</button>
+              <button type="button" id="adm-dd-resolve-btn" class="button secondary small" style="background: #0284c7; border-color: #0284c7; color: white;">✓ Resolve</button>
+              <button type="button" id="adm-dd-cancel-btn" class="button outline small" style="color: #64748b;">✕ Cancel Alert</button>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" id="adm-dd-audit-btn" class="button outline small">📜 Audit Trail</button>
+              <button type="button" id="adm-dd-delete-btn" class="button outline small" style="color: #dc2626; border-color: #fca5a5;">🗑️ Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Disruption Audit Log Trail Modal -->
+  <div id="admin-disruption-audit-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 640px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">📜</span>
+          <div>
+            <h3>Disruption Alert Audit Trail</h3>
+            <p id="adm-dis-audit-id" class="modal-subtext">DIS-XXXXXXXX</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="admin-disruption-audit-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="adm-dis-audit-table" class="table-card" style="max-height: 380px; overflow-y: auto;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

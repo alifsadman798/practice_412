@@ -1,0 +1,203 @@
+From,To,Distance_km,Parent_District
+Bhairab,Kishoreganj,49,Kishoreganj
+Kuliarchar,Kishoreganj,35,Kishoreganj
+Akhaura,Brahmanbaria,10,Brahmanbaria
+Akhaura,Kasba,12,Brahmanbaria
+Kasba,Brahmanbaria,22,Brahmanbaria
+Ashuganj,Brahmanbaria,15,Brahmanbaria
+Laksam,Cumilla,25,Cumilla
+Nangalkot,Cumilla,27,Cumilla
+Sreemangal,Moulvibazar,25,Moulvibazar
+Kulaura,Moulvibazar,40,Moulvibazar
+Bhanugach,Moulvibazar,37,Moulvibazar
+Baramchal,Moulvibazar,35,Moulvibazar
+Shaistaganj,Habiganj,20,Habiganj
+Gafargaon,Mymensingh,40,Mymensingh
+Dewanganj,Jamalpur,30,Jamalpur
+Patiya,Chattogram,25,Chattogram
+Chakaria,Coxs Bazar,50,Coxs Bazar
+Harbang,Coxs Bazar,28,Coxs Bazar
+Mohanganj,Netrokona,50,Netrokona
+Hajiganj,Chandpur,20,Chandpur
+Maijgaon,Sylhet,25,Sylhet
+Joydebpur,Gazipur,15,Gazipur
+Abdulpur,Natore,20,Natore
+Aditmari,Lalmonirhat,13,Lalmonirhat
+Ahsanganj,Naogaon,28,Naogaon
+Akkelpur,Joypurhat,16,Joypurhat
+Alamdanga,Chuadanga,22,Chuadanga
+Amirabad,Faridpur,32,Faridpur
+Arani,Rajshahi,30,Rajshahi
+Atharabari,Mymensingh,35,Mymensingh
+Azimnagar,Natore,35,Natore
+Badarganj,Rangpur,32,Rangpur
+Badiakhali Road,Gaibandha,12,Gaibandha
+Bahar Pur,Rajbari,18,Rajbari
+Bajitpur,Kishoreganj,17,Kishoreganj
+Bajra,Noakhali,8,Noakhali
+Balia,Pabna,32,Pabna
+Bamon Danga,Gaibandha,35,Gaibandha
+Banarpara,Gaibandha,15,Gaibandha
+Bara Khata,Lalmonirhat,40,Lalmonirhat
+Baral Bridge,Pabna,25,Pabna
+Barhatta,Netrokona,17,Netrokona
+Bawra,Lalmonirhat,48,Lalmonirhat
+Benapole,Jashore,37,Jashore
+Bhamradah,Thakurgaon,23,Thakurgaon
+Bhanga,Faridpur,31,Faridpur
+Bhanga Junction,Faridpur,31,Faridpur
+Bhatibari,Lalmonirhat,28,Lalmonirhat
+Bhedarganj,Shariatpur,32,Shariatpur
+Bheramara,Kushtia,23,Kushtia
+Birampur,Dinajpur,56,Dinajpur
+Boalmari,Faridpur,30,Faridpur
+Bogura,Bogura,0,Bogura
+Brahmanbaria,Brahmanbaria,0,Brahmanbaria
+Burimari,Lalmonirhat,91,Lalmonirhat
+Chandpur,Chandpur,0,Chandpur
+Chandpur Court,Chandpur,0,Chandpur
+Chandradighalia,Gopalganj,10,Gopalganj
+Chapai Nawabganj,Chapai Nawabganj,0,Chapai Nawabganj
+Chapta,Gopalganj,20,Gopalganj
+Chatmohar,Pabna,27,Pabna
+Chattogram,Chattogram,0,Chattogram
+Chhatbaria,Gopalganj,12,Gopalganj
+Chilahati,Nilphamari,37,Nilphamari
+Chirirbandar,Dinajpur,18,Dinajpur
+Chitoshi Road,Chandpur,43,Chandpur
+Chowmuhani,Noakhali,15,Noakhali
+Chuadanga,Chuadanga,0,Chuadanga
+Coxs Bazar,Coxs Bazar,0,Coxs Bazar
+Cumilla,Cumilla,0,Cumilla
+Damar,Nilphamari,18,Nilphamari
+Darshana Halt,Chuadanga,20,Chuadanga
+Dashuria,Pabna,23,Pabna
+Daulatpur,Khulna,5,Khulna
+Dhaka,Dhaka,0,Dhaka
+Dhaka Airport,Dhaka,17,Dhaka
+Dhalarchar,Pabna,35,Pabna
+Dinajpur,Dinajpur,0,Dinajpur
+Dohazari,Chattogram,40,Chattogram
+Dulhazara,Coxs Bazar,42,Coxs Bazar
+Faridpur,Faridpur,0,Faridpur
+Feni,Feni,0,Feni
+Fulbari,Dinajpur,32,Dinajpur
+Gachihata,Kishoreganj,8,Kishoreganj
+Gaibandha,Gaibandha,0,Gaibandha
+Gobra,Gopalganj,6,Gopalganj
+Gopalganj,Gopalganj,0,Gopalganj
+Gouripur Myna,Mymensingh,25,Mymensingh
+Harashpur,Habiganj,25,Habiganj
+Hatibandha,Lalmonirhat,38,Lalmonirhat
+Hi-Tech City,Gazipur,30,Gazipur
+Hili,Dinajpur,67,Dinajpur
+Ibrahimabad,Tangail,28,Tangail
+Ishwardi,Pabna,18,Pabna
+Ishwardi Bypass,Natore,37,Natore
+Islamabad,Coxs Bazar,31,Coxs Bazar
+Islampur Bazar,Jamalpur,24,Jamalpur
+Jamalganj,Joypurhat,18,Joypurhat
+Jamalpur,Jamalpur,0,Jamalpur
+Jamtoil,Sirajganj,25,Sirajganj
+Janalihat,Chattogram,28,Chattogram
+Jashore,Jashore,0,Jashore
+Jhikargachha,Jashore,16,Jashore
+Joypurhat,Joypurhat,0,Joypurhat
+Kakina,Lalmonirhat,18,Lalmonirhat
+Kalkhali,Rajbari,18,Rajbari
+Kashiani,Gopalganj,20,Gopalganj
+Kashinathpur,Pabna,45,Pabna
+Kaunia,Rangpur,18,Rangpur
+Khaksha,Kushtia,50,Kushtia
+Khalasha,Rangpur,31,Rangpur
+Khatra,Gopalganj,5,Gopalganj
+Khiyarkot,Kushtia,47,Kushtia
+Khoksha,Kushtia,50,Kushtia
+Kholahati,Dinajpur,40,Dinajpur
+Khulna,Khulna,0,Khulna
+Kishoreganj,Kishoreganj,0,Kishoreganj
+Kismat,Panchagarh,22,Panchagarh
+Kotchandpur,Jhenaidah,35,Jhenaidah
+Kumira,Chattogram,28,Chattogram
+Kurigram,Kurigram,0,Kurigram
+Kushtia Court,Kushtia,0,Kushtia
+Lalmonirhat,Lalmonirhat,0,Lalmonirhat
+Lohagara,Narail,16,Narail
+Lohagara,Chattogram,61,Chattogram
+Madhnagar,Natore,15,Natore
+Madhu Road,Chandpur,15,Chandpur
+Mahimaganj,Gaibandha,35,Gaibandha
+Maijdee Court,Noakhali,0,Noakhali
+Majhgram,Natore,39,Natore
+Manikkhali,Kishoreganj,18,Kishoreganj
+Markhali,Kushtia,39,Kushtia
+Mawa,Munshiganj,30,Munshiganj
+Meher,Chandpur,31,Chandpur
+Melandah Bazar,Jamalpur,10,Jamalpur
+Mirpur,Kushtia,15,Kushtia
+Mirzapur,Tangail,28,Tangail
+Mobarakganj,Jhenaidah,29,Jhenaidah
+Mokhali,Faridpur,45,Faridpur
+Mymensingh,Mymensingh,0,Mymensingh
+Naliagram,Rajbari,20,Rajbari
+Nandina,Jamalpur,14,Jamalpur
+Narail,Narail,0,Narail
+Narsingdi,Narsingdi,0,Narsingdi
+Natherpetua,Cumilla,43,Cumilla
+Natore,Natore,0,Natore
+Nayanibazar,Panchagarh,16,Panchagarh
+Netrokona,Netrokona,0,Netrokona
+Nilphamari,Nilphamari,0,Nilphamari
+Noakhali,Noakhali,0,Noakhali
+Noyapara,Jashore,25,Jashore
+Noyapara,Habiganj,20,Habiganj
+Pabna,Pabna,0,Pabna
+Padma,Madaripur,25,Madaripur
+Pakshi,Pabna,30,Pabna
+Pakuria,Faridpur,16,Faridpur
+Panchagarh,Panchagarh,0,Panchagarh
+Panchbibi,Joypurhat,12,Joypurhat
+Pangsha,Rajbari,29,Rajbari
+Parbatipur,Dinajpur,30,Dinajpur
+Patgram,Lalmonirhat,67,Lalmonirhat
+Pirgacha,Rangpur,26,Rangpur
+Pirganj,Thakurgaon,20,Thakurgaon
+Piyarpur,Mymensingh,25,Mymensingh
+Poradah,Kushtia,25,Kushtia
+Raghobpur,Pabna,25,Pabna
+Rajbari,Rajbari,0,Rajbari
+Rajshahi,Rajshahi,0,Rajshahi
+Ramu,Coxs Bazar,20,Coxs Bazar
+Rangpur,Rangpur,0,Rangpur
+Ruhia,Thakurgaon,16,Thakurgaon
+Safdarapur,Jhenaidah,24,Jhenaidah
+Saidpur,Nilphamari,15,Nilphamari
+Santahar,Bogura,35,Bogura
+Sararchar,Kishoreganj,20,Kishoreganj
+Sardah Road,Rajshahi,24,Rajshahi
+Sathia Rajapur,Pabna,40,Pabna
+Satkania,Chattogram,48,Chattogram
+Saydabad,Sirajganj,11,Sirajganj
+Setabganj,Dinajpur,33,Dinajpur
+Shaheed M. Monsur Ali,Sirajganj,18,Sirajganj
+Shamshernagar,Moulvibazar,12,Moulvibazar
+Shibchar,Madaripur,20,Madaripur
+Shibganj,Thakurgaon,12,Thakurgaon
+Sholashahar,Chattogram,0,Chattogram
+Shyamganj,Mymensingh,35,Mymensingh
+Singiya,Jashore,19,Jashore
+Sirajganj Bazar,Sirajganj,0,Sirajganj
+Sirajganj Raipur,Sirajganj,5,Sirajganj
+Sonaimuri,Noakhali,23,Noakhali
+Sonatola,Bogura,25,Bogura
+Sylhet,Sylhet,0,Sylhet
+Talma,Faridpur,12,Faridpur
+Talora,Bogura,20,Bogura
+Tangail,Tangail,0,Tangail
+Tantibandha,Pabna,40,Pabna
+Tebunia,Pabna,10,Pabna
+Tekani,Pabna,26,Pabna
+Thakurgaon Road,Thakurgaon,0,Thakurgaon
+Thakurkona,Netrokona,10,Netrokona
+Tista,Lalmonirhat,18,Lalmonirhat
+Ullapara,Sirajganj,29,Sirajganj

@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartRoute BD — Multimodal Transport Route Planner</title>
+  <link rel="stylesheet" href="/static/app.css?v=20261113_bd_redesign">
+  <script src="/static/app.js?v=20261113_bd_redesign" defer></script>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Slim Mobile Header (< 900px) -->
+    <header class="mobile-header">
+      <button type="button" class="sidebar-toggle-btn" id="mobile-sidebar-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+      <a class="brand" href="/">
+        <span class="brand-mark">
+          <span class="bd-sun-circle"></span>
+          <span class="mark-letter">S</span>
+        </span>
+        <span class="brand-text">SmartRoute <b class="bd-tag">BD</b></span>
+      </a>
+      <div style="width: 38px;"></div>
+    </header>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Fixed Vertical Left Sidebar -->
+    <aside class="app-sidebar" id="app-sidebar" aria-label="Main Application Navigation">
+      <div class="sidebar-header">
+        <a class="sidebar-brand" href="/">
+          <span class="brand-mark">
+            <span class="bd-sun-circle"></span>
+            <span class="mark-letter">S</span>
+          </span>
+          <div class="brand-title-wrap">
+            <span class="brand-text">SmartRoute <b class="bd-tag">BD</b></span>
+            <span class="brand-sub">Transit Platform</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close sidebar">&times;</button>
+      </div>
+
+      <!-- Bangladesh River/Corridor Motif Accent Line -->
+      <div class="sidebar-river-accent" aria-hidden="true"></div>
+
+      <div class="sidebar-content">
+        <!-- TRAVEL SECTION -->
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">TRAVEL</span>
+          <nav class="sidebar-nav" aria-label="Travel Navigation">
+            <a class="sidebar-nav-item active" href="/journey" id="nav-journey-link" data-nav-page="journey" aria-current="page">
+              <span class="sidebar-icon">🗺️</span>
+              <span class="sidebar-label">Plan a Journey</span>
+            </a>
+            <a class="sidebar-nav-item" href="/timetables" id="nav-timetables-link" data-nav-page="timetables">
+              <span class="sidebar-icon">🕒</span>
+              <span class="sidebar-label">Timetables</span>
+            </a>
+            <a class="sidebar-nav-item" href="#map" id="nav-map-link">
+              <span class="sidebar-icon">📍</span>
+              <span class="sidebar-label">64 Districts Map</span>
+              <span class="badge-tag">Interactive</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- COMMUNITY SECTION -->
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">COMMUNITY</span>
+          <nav class="sidebar-nav" aria-label="Community Navigation">
+            <a class="sidebar-nav-item" href="#report" id="nav-report-link">
+              <span class="sidebar-icon">🚩</span>
+              <span class="sidebar-label">Report Issue</span>
+            </a>
+            <button type="button" class="sidebar-nav-item notif-nav-item" id="notif-btn" title="View Notifications">
+              <span class="sidebar-icon">🔔</span>
+              <span class="sidebar-label">Notifications</span>
+              <span id="notif-count-badge" class="notif-badge hidden">0</span>
+            </button>
+          </nav>
+        </div>
+
+        <!-- MANAGEMENT SECTION -->
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">MANAGEMENT</span>
+          <nav class="sidebar-nav" aria-label="Management Navigation">
+            <a href="/admin" id="admin-nav-link" class="sidebar-nav-item admin-link hidden">
+              <span class="sidebar-icon">🔐</span>
+              <span class="sidebar-label">Admin Dashboard</span>
+            </a>
+            <a href="/admin" id="admin-user-btn" class="sidebar-nav-item admin-link hidden" title="Administrator Portal">
+              <span class="sidebar-icon">⚙️</span>
+              <span class="sidebar-label">Admin Portal</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- SIDEBAR FOOTER (Auth Area) -->
+      <div class="sidebar-footer">
+        <!-- Guest controls -->
+        <div id="guest-controls" class="sidebar-auth-group">
+          <button type="button" id="open-login-btn" class="sidebar-btn login-btn">Log In</button>
+          <button type="button" id="open-register-btn" class="sidebar-btn register-btn">Register</button>
+        </div>
+        <!-- Logged in controls -->
+        <div id="user-controls" class="sidebar-auth-group hidden">
+          <button type="button" id="dashboard-btn" class="sidebar-user-card" title="Open User Dashboard">
+            <div class="user-avatar-sm">👤</div>
+            <div class="user-meta">
+              <span id="user-pill-name" class="user-name">User</span>
+              <span id="user-pill-id" class="user-id">SRU-</span>
+            </div>
+          </button>
+          <button type="button" id="logout-btn" class="sidebar-btn logout-btn">Logout</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Shell Wrapper -->
+    <div class="app-main-viewport">
+  <main class="shell">
+    <section class="hero">
+      <!-- Uploaded Bangladesh Administrative District Map Background -->
+      <div class="hero-map-backdrop" aria-hidden="true">
+        <img src="/static/images/bangladesh-districts-map.jpg" alt="Bangladesh Administrative District Map" class="hero-map-img">
+        <div class="hero-map-overlay"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-copy">
+          <div class="hero-welcome-badge">
+            <span class="wave-emoji">👋</span>
+            <span class="badge-text">Welcome to <strong>SmartRoute BD</strong></span>
+          </div>
+          <h1>Where to across Bangladesh?</h1>
+          <p class="hero-subtext">Compare bus, train, and multimodal routes with upfront fares and schedule estimates.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <!-- PANE 1: Plan a Journey -->
+      <div id="journey-pane" class="tab-pane">
+        <!-- Clean Transport Type Selector for Journey Planning -->
+        <div class="journey-transport-selector">
+          <span class="selector-heading">Transport Type:</span>
+          <div class="transport-segmented-bar" role="radiogroup" aria-label="Select Transport Type for Journey">
+            <button type="button" class="journey-type-pill active" data-journey-mode="all" role="radio" aria-checked="true" title="Search all modes">
+              <span class="mode-icon-badge multimodal interactive" title="All Modes">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>
+                </svg>
+              </span>
+              <span>All Modes</span>
+              <span class="pill-check-icon" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="journey-type-pill" data-journey-mode="bus" role="radio" aria-checked="false" title="Filter journey results for bus coaches">
+              <span class="mode-icon-badge bus interactive" title="Bus Only">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-9.5-6V6h10v5h-10z"/>
+                </svg>
+              </span>
+              <span>Bus Only</span>
+              <span class="pill-check-icon" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="journey-type-pill" data-journey-mode="train" role="radio" aria-checked="false" title="Filter journey results for railway trains">
+              <span class="mode-icon-badge train interactive" title="Train Only">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm4.5-5H6V6h6v6zm4.5 5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-5h-5V6h5v6z"/>
+                </svg>
+              </span>
+              <span>Train Only</span>
+              <span class="pill-check-icon" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="journey-type-pill" data-journey-mode="local" role="radio" aria-checked="false" title="Show multimodal connections">
+              <span class="mode-icon-badge local interactive" title="Multimodal">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/>
+                  <circle cx="7.5" cy="14.5" r="1.5"/>
+                  <circle cx="16.5" cy="14.5" r="1.5"/>
+                </svg>
+              </span>
+              <span>Multimodal</span>
+              <span class="pill-check-icon" aria-hidden="true">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Route Search Form -->
+        <form id="journey-form" class="search-form">
+          <label class="location-label origin-label">
+            <span class="label-head"><span class="route-point-dot origin">●</span> From District</span>
+            <input id="origin" list="districts-list" placeholder="Enter pickup district (e.g. Dhaka)" required autocomplete="off">
+          </label>
+          <button type="button" id="swap" class="swap-btn" title="Swap origin and destination">⇄</button>
+          <label class="location-label dest-label">
+            <span class="label-head"><span class="route-point-dot dest">■</span> To District</span>
+            <input id="destination" list="districts-list" placeholder="Enter destination district (e.g. Chattogram)" required autocomplete="off">
+          </label>
+          <datalist id="districts-list">
+            <option value="Bagerhat"></option>
+            <option value="Bandarban"></option>
+            <option value="Barguna"></option>
+            <option value="Barishal"></option>
+            <option value="Bhola"></option>
+            <option value="Bogura"></option>
+            <option value="Brahmanbaria"></option>
+            <option value="Chandpur"></option>
+            <option value="Chapainawabganj"></option>
+            <option value="Chattogram"></option>
+            <option value="Chuadanga"></option>
+            <option value="Cox's Bazar"></option>
+            <option value="Cumilla"></option>
+            <option value="Dhaka"></option>
+            <option value="Dinajpur"></option>
+            <option value="Faridpur"></option>
+            <option value="Feni"></option>
+            <option value="Gaibandha"></option>
+            <option value="Gazipur"></option>
+            <option value="Gopalganj"></option>
+            <option value="Habiganj"></option>
+            <option value="Jamalpur"></option>
+            <option value="Jashore"></option>
+            <option value="Jhalokathi"></option>
+            <option value="Jhenaidah"></option>
+            <option value="Joypurhat"></option>
+            <option value="Khagrachhari"></option>
+            <option value="Khulna"></option>
+            <option value="Kishoreganj"></option>
+            <option value="Kurigram"></option>
+            <option value="Kushtia"></option>
+            <option value="Lakshmipur"></option>
+            <option value="Lalmonirhat"></option>
+            <option value="Madaripur"></option>
+            <option value="Magura"></option>
+            <option value="Manikganj"></option>
+            <option value="Meherpur"></option>
+            <option value="Moulvibazar"></option>
+            <option value="Munshiganj"></option>
+            <option value="Mymensingh"></option>
+            <option value="Naogaon"></option>
+            <option value="Narail"></option>
+            <option value="Narayanganj"></option>
+            <option value="Narsingdi"></option>
+            <option value="Natore"></option>
+            <option value="Netrokona"></option>
+            <option value="Nilphamari"></option>
+            <option value="Noakhali"></option>
+            <option value="Pabna"></option>
+            <option value="Panchagarh"></option>
+            <option value="Patuakhali"></option>
+            <option value="Pirojpur"></option>
+            <option value="Rajbari"></option>
+            <option value="Rajshahi"></option>
+            <option value="Rangamati"></option>
+            <option value="Rangpur"></option>
+            <option value="Satkhira"></option>
+            <option value="Shariatpur"></option>
+            <option value="Sherpur"></option>
+            <option value="Sirajganj"></option>
+            <option value="Sunamganj"></option>
+            <option value="Sylhet"></option>
+            <option value="Tangail"></option>
+            <option value="Thakurgaon"></option>
+          </datalist>
+          <label class="param-label">
+            <span class="label-head"><span class="param-icon">📅</span> Travel Date</span>
+            <input id="travel-date" type="date" required>
+          </label>
+          <label class="param-label">
+            <span class="label-head"><span class="param-icon">🕒</span> Departure Time</span>
+            <select id="departure-time" required>
+              <option value="08:00">08:00 AM (08:00)</option>
+              <option value="08:15">08:15 AM (08:15)</option>
+              <option value="08:30">08:30 AM (08:30)</option>
+              <option value="08:45">08:45 AM (08:45)</option>
+              <option value="09:00">09:00 AM (09:00)</option>
+              <option value="09:15">09:15 AM (09:15)</option>
+              <option value="09:30">09:30 AM (09:30)</option>
+              <option value="09:45">09:45 AM (09:45)</option>
+              <option value="10:00">10:00 AM (10:00)</option>
+              <option value="12:00">12:00 PM (12:00)</option>
+              <option value="14:30">02:30 PM (14:30)</option>
+              <option value="18:00">06:00 PM (18:00)</option>
+              <option value="21:15">09:15 PM (21:15)</option>
+            </select>
+          </label>
+          <label class="param-label">
+            <span class="label-head"><span class="param-icon">⚡</span> Route Priority</span>
+            <select id="preference">
+              <option value="balanced">Balanced (Optimal)</option>
+              <option value="cheapest">Cheapest Fare</option>
+              <option value="fastest">Fastest Travel</option>
+              <option value="shortest">Shortest Distance</option>
+            </select>
+          </label>
+          <button class="button primary search-submit" type="submit">Search Routes ➔</button>
+        </form>
+      </div>
+
+      <!-- PANE 2: Timetables (Single Transport Selector: Bus, Train, Local Transport) -->
+      <div id="timetables-pane" class="tab-pane hidden">
+        <div class="timetable-mode-selector-wrapper">
+          <div class="timetable-mode-cards" role="radiogroup" aria-label="Select Timetable Transport Mode">
+            <!-- Bus Card -->
+            <button type="button" class="mode-select-card active" data-timetable-mode="bus" role="radio" aria-checked="true">
+              <div class="mode-card-header">
+                <span class="mode-icon-badge bus interactive" title="Inter-District Bus">
+                  <svg class="mode-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-9.5-6V6h10v5h-10z"/>
+                  </svg>
+                </span>
+                <span class="mode-check-pill"><span class="check-mark">✓</span> Selected</span>
+              </div>
+              <div class="mode-card-body">
+                <span class="mode-card-title">Bus</span>
+                <span class="mode-card-sub">Inter-district scheduled coaches</span>
+              </div>
+            </button>
+
+            <!-- Train Card -->
+            <button type="button" class="mode-select-card" data-timetable-mode="train" role="radio" aria-checked="false">
+              <div class="mode-card-header">
+                <span class="mode-icon-badge train interactive" title="Bangladesh Railway">
+                  <svg class="mode-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm4.5-5H6V6h6v6zm4.5 5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-5h-5V6h5v6z"/>
+                  </svg>
+                </span>
+                <span class="mode-check-pill hidden"><span class="check-mark">✓</span> Selected</span>
+              </div>
+              <div class="mode-card-body">
+                <span class="mode-card-title">Train</span>
+                <span class="mode-card-sub">Bangladesh Railway schedules & stops</span>
+              </div>
+            </button>
+
+            <!-- Local Transport Card -->
+            <button type="button" class="mode-select-card" data-timetable-mode="local" role="radio" aria-checked="false">
+              <div class="mode-card-header">
+                <span class="mode-icon-badge local interactive" title="Local Transport Hubs">
+                  <svg class="mode-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/>
+                    <circle cx="7.5" cy="14.5" r="1.5"/>
+                    <circle cx="16.5" cy="14.5" r="1.5"/>
+                  </svg>
+                </span>
+                <span class="mode-check-pill hidden"><span class="check-mark">✓</span> Selected</span>
+              </div>
+              <div class="mode-card-body">
+                <span class="mode-card-title">Local Transport</span>
+                <span class="mode-card-sub">Feeder shuttles, CNG & auto-rickshaws</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. Bus Timetable Subpane -->
+        <div id="subpane-bus" class="timetable-subpane">
+          <form id="bus-form" class="search-form">
+            <label class="location-label origin-label">
+              <span class="label-head"><span class="route-point-dot origin">●</span> From District</span>
+              <input id="bus-origin" list="districts-list" placeholder="e.g. Dhaka">
+            </label>
+            <label class="location-label dest-label">
+              <span class="label-head"><span class="route-point-dot dest">■</span> To District</span>
+              <input id="bus-destination" list="districts-list" placeholder="e.g. Cumilla">
+            </label>
+            <label class="param-label">
+              <span class="label-head"><span class="param-icon">🏷️</span> Operator / Route Code (Optional)</span>
+              <input id="bus-service" placeholder="e.g. Desh Travels, Hanif, or R0001">
+            </label>
+            <button class="button primary search-submit" type="submit">
+              <span class="mode-icon-badge bus interactive" title="Bus Service">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm9 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-9.5-6V6h10v5h-10z"/>
+                </svg>
+              </span>
+              Search Bus Timetable ➔
+            </button>
+          </form>
+        </div>
+
+        <!-- 2. Train Timetable Subpane -->
+        <div id="subpane-train" class="timetable-subpane hidden">
+          <form id="train-form" class="search-form">
+            <label class="location-label origin-label">
+              <span class="route-point-dot origin">●</span> From Station / District
+              <input id="train-origin" list="districts-list" placeholder="e.g. Dhaka">
+            </label>
+            <label class="location-label dest-label">
+              <span class="route-point-dot dest">■</span> To Station / District
+              <input id="train-destination" list="districts-list" placeholder="e.g. Chattogram">
+            </label>
+            <label class="param-label">
+              <span class="label-head"><span class="param-icon">🚆</span> Train Name or Number (Optional)</span>
+              <input id="train-search" placeholder="e.g. Suborna Express or 701">
+            </label>
+            <button class="button primary search-submit" type="submit">
+              <span class="mode-icon-badge train interactive" title="Bangladesh Railway">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm4.5-5H6V6h6v6zm4.5 5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-5h-5V6h5v6z"/>
+                </svg>
+              </span>
+              Search Train Timetable ➔
+            </button>
+          </form>
+        </div>
+
+        <!-- 3. Local Transport Subpane -->
+        <div id="subpane-local" class="timetable-subpane hidden">
+          <form id="local-form" class="search-form">
+            <label class="location-label origin-label">
+              <span class="label-head"><span class="route-point-dot origin">●</span> Parent District</span>
+              <input id="local-district" list="districts-list" placeholder="e.g. Kishoreganj, Brahmanbaria, Dhaka">
+            </label>
+            <label class="location-label dest-label">
+              <span class="label-head"><span class="route-point-dot dest">■</span> Connecting Upazila or Hub (Optional)</span>
+              <input id="local-query" placeholder="e.g. Bhairab, Akhaura, or station name">
+            </label>
+            <button class="button primary search-submit" type="submit">
+              <span class="mode-icon-badge local interactive" title="Local Transport">
+                <svg class="mode-svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+                  <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.85 7h10.29l1.04 3H5.81l1.04-3zM19 17H5v-4.66l.12-.34h13.77l.11.34V17z"/>
+                  <circle cx="7.5" cy="14.5" r="1.5"/>
+                  <circle cx="16.5" cy="14.5" r="1.5"/>
+                </svg>
+              </span>
+              Search Local Transport ➔
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <section id="results" class="results" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner" style="justify-content: center; text-align: center;">
+      <div class="footer-copy">
+        <span>SmartRoute <strong>BD</strong></span> &bull; Transit Gateway for all 64 districts in Bangladesh
+      </div>
+    </div>
+  </footer>
+    </div><!-- /.app-main-viewport -->
+  </div><!-- /.app-layout -->
+  <div id="login-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>User Sign In</h3>
+        <button type="button" class="modal-close-btn" data-close="login-modal">&times;</button>
+      </div>
+      <form id="login-form" class="modal-form">
+        <div id="login-error" class="form-error hidden"></div>
+        <label>Email or Admin Username
+          <input id="login-email" type="text" placeholder="e.g. admin or name@example.com" required autocomplete="username">
+        </label>
+        <label>Password
+          <input id="login-password" type="password" placeholder="Enter your password" required autocomplete="current-password">
+        </label>
+        <button type="submit" class="button primary modal-submit">Sign In</button>
+        <div class="modal-switch-text">
+          Don't have an account? <a href="#" id="switch-to-register">Register for free ➔</a>
+        </div>
+        <div class="admin-login-divider">
+          <span>Are you an administrator?</span>
+        </div>
+        <a href="/admin" class="admin-login-card-btn" title="Open Administrator Authentication Portal">
+          🔐 Log in as Administrator ➔
+        </a>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="register-modal" class="modal-backdrop hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Create an Account</h3>
+        <button type="button" class="modal-close-btn" data-close="register-modal">&times;</button>
+      </div>
+      <form id="register-form" class="modal-form">
+        <div id="register-error" class="form-error hidden"></div>
+        <p class="modal-subtext">A user account lets you save personal preferences and favourite routes.</p>
+        <label>Full Name
+          <input id="reg-name" type="text" placeholder="e.g. Rahim Ahmed" required autocomplete="name">
+        </label>
+        <label>Email Address (Unique Login Identifier)
+          <input id="reg-email" type="email" placeholder="e.g. rahim@example.com" required autocomplete="username">
+        </label>
+        <label>Password (At least 6 characters)
+          <input id="reg-password" type="password" placeholder="Create a secure password" required minlength="6" autocomplete="new-password">
+        </label>
+        <label>Confirm Password
+          <input id="reg-confirm-password" type="password" placeholder="Re-enter your password" required minlength="6" autocomplete="new-password">
+        </label>
+        <button type="submit" class="button primary modal-submit">Register Account</button>
+        <div class="modal-switch-text">
+          Already have an account? <a href="#" id="switch-to-login">Sign in here ➔</a>
+        </div>
+        <div class="admin-login-divider">
+          <span>Are you an administrator?</span>
+        </div>
+        <a href="/admin" class="admin-login-card-btn" title="Open Administrator Authentication Portal">
+          🔐 Log in as Administrator ➔
+        </a>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Dashboard Modal -->
+  <div id="dashboard-modal" class="modal-backdrop hidden">
+    <div class="modal-card dashboard-card">
+      <div class="dashboard-header">
+        <div class="dashboard-title-area">
+          <div class="user-avatar-lg">👤</div>
+          <div>
+            <h2 id="dash-user-name">User Dashboard</h2>
+            <div class="user-id-bar">
+              <span>Unique User ID:</span>
+              <strong id="dash-user-id" class="id-code">SRU-XXXXXXXX</strong>
+              <button type="button" id="copy-user-id-btn" class="copy-id-btn" title="Copy User ID">📋 Copy</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="dashboard-modal">&times;</button>
+      </div>
+
+      <!-- Dashboard Tab Navigation -->
+      <div class="dashboard-tabs">
+        <button type="button" class="dash-tab active" data-dash-tab="profile">Profile & Security</button>
+        <button type="button" class="dash-tab" data-dash-tab="preferences">Preferences</button>
+        <button type="button" class="dash-tab" data-dash-tab="favourites">Saved Favourites</button>
+        <button type="button" class="dash-tab" data-dash-tab="reports">My Reports</button>
+        <button type="button" class="dash-tab" data-dash-tab="notifications">Notifications <span id="dash-notif-badge" class="badge-count hidden">0</span></button>
+      </div>
+
+      <!-- Dashboard Tab Content -->
+      <div class="dashboard-body">
+        <!-- 1. Profile Section -->
+        <div id="dash-pane-profile" class="dash-pane active">
+          <div id="profile-blocked-banner" class="alert-box critical hidden" style="margin-bottom: 18px; padding: 12px 16px; border-radius: 8px; background: #fef2f2; border: 1.5px solid #f87171; color: #991b1b;">
+            <strong>⚠️ Account Suspended:</strong>
+            <span id="profile-blocked-reason">Your account has been restricted by an administrator. You cannot submit new reports.</span>
+          </div>
+          <div class="dash-section">
+            <h4>Profile Information</h4>
+            <form id="update-profile-form" class="inline-form">
+              <label>Full Name
+                <input id="dash-full-name" type="text" required>
+              </label>
+              <label>Email Address
+                <input id="dash-email" type="email" readonly disabled class="input-readonly">
+              </label>
+              <button type="submit" class="button secondary small">Update Name</button>
+            </form>
+          </div>
+          <div class="dash-section" style="margin-top: 24px;">
+            <h4>Change Password</h4>
+            <form id="change-pw-form" class="inline-form">
+              <div id="change-pw-msg" class="form-feedback hidden"></div>
+              <label>Current Password
+                <input id="pw-current" type="password" required autocomplete="current-password">
+              </label>
+              <label>New Password (min 6 characters)
+                <input id="pw-new" type="password" required minlength="6" autocomplete="new-password">
+              </label>
+              <label>Confirm New Password
+                <input id="pw-confirm" type="password" required minlength="6" autocomplete="new-password">
+              </label>
+              <button type="submit" class="button secondary small">Change Password</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- 2. Preferences Section -->
+        <div id="dash-pane-preferences" class="dash-pane hidden">
+          <div class="dash-section">
+            <h4>Personal Transport Preferences</h4>
+            <p class="dash-desc">Configure your preferred default search criteria. Future route searches will automatically adapt to your selection.</p>
+            <form id="preferences-form" class="modal-form" style="max-width: 480px;">
+              <div id="pref-msg" class="form-feedback hidden"></div>
+              <label>Default Transport Mode
+                <select id="pref-default-transport">
+                  <option value="No Preference">No Preference (All Modes)</option>
+                  <option value="Bus">Inter-District Bus</option>
+                  <option value="Train">Bangladesh Railway</option>
+                  <option value="Multimodal">Multimodal (Train + Bus)</option>
+                </select>
+              </label>
+              <label>Default Route Ranking
+                <select id="pref-default-ranking">
+                  <option value="balanced">Balanced (Optimal)</option>
+                  <option value="cheapest">Cheapest Fare</option>
+                  <option value="fastest">Fastest Travel Time</option>
+                  <option value="shortest">Shortest Distance</option>
+                </select>
+              </label>
+              <button type="submit" class="button primary">Save Preferences</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- 3. Favourites Section -->
+        <div id="dash-pane-favourites" class="dash-pane hidden">
+          <div class="dash-section">
+            <h4>Favourite Routes</h4>
+            <p class="dash-desc">Save your most frequent journeys between Bangladesh districts for one-click route planning.</p>
+            <form id="add-fav-route-form" class="inline-add-form">
+              <input id="fav-origin" list="districts-list" placeholder="Origin district (e.g. Dhaka)" required>
+              <input id="fav-dest" list="districts-list" placeholder="Destination district (e.g. Sylhet)" required>
+              <button type="submit" class="button primary small">+ Save Route</button>
+            </form>
+            <div id="fav-routes-list" class="fav-list-container"></div>
+          </div>
+          <div class="dash-section" style="margin-top: 24px;">
+            <h4>Favourite Transport Services</h4>
+            <p class="dash-desc">Bookmark preferred bus operators or intercity train services.</p>
+            <div id="fav-services-list" class="fav-list-container"></div>
+          </div>
+        </div>
+
+        <!-- 4. Reports Section -->
+        <div id="dash-pane-reports" class="dash-pane hidden">
+          <div class="dash-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+              <div>
+                <h4>My Submitted Reports</h4>
+                <p class="dash-desc">Track issues and suggestions you reported to SmartRoute BD administrators.</p>
+              </div>
+              <button type="button" id="dash-open-report-btn" class="button primary small">+ Submit New Report</button>
+            </div>
+            <div id="my-reports-list" class="reports-list-container">
+              <p class="empty-state-text">Loading reports...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Notifications Section -->
+        <div id="dash-pane-notifications" class="dash-pane hidden">
+          <div class="dash-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+              <div>
+                <h4>Notifications</h4>
+                <p class="dash-desc">Status updates regarding your reports, administrative notices, and warnings.</p>
+              </div>
+              <button type="button" id="mark-all-notifs-btn" class="button secondary small">Mark All as Read</button>
+            </div>
+            <div id="my-notifications-list" class="notif-list-container">
+              <p class="empty-state-text">Loading notifications...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Report Issue Modal -->
+  <div id="report-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 540px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">🚩</span>
+          <div>
+            <h3>Report an Issue / Suggestion</h3>
+            <p class="modal-subtext">Help us keep Bangladesh transit fares, timetables, and routes accurate.</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="report-modal">&times;</button>
+      </div>
+
+      <div id="report-blocked-alert" class="alert-box critical hidden" style="margin-bottom: 14px; padding: 10px 14px; border-radius: 6px; background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; font-size: 0.9rem;">
+        <strong>⚠️ Account Restricted:</strong>
+        <span id="report-blocked-msg">Your account is restricted from submitting new reports.</span>
+      </div>
+
+      <form id="report-form" class="modal-form">
+        <div id="report-form-msg" class="form-feedback hidden"></div>
+
+        <label>Issue Category
+          <select id="report-category" required>
+            <option value="Incorrect Bus Fare">Incorrect Bus Fare</option>
+            <option value="Incorrect Train Fare">Incorrect Train Fare</option>
+            <option value="Wrong Departure Time">Wrong Departure Time</option>
+            <option value="Wrong Arrival Time">Wrong Arrival Time</option>
+            <option value="Route Information">Route Information / Missing Stop</option>
+            <option value="Station / Stop Error">Station or Bus Terminal Error</option>
+            <option value="Incorrect Destination">Incorrect Destination</option>
+            <option value="Broken Functionality">Broken Functionality / System Bug</option>
+            <option value="Search or Route Calculation Problem">Search or Route Calculation Problem</option>
+            <option value="General Complaint or Suggestion">General Complaint or Suggestion</option>
+          </select>
+        </label>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+          <label>Transport Mode
+            <select id="report-transport-mode">
+              <option value="General">General</option>
+              <option value="Bus">Bus</option>
+              <option value="Train">Train</option>
+              <option value="Bus + Train">Bus + Train</option>
+            </select>
+          </label>
+          <label>Related Route / Service (Optional)
+            <input id="report-related-route" type="text" placeholder="e.g. Dhaka to Cumilla">
+          </label>
+        </div>
+
+        <label>Report Subject / Title
+          <input id="report-title" type="text" required minlength="3" maxlength="200" placeholder="Brief summary of the issue">
+        </label>
+
+        <label>Detailed Description
+          <textarea id="report-desc" rows="4" required minlength="10" maxlength="3000" placeholder="Please describe what is incorrect or what happened..."></textarea>
+        </label>
+
+        <label>Optional Supporting Evidence (Image / PDF, max 5MB)
+          <input id="report-evidence-file" type="file" accept="image/png, image/jpeg, image/webp, application/pdf">
+        </label>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px;">
+          <button type="button" class="button outline small" data-close="report-modal">Cancel</button>
+          <button type="submit" id="submit-report-btn" class="button primary">Submit Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Report Detail View Modal -->
+  <div id="report-detail-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card" style="max-width: 560px;">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="modal-icon">📄</span>
+          <div>
+            <h3 id="rep-detail-title">Report Details</h3>
+            <p id="rep-detail-id" class="modal-subtext">REP-XXXXXXXX</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close-btn" data-close="report-detail-modal">&times;</button>
+      </div>
+
+      <div class="modal-body" style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--border);">
+          <span id="rep-detail-status-badge" class="badge-pill">PENDING</span>
+          <span id="rep-detail-date" style="font-size: 0.85rem; color: var(--text-muted);">2026-11-13</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.88rem;">
+          <div><strong>Category:</strong> <span id="rep-detail-category">General</span></div>
+          <div><strong>Mode:</strong> <span id="rep-detail-mode">General</span></div>
+          <div style="grid-column: 1 / -1;"><strong>Related Info:</strong> <span id="rep-detail-route">None specified</span></div>
+        </div>
+
+        <div>
+          <strong style="display: block; font-size: 0.9rem; margin-bottom: 4px;">Description:</strong>
+          <div id="rep-detail-description" style="background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap;"></div>
+        </div>
+
+        <div id="rep-detail-evidence-box" class="hidden">
+          <strong style="display: block; font-size: 0.9rem; margin-bottom: 4px;">Supporting Evidence:</strong>
+          <a id="rep-detail-evidence-link" href="#" target="_blank" class="button outline small" style="display: inline-flex; align-items: center; gap: 6px;">
+            📎 View Uploaded Evidence
+          </a>
+        </div>
+
+        <div id="rep-detail-admin-response-box" class="hidden" style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 8px; padding: 12px 14px;">
+          <strong id="rep-detail-response-heading" style="color: #166534; font-size: 0.9rem; display: block; margin-bottom: 4px;">Admin Review Response:</strong>
+          <p id="rep-detail-admin-response" style="margin: 0; font-size: 0.88rem; color: #14532d; line-height: 1.45;"></p>
+          <small id="rep-detail-review-meta" style="color: #15803d; font-size: 0.78rem; display: block; margin-top: 6px;"></small>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);">
+          <button type="button" id="rep-detail-delete-btn" class="button outline small" style="color: #dc2626; border-color: #fca5a5;">🗑️ Remove from My History</button>
+          <button type="button" class="button secondary small" data-close="report-detail-modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 64 District Map Modal -->
+  <div id="map-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="map-modal-title">
+    <div class="modal-card map-modal-card">
+      <div class="map-modal-header">
+        <div class="map-modal-title-wrap">
+          <span class="map-modal-icon">🗺️</span>
+          <div>
+            <h3 id="map-modal-title">Bangladesh Administrative District Map</h3>
+            <p class="map-modal-subtitle">Official 64 Districts, 8 Divisions & Transit Corridors</p>
+          </div>
+        </div>
+        <div class="map-modal-top-actions">
+          <a href="/static/images/bangladesh-districts-map.jpg" target="_blank" class="button outline small" download="bangladesh-administrative-districts-map.jpg" title="Download High Resolution Map">
+            ⬇ Download High-Res
+          </a>
+          <button type="button" class="modal-close-btn" data-close="map-modal" aria-label="Close modal">&times;</button>
+        </div>
+      </div>
+
+      <div class="map-toolbar">
+        <div class="map-toolbar-group">
+          <button type="button" id="map-zoom-in" class="button secondary small" title="Zoom In">🔍+ Zoom In</button>
+          <button type="button" id="map-zoom-out" class="button secondary small" title="Zoom Out">🔍- Zoom Out</button>
+          <button type="button" id="map-zoom-reset" class="button secondary small" title="Reset Zoom">↺ Reset (100%)</button>
+          <span class="zoom-level-badge" id="map-zoom-val">100%</span>
+        </div>
+        <div class="map-toolbar-legend">
+          <span class="legend-chip dhaka">Dhaka</span>
+          <span class="legend-chip ctg">Chattogram</span>
+          <span class="legend-chip raj">Rajshahi</span>
+          <span class="legend-chip khul">Khulna</span>
+          <span class="legend-chip bar">Barishal</span>
+          <span class="legend-chip syl">Sylhet</span>
+          <span class="legend-chip rang">Rangpur</span>
+          <span class="legend-chip mym">Mymensingh</span>
+        </div>
+      </div>
+
+      <div class="map-viewport" id="map-viewport">
+        <img id="map-full-image" src="/static/images/bangladesh-districts-map.jpg" alt="Official Bangladesh Administrative Map with 64 Districts and 8 Divisions" class="map-full-img">
+      </div>
+
+      <div class="map-modal-footer">
+        <p>💡 Tip: Use mouse wheel or the zoom buttons above to magnify district boundaries, regional hubs, and divisional borders.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
