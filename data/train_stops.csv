@@ -1,4 +1,4 @@
-﻿Train_No,Train_Name,Stop_Order,Station,District,Arrival,Departure,Day_Offset,Cumulative_KM
+Train_No,Train_Name,Stop_Order,Station,District,Arrival,Departure,Day_Offset,Cumulative_KM
 701,Suborna Express,1,Chattogram,Chattogram,,7:00,0,0
 701,Suborna Express,2,Dhaka Airport,Dhaka,11:24,11:27,0,303
 701,Suborna Express,3,Dhaka,Dhaka,11:50,,0,320
@@ -23,52 +23,52 @@
 704,Mahanagar Provati,7,Laksam,Cumilla,11:15,11:17,0,191
 704,Mahanagar Provati,8,Feni,Feni,12:00,12:02,0,231
 704,Mahanagar Provati,9,Chattogram,Chattogram,13:35,,0,320
-705,Ekota Express,1,Dhaka,,,10:15,,0
-705,Ekota Express,2,Dhaka Airport,,10:38,10:43,,17
-705,Ekota Express,3,Joydebpur,,11:06,11:09,,33
-705,Ekota Express,4,Tangail,,12:03,12:05,,96
-705,Ekota Express,5,Ibrahimabad,,12:25,12:27,,117
-705,Ekota Express,6,Shaheed M. Monsur Ali,,12:43,12:45,,132
-705,Ekota Express,7,Ullapara,,13:01,13:04,,150
-705,Ekota Express,8,Ishwardi Bypass,,14:09,14:11,,208
-705,Ekota Express,9,Natore,,14:53,14:57,,239
-705,Ekota Express,10,Santahar,,16:00,16:05,,282
-705,Ekota Express,11,Ahsanganj,,16:25,16:27,,293
-705,Ekota Express,12,Joypurhat,,16:50,16:53,,314
-705,Ekota Express,13,Panchbibi,,17:12,17:14,,323
-705,Ekota Express,14,Birampur,,17:34,17:37,,346
-705,Ekota Express,15,Fulbari,,17:48,17:51,,357
-705,Ekota Express,16,Parbatipur,,18:15,18:25,,374
-705,Ekota Express,17,Chirirbandar,,18:40,18:42,,392
-705,Ekota Express,18,Dinajpur,,19:00,19:05,,407
-705,Ekota Express,19,Setabganj,,19:35,19:37,,437
-705,Ekota Express,20,Pirganj,,19:51,19:53,,451
-705,Ekota Express,21,Thakurgaon Road,,20:15,20:18,,472
-705,Ekota Express,22,Ruhia,,20:33,20:35,,488
-705,Ekota Express,23,Kismat,,20:42,20:44,,495
-705,Ekota Express,24,Panchagarh,,21:00,,,510
-706,Ekota Express,1,Panchagarh,,,21:10,,0
-706,Ekota Express,2,Kismat,,21:25,21:27,,15
-706,Ekota Express,3,Ruhia,,21:34,21:36,,22
-706,Ekota Express,4,Thakurgaon Road,,21:51,21:54,,38
-706,Ekota Express,5,Pirganj,,22:16,22:18,,59
-706,Ekota Express,6,Setabganj,,22:32,22:34,,73
-706,Ekota Express,7,Dinajpur,,23:05,23:13,,103
-706,Ekota Express,8,Chirirbandar,,23:30,23:32,,118
-706,Ekota Express,9,Parbatipur,,23:50,23:55,,135
-706,Ekota Express,10,Fulbari,,0:28,0:31,,153
-706,Ekota Express,11,Birampur,,0:42,0:45,,164
-706,Ekota Express,12,Panchbibi,,1:05,1:07,,187
-706,Ekota Express,13,Joypurhat,,1:18,1:21,,196
-706,Ekota Express,14,Akkelpur,,1:35,1:37,,211
-706,Ekota Express,15,Santahar,,1:55,2:00,,228
-706,Ekota Express,16,Natore,,2:41,2:44,,271
-706,Ekota Express,17,Ullapara,,4:12,4:15,,359
-706,Ekota Express,18,Ibrahimabad,,4:50,4:52,,393
-706,Ekota Express,19,Tangail,,5:12,5:14,,414
-706,Ekota Express,20,Joydebpur,,6:18,6:21,,477
-706,Ekota Express,21,Dhaka Airport,,6:47,6:50,,493
-706,Ekota Express,22,Dhaka,,7:20,,,510
+705,Ekota Express,1,Dhaka,Dhaka,,10:15,,0
+705,Ekota Express,2,Dhaka Airport,Dhaka,10:38,10:43,,17
+705,Ekota Express,3,Joydebpur,Gazipur,11:06,11:09,,33
+705,Ekota Express,4,Tangail,Tangail,12:03,12:05,,96
+705,Ekota Express,5,Ibrahimabad,Tangail,12:25,12:27,,117
+705,Ekota Express,6,Shaheed M. Monsur Ali,Sirajganj,12:43,12:45,,132
+705,Ekota Express,7,Ullapara,Sirajganj,13:01,13:04,,150
+705,Ekota Express,8,Ishwardi Bypass,Natore,14:09,14:11,,208
+705,Ekota Express,9,Natore,Natore,14:53,14:57,,239
+705,Ekota Express,10,Santahar,Bogura,16:00,16:05,,282
+705,Ekota Express,11,Ahsanganj,Naogaon,16:25,16:27,,293
+705,Ekota Express,12,Joypurhat,Joypurhat,16:50,16:53,,314
+705,Ekota Express,13,Panchbibi,Joypurhat,17:12,17:14,,323
+705,Ekota Express,14,Birampur,Dinajpur,17:34,17:37,,346
+705,Ekota Express,15,Fulbari,Dinajpur,17:48,17:51,,357
+705,Ekota Express,16,Parbatipur,Dinajpur,18:15,18:25,,374
+705,Ekota Express,17,Chirirbandar,Dinajpur,18:40,18:42,,392
+705,Ekota Express,18,Dinajpur,Dinajpur,19:00,19:05,,407
+705,Ekota Express,19,Setabganj,Dinajpur,19:35,19:37,,437
+705,Ekota Express,20,Pirganj,Thakurgaon,19:51,19:53,,451
+705,Ekota Express,21,Thakurgaon Road,Thakurgaon,20:15,20:18,,472
+705,Ekota Express,22,Ruhia,Thakurgaon,20:33,20:35,,488
+705,Ekota Express,23,Kismat,Panchagarh,20:42,20:44,,495
+705,Ekota Express,24,Panchagarh,Panchagarh,21:00,,,510
+706,Ekota Express,1,Panchagarh,Panchagarh,,21:10,,0
+706,Ekota Express,2,Kismat,Panchagarh,21:25,21:27,,15
+706,Ekota Express,3,Ruhia,Thakurgaon,21:34,21:36,,22
+706,Ekota Express,4,Thakurgaon Road,Thakurgaon,21:51,21:54,,38
+706,Ekota Express,5,Pirganj,Thakurgaon,22:16,22:18,,59
+706,Ekota Express,6,Setabganj,Dinajpur,22:32,22:34,,73
+706,Ekota Express,7,Dinajpur,Dinajpur,23:05,23:13,,103
+706,Ekota Express,8,Chirirbandar,Dinajpur,23:30,23:32,,118
+706,Ekota Express,9,Parbatipur,Dinajpur,23:50,23:55,,135
+706,Ekota Express,10,Fulbari,Dinajpur,0:28,0:31,,153
+706,Ekota Express,11,Birampur,Dinajpur,0:42,0:45,,164
+706,Ekota Express,12,Panchbibi,Joypurhat,1:05,1:07,,187
+706,Ekota Express,13,Joypurhat,Joypurhat,1:18,1:21,,196
+706,Ekota Express,14,Akkelpur,Joypurhat,1:35,1:37,,211
+706,Ekota Express,15,Santahar,Bogura,1:55,2:00,,228
+706,Ekota Express,16,Natore,Natore,2:41,2:44,,271
+706,Ekota Express,17,Ullapara,Sirajganj,4:12,4:15,,359
+706,Ekota Express,18,Ibrahimabad,Tangail,4:50,4:52,,393
+706,Ekota Express,19,Tangail,Tangail,5:12,5:14,,414
+706,Ekota Express,20,Joydebpur,Gazipur,6:18,6:21,,477
+706,Ekota Express,21,Dhaka Airport,Dhaka,6:47,6:50,,493
+706,Ekota Express,22,Dhaka,Dhaka,7:20,,,510
 707,Tista Express,1,Dhaka,Dhaka,,7:30,0,0
 707,Tista Express,2,Dhaka Airport,Dhaka,7:53,7:58,0,17
 707,Tista Express,3,Joydebpur,Gazipur,8:23,8:26,0,33
@@ -142,76 +142,76 @@
 712,Upakul Express,14,Chowmuhani,Noakhali,20:04,20:06,0,227
 712,Upakul Express,15,Maijdee Court,Noakhali,20:20,20:22,0,236
 712,Upakul Express,16,Noakhali,Noakhali,20:40,,0,240
-713,Korotoa Express,1,Santahar,,,9:25,,0
-713,Korotoa Express,2,Bogura,,10:09,10:19,,41
-713,Korotoa Express,3,Sonatola,,10:51,10:53,,70
-713,Korotoa Express,4,Mahimaganj,,11:03,11:05,,76
-713,Korotoa Express,5,Banarpara,,11:15,11:20,,84
-713,Korotoa Express,6,Gaibandha,,11:59,12:04,,103
-713,Korotoa Express,7,Bamon Danga,,12:33,12:35,,127
-713,Korotoa Express,8,Pirgacha,,12:53,12:55,,141
-713,Korotoa Express,9,Kaunia,,13:12,13:15,,154
-713,Korotoa Express,10,Tista,,13:22,13:24,,158
-713,Korotoa Express,11,Lalmonirhat,,13:40,13:50,,169
-713,Korotoa Express,12,Aditmari,,14:05,14:07,,181
-713,Korotoa Express,13,Kakina,,14:25,14:27,,193
-713,Korotoa Express,14,Bhatibari,,14:34,14:36,,207
-713,Korotoa Express,15,Hatibandha,,15:02,15:04,,217
-713,Korotoa Express,16,Bara Khata,,15:16,15:18,,225
-713,Korotoa Express,17,Bawra,,15:27,15:29,,226
-713,Korotoa Express,18,Patgram,,15:44,15:47,,244
-713,Korotoa Express,19,Burimari,,16:00,,,255
-714,Korotoa Express,1,Burimari,,,16:20,,0
-714,Korotoa Express,2,Patgram,,16:33,16:36,,11
-714,Korotoa Express,3,Bawra,,16:51,16:53,,29
-714,Korotoa Express,4,Bara Khata,,17:02,17:04,,30
-714,Korotoa Express,5,Hatibandha,,17:16,17:19,,38
-714,Korotoa Express,6,Bhatibari,,17:43,17:45,,48
-714,Korotoa Express,7,Kakina,,17:52,17:54,,62
-714,Korotoa Express,8,Aditmari,,18:08,18:10,,74
-714,Korotoa Express,9,Lalmonirhat,,18:25,18:45,,86
-714,Korotoa Express,10,Tista,,19:01,19:03,,97
-714,Korotoa Express,11,Kaunia,,19:10,19:13,,101
-714,Korotoa Express,12,Pirgacha,,19:28,19:31,,114
-714,Korotoa Express,13,Bamon Danga,,19:48,19:50,,128
-714,Korotoa Express,14,Gaibandha,,20:20,20:23,,152
-714,Korotoa Express,15,Banarpara,,20:45,20:50,,171
-714,Korotoa Express,16,Mahimaganj,,21:00,21:02,,179
-714,Korotoa Express,17,Sonatola,,21:11,21:13,,185
-714,Korotoa Express,18,Bogura,,21:45,21:50,,214
-714,Korotoa Express,19,Santahar,,22:40,,,255
-715,Kapotaksha Express,1,Khulna,,,6:45,,0
-715,Kapotaksha Express,2,Noyapara,,7:18,7:20,,29
-715,Kapotaksha Express,3,Jashore,,7:48,7:51,,55
-715,Kapotaksha Express,4,Mobarakganj,,8:18,8:20,,85
-715,Kapotaksha Express,5,Kotchandpur,,8:31,8:33,,97
-715,Kapotaksha Express,6,Safdarapur,,8:42,8:44,,105
-715,Kapotaksha Express,7,Darshana Halt,,9:02,9:05,,123
-715,Kapotaksha Express,8,Chuadanga,,9:24,9:27,,137
-715,Kapotaksha Express,9,Alamdanga,,9:42,9:44,,153
-715,Kapotaksha Express,10,Poradah,,10:00,10:03,,169
-715,Kapotaksha Express,11,Mirpur,,10:13,10:15,,178
-715,Kapotaksha Express,12,Bheramara,,10:25,10:27,,188
-715,Kapotaksha Express,13,Pakshi,,10:39,10:41,,196
-715,Kapotaksha Express,14,Ishwardi,,10:50,11:10,,204
-715,Kapotaksha Express,15,Azimnagar,,11:22,11:24,,214
-715,Kapotaksha Express,16,Rajshahi,,12:20,,,263
-716,Kapotaksha Express,1,Rajshahi,,,14:30,,0
-716,Kapotaksha Express,2,Azimnagar,,15:16,15:18,,49
-716,Kapotaksha Express,3,Ishwardi,,15:30,15:45,,59
-716,Kapotaksha Express,4,Pakshi,,15:55,15:57,,67
-716,Kapotaksha Express,5,Bheramara,,16:09,16:12,,75
-716,Kapotaksha Express,6,Mirpur,,16:22,16:24,,85
-716,Kapotaksha Express,7,Poradah,,16:34,16:37,,94
-716,Kapotaksha Express,8,Alamdanga,,16:53,16:55,,110
-716,Kapotaksha Express,9,Chuadanga,,17:11,17:14,,126
-716,Kapotaksha Express,10,Darshana Halt,,17:34,17:37,,140
-716,Kapotaksha Express,11,Safdarapur,,17:55,17:58,,158
-716,Kapotaksha Express,12,Kotchandpur,,18:14,18:16,,166
-716,Kapotaksha Express,13,Mobarakganj,,18:28,18:30,,178
-716,Kapotaksha Express,14,Jashore,,19:05,19:10,,208
-716,Kapotaksha Express,15,Noyapara,,19:38,19:41,,234
-716,Kapotaksha Express,16,Khulna,,20:25,,,263
+713,Korotoa Express,1,Santahar,Bogura,,9:25,,0
+713,Korotoa Express,2,Bogura,Bogura,10:09,10:19,,41
+713,Korotoa Express,3,Sonatola,Gaibandha,10:51,10:53,,70
+713,Korotoa Express,4,Mahimaganj,Gaibandha,11:03,11:05,,76
+713,Korotoa Express,5,Banarpara,Gaibandha,11:15,11:20,,84
+713,Korotoa Express,6,Gaibandha,Gaibandha,11:59,12:04,,103
+713,Korotoa Express,7,Bamon Danga,Gaibandha,12:33,12:35,,127
+713,Korotoa Express,8,Pirgacha,Rangpur,12:53,12:55,,141
+713,Korotoa Express,9,Kaunia,Rangpur,13:12,13:15,,154
+713,Korotoa Express,10,Tista,Lalmonirhat,13:22,13:24,,158
+713,Korotoa Express,11,Lalmonirhat,Lalmonirhat,13:40,13:50,,169
+713,Korotoa Express,12,Aditmari,Lalmonirhat,14:05,14:07,,181
+713,Korotoa Express,13,Kakina,Lalmonirhat,14:25,14:27,,193
+713,Korotoa Express,14,Bhatibari,Lalmonirhat,14:34,14:36,,207
+713,Korotoa Express,15,Hatibandha,Lalmonirhat,15:02,15:04,,217
+713,Korotoa Express,16,Bara Khata,Lalmonirhat,15:16,15:18,,225
+713,Korotoa Express,17,Bawra,Lalmonirhat,15:27,15:29,,226
+713,Korotoa Express,18,Patgram,Lalmonirhat,15:44,15:47,,244
+713,Korotoa Express,19,Burimari,Lalmonirhat,16:00,,,255
+714,Korotoa Express,1,Burimari,Lalmonirhat,,16:20,,0
+714,Korotoa Express,2,Patgram,Lalmonirhat,16:33,16:36,,11
+714,Korotoa Express,3,Bawra,Lalmonirhat,16:51,16:53,,29
+714,Korotoa Express,4,Bara Khata,Lalmonirhat,17:02,17:04,,30
+714,Korotoa Express,5,Hatibandha,Lalmonirhat,17:16,17:19,,38
+714,Korotoa Express,6,Bhatibari,Lalmonirhat,17:43,17:45,,48
+714,Korotoa Express,7,Kakina,Lalmonirhat,17:52,17:54,,62
+714,Korotoa Express,8,Aditmari,Lalmonirhat,18:08,18:10,,74
+714,Korotoa Express,9,Lalmonirhat,Lalmonirhat,18:25,18:45,,86
+714,Korotoa Express,10,Tista,Lalmonirhat,19:01,19:03,,97
+714,Korotoa Express,11,Kaunia,Rangpur,19:10,19:13,,101
+714,Korotoa Express,12,Pirgacha,Rangpur,19:28,19:31,,114
+714,Korotoa Express,13,Bamon Danga,Gaibandha,19:48,19:50,,128
+714,Korotoa Express,14,Gaibandha,Gaibandha,20:20,20:23,,152
+714,Korotoa Express,15,Banarpara,Gaibandha,20:45,20:50,,171
+714,Korotoa Express,16,Mahimaganj,Gaibandha,21:00,21:02,,179
+714,Korotoa Express,17,Sonatola,Gaibandha,21:11,21:13,,185
+714,Korotoa Express,18,Bogura,Bogura,21:45,21:50,,214
+714,Korotoa Express,19,Santahar,Bogura,22:40,,,255
+715,Kapotaksha Express,1,Khulna,Khulna,,6:45,,0
+715,Kapotaksha Express,2,Noyapara,Jashore,7:18,7:20,,29
+715,Kapotaksha Express,3,Jashore,Jashore,7:48,7:51,,55
+715,Kapotaksha Express,4,Mobarakganj,Jhenaidah,8:18,8:20,,85
+715,Kapotaksha Express,5,Kotchandpur,Jhenaidah,8:31,8:33,,97
+715,Kapotaksha Express,6,Safdarapur,Jhenaidah,8:42,8:44,,105
+715,Kapotaksha Express,7,Darshana Halt,Chuadanga,9:02,9:05,,123
+715,Kapotaksha Express,8,Chuadanga,Chuadanga,9:24,9:27,,137
+715,Kapotaksha Express,9,Alamdanga,Chuadanga,9:42,9:44,,153
+715,Kapotaksha Express,10,Poradah,Kushtia,10:00,10:03,,169
+715,Kapotaksha Express,11,Mirpur,Kushtia,10:13,10:15,,178
+715,Kapotaksha Express,12,Bheramara,Kushtia,10:25,10:27,,188
+715,Kapotaksha Express,13,Pakshi,Pabna,10:39,10:41,,196
+715,Kapotaksha Express,14,Ishwardi,Pabna,10:50,11:10,,204
+715,Kapotaksha Express,15,Azimnagar,Natore,11:22,11:24,,214
+715,Kapotaksha Express,16,Rajshahi,Rajshahi,12:20,,,263
+716,Kapotaksha Express,1,Rajshahi,Rajshahi,,14:30,,0
+716,Kapotaksha Express,2,Azimnagar,Natore,15:16,15:18,,49
+716,Kapotaksha Express,3,Ishwardi,Pabna,15:30,15:45,,59
+716,Kapotaksha Express,4,Pakshi,Pabna,15:55,15:57,,67
+716,Kapotaksha Express,5,Bheramara,Kushtia,16:09,16:12,,75
+716,Kapotaksha Express,6,Mirpur,Kushtia,16:22,16:24,,85
+716,Kapotaksha Express,7,Poradah,Kushtia,16:34,16:37,,94
+716,Kapotaksha Express,8,Alamdanga,Chuadanga,16:53,16:55,,110
+716,Kapotaksha Express,9,Chuadanga,Chuadanga,17:11,17:14,,126
+716,Kapotaksha Express,10,Darshana Halt,Chuadanga,17:34,17:37,,140
+716,Kapotaksha Express,11,Safdarapur,Jhenaidah,17:55,17:58,,158
+716,Kapotaksha Express,12,Kotchandpur,Jhenaidah,18:14,18:16,,166
+716,Kapotaksha Express,13,Mobarakganj,Jhenaidah,18:28,18:30,,178
+716,Kapotaksha Express,14,Jashore,Jashore,19:05,19:10,,208
+716,Kapotaksha Express,15,Noyapara,Jashore,19:38,19:41,,234
+716,Kapotaksha Express,16,Khulna,Khulna,20:25,,,263
 717,Jayantika Express,1,Dhaka,Dhaka,,11:15,0,0
 717,Jayantika Express,2,Dhaka Airport,Dhaka,11:38,11:43,0,17
 717,Jayantika Express,3,Ashuganj,Brahmanbaria,12:52,12:57,0,90
@@ -320,92 +320,92 @@
 724,Udayan Express,10,Laksam,Cumilla,3:27,3:29,1,248
 724,Udayan Express,11,Feni,Feni,4:07,4:09,1,288
 724,Udayan Express,12,Chattogram,Chattogram,5:35,,1,377
-725,Sundarban Express,1,Khulna,,,21:45,,0
-725,Sundarban Express,2,Daulatpur,,21:57,21:59,,7
-725,Sundarban Express,3,Noyapara,,22:22,22:25,,29
-725,Sundarban Express,4,Jashore,,22:53,22:57,,55
-725,Sundarban Express,5,Mobarakganj,,23:24,23:26,,85
-725,Sundarban Express,6,Kotchandpur,,23:38,23:40,,97
-725,Sundarban Express,7,Darshana Halt,,0:21,0:24,,123
-725,Sundarban Express,8,Chuadanga,,0:40,0:42,,137
-725,Sundarban Express,9,Alamdanga,,0:58,1:00,,153
-725,Sundarban Express,10,Poradah,,1:12,1:15,,169
-725,Sundarban Express,11,Mirpur,,1:51,1:53,,178
-725,Sundarban Express,12,Pangsha,,2:30,2:40,,235
-725,Sundarban Express,13,Rajbari,,3:12,3:15,,259
-725,Sundarban Express,14,Faridpur,,3:45,3:47,,291
-725,Sundarban Express,15,Bhanga,,5:10,,,322
-725,Sundarban Express,16,Dhaka,,,,,405
-726,Sundarban Express,1,Dhaka,,8:00,,,0
-726,Sundarban Express,2,Bhanga,,9:07,9:09,,83
-726,Sundarban Express,3,Faridpur,,9:39,9:42,,114
-726,Sundarban Express,4,Rajbari,,10:15,10:25,,147
-726,Sundarban Express,5,Pangsha,,10:59,11:01,,170
-726,Sundarban Express,6,Kushtia Court,,11:35,11:38,,204
-726,Sundarban Express,7,Poradah,,11:50,11:53,,236
-726,Sundarban Express,8,Alamdanga,,12:09,12:11,,252
-726,Sundarban Express,9,Chuadanga,,12:27,12:30,,268
-726,Sundarban Express,10,Darshana Halt,,12:50,12:53,,282
-726,Sundarban Express,11,Kotchandpur,,13:16,13:18,,308
-726,Sundarban Express,12,Mobarakganj,,13:30,13:33,,320
-726,Sundarban Express,13,Jashore,,14:04,14:08,,350
-726,Sundarban Express,14,Noyapara,,14:41,14:44,,376
-726,Sundarban Express,15,Daulatpur,,15:08,15:10,,398
-726,Sundarban Express,16,Khulna,,15:40,,,405
-727,Rupsha Express,1,Khulna,,,7:15,,0
-727,Rupsha Express,2,Noyapara,,7:48,7:51,,29
-727,Rupsha Express,3,Jashore,,8:19,8:23,,55
-727,Rupsha Express,4,Mobarakganj,,8:50,8:52,,85
-727,Rupsha Express,5,Kotchandpur,,9:03,9:05,,97
-727,Rupsha Express,6,Darshana Halt,,9:41,9:44,,123
-727,Rupsha Express,7,Chuadanga,,10:03,10:06,,137
-727,Rupsha Express,8,Alamdanga,,10:21,10:23,,153
-727,Rupsha Express,9,Poradah,,10:39,10:42,,169
-727,Rupsha Express,10,Bheramara,,10:59,11:02,,188
-727,Rupsha Express,11,Pakshi,,11:14,11:16,,196
-727,Rupsha Express,12,Ishwardi,,11:25,11:40,,204
-727,Rupsha Express,13,Natore,,12:13,12:16,,240
-727,Rupsha Express,14,Ahsanganj,,12:57,13:00,,263
-727,Rupsha Express,15,Santahar,,13:25,13:30,,284
-727,Rupsha Express,16,Akkelpur,,13:50,13:52,,302
-727,Rupsha Express,17,Joypurhat,,14:05,14:08,,316
-727,Rupsha Express,18,Birampur,,14:36,14:38,,349
-727,Rupsha Express,19,Fulbari,,14:49,14:51,,360
-727,Rupsha Express,20,Parbatipur,,15:10,15:20,,378
-727,Rupsha Express,21,Saidpur,,15:37,15:42,,392
-727,Rupsha Express,22,Nilphamari,,16:05,16:08,,411
-727,Rupsha Express,23,Damar,,16:24,16:27,,427
-727,Rupsha Express,24,Chilahati,,17:00,,,443
-728,Rupsha Express,1,Chilahati,,,8:30,,0
-728,Rupsha Express,2,Damar,,8:48,8:51,,16
-728,Rupsha Express,3,Nilphamari,,9:07,9:10,,32
-728,Rupsha Express,4,Saidpur,,9:30,9:35,,51
-728,Rupsha Express,5,Parbatipur,,9:55,10:15,,65
-728,Rupsha Express,6,Fulbari,,10:36,10:39,,83
-728,Rupsha Express,7,Birampur,,10:50,10:53,,94
-728,Rupsha Express,8,Joypurhat,,11:22,11:25,,127
-728,Rupsha Express,9,Akkelpur,,11:39,11:41,,141
-728,Rupsha Express,10,Santahar,,12:00,12:05,,159
-728,Rupsha Express,11,Ahsanganj,,12:28,12:31,,180
-728,Rupsha Express,12,Natore,,12:55,13:00,,203
-728,Rupsha Express,13,Ishwardi,,13:40,14:00,,239
-728,Rupsha Express,14,Pakshi,,14:10,14:12,,247
-728,Rupsha Express,15,Bheramara,,14:24,14:27,,255
-728,Rupsha Express,16,Poradah,,14:44,14:47,,274
-728,Rupsha Express,17,Alamdanga,,15:02,15:04,,290
-728,Rupsha Express,18,Chuadanga,,15:20,15:23,,306
-728,Rupsha Express,19,Darshana Halt,,15:45,15:48,,320
-728,Rupsha Express,20,Kotchandpur,,16:14,16:16,,346
-728,Rupsha Express,21,Mobarakganj,,16:28,16:30,,358
-728,Rupsha Express,22,Jashore,,16:58,17:08,,388
-728,Rupsha Express,23,Noyapara,,17:36,17:39,,414
-728,Rupsha Express,24,Khulna,,18:25,,,443
+725,Sundarban Express,1,Khulna,Khulna,,21:45,,0
+725,Sundarban Express,2,Daulatpur,Khulna,21:57,21:59,,7
+725,Sundarban Express,3,Noyapara,Jashore,22:22,22:25,,29
+725,Sundarban Express,4,Jashore,Jashore,22:53,22:57,,55
+725,Sundarban Express,5,Mobarakganj,Jhenaidah,23:24,23:26,,85
+725,Sundarban Express,6,Kotchandpur,Jhenaidah,23:38,23:40,,97
+725,Sundarban Express,7,Darshana Halt,Chuadanga,0:21,0:24,,123
+725,Sundarban Express,8,Chuadanga,Chuadanga,0:40,0:42,,137
+725,Sundarban Express,9,Alamdanga,Chuadanga,0:58,1:00,,153
+725,Sundarban Express,10,Poradah,Kushtia,1:12,1:15,,169
+725,Sundarban Express,11,Mirpur,Kushtia,1:51,1:53,,178
+725,Sundarban Express,12,Pangsha,Rajbari,2:30,2:40,,235
+725,Sundarban Express,13,Rajbari,Rajbari,3:12,3:15,,259
+725,Sundarban Express,14,Faridpur,Faridpur,3:45,3:47,,291
+725,Sundarban Express,15,Bhanga,Faridpur,5:10,,,322
+725,Sundarban Express,16,Dhaka,Dhaka,,,,405
+726,Sundarban Express,1,Dhaka,Dhaka,8:00,,,0
+726,Sundarban Express,2,Bhanga,Faridpur,9:07,9:09,,83
+726,Sundarban Express,3,Faridpur,Faridpur,9:39,9:42,,114
+726,Sundarban Express,4,Rajbari,Rajbari,10:15,10:25,,147
+726,Sundarban Express,5,Pangsha,Rajbari,10:59,11:01,,170
+726,Sundarban Express,6,Kushtia Court,Kushtia,11:35,11:38,,204
+726,Sundarban Express,7,Poradah,Kushtia,11:50,11:53,,236
+726,Sundarban Express,8,Alamdanga,Chuadanga,12:09,12:11,,252
+726,Sundarban Express,9,Chuadanga,Chuadanga,12:27,12:30,,268
+726,Sundarban Express,10,Darshana Halt,Chuadanga,12:50,12:53,,282
+726,Sundarban Express,11,Kotchandpur,Jhenaidah,13:16,13:18,,308
+726,Sundarban Express,12,Mobarakganj,Jhenaidah,13:30,13:33,,320
+726,Sundarban Express,13,Jashore,Jashore,14:04,14:08,,350
+726,Sundarban Express,14,Noyapara,Jashore,14:41,14:44,,376
+726,Sundarban Express,15,Daulatpur,Khulna,15:08,15:10,,398
+726,Sundarban Express,16,Khulna,Khulna,15:40,,,405
+727,Rupsha Express,1,Khulna,Khulna,,7:15,,0
+727,Rupsha Express,2,Noyapara,Jashore,7:48,7:51,,29
+727,Rupsha Express,3,Jashore,Jashore,8:19,8:23,,55
+727,Rupsha Express,4,Mobarakganj,Jhenaidah,8:50,8:52,,85
+727,Rupsha Express,5,Kotchandpur,Jhenaidah,9:03,9:05,,97
+727,Rupsha Express,6,Darshana Halt,Chuadanga,9:41,9:44,,123
+727,Rupsha Express,7,Chuadanga,Chuadanga,10:03,10:06,,137
+727,Rupsha Express,8,Alamdanga,Chuadanga,10:21,10:23,,153
+727,Rupsha Express,9,Poradah,Kushtia,10:39,10:42,,169
+727,Rupsha Express,10,Bheramara,Kushtia,10:59,11:02,,188
+727,Rupsha Express,11,Pakshi,Pabna,11:14,11:16,,196
+727,Rupsha Express,12,Ishwardi,Pabna,11:25,11:40,,204
+727,Rupsha Express,13,Natore,Natore,12:13,12:16,,240
+727,Rupsha Express,14,Ahsanganj,Naogaon,12:57,13:00,,263
+727,Rupsha Express,15,Santahar,Bogura,13:25,13:30,,284
+727,Rupsha Express,16,Akkelpur,Joypurhat,13:50,13:52,,302
+727,Rupsha Express,17,Joypurhat,Joypurhat,14:05,14:08,,316
+727,Rupsha Express,18,Birampur,Dinajpur,14:36,14:38,,349
+727,Rupsha Express,19,Fulbari,Dinajpur,14:49,14:51,,360
+727,Rupsha Express,20,Parbatipur,Dinajpur,15:10,15:20,,378
+727,Rupsha Express,21,Saidpur,Nilphamari,15:37,15:42,,392
+727,Rupsha Express,22,Nilphamari,Nilphamari,16:05,16:08,,411
+727,Rupsha Express,23,Damar,Nilphamari,16:24,16:27,,427
+727,Rupsha Express,24,Chilahati,Nilphamari,17:00,,,443
+728,Rupsha Express,1,Chilahati,Nilphamari,,8:30,,0
+728,Rupsha Express,2,Damar,Nilphamari,8:48,8:51,,16
+728,Rupsha Express,3,Nilphamari,Nilphamari,9:07,9:10,,32
+728,Rupsha Express,4,Saidpur,Nilphamari,9:30,9:35,,51
+728,Rupsha Express,5,Parbatipur,Dinajpur,9:55,10:15,,65
+728,Rupsha Express,6,Fulbari,Dinajpur,10:36,10:39,,83
+728,Rupsha Express,7,Birampur,Dinajpur,10:50,10:53,,94
+728,Rupsha Express,8,Joypurhat,Joypurhat,11:22,11:25,,127
+728,Rupsha Express,9,Akkelpur,Joypurhat,11:39,11:41,,141
+728,Rupsha Express,10,Santahar,Bogura,12:00,12:05,,159
+728,Rupsha Express,11,Ahsanganj,Naogaon,12:28,12:31,,180
+728,Rupsha Express,12,Natore,Natore,12:55,13:00,,203
+728,Rupsha Express,13,Ishwardi,Pabna,13:40,14:00,,239
+728,Rupsha Express,14,Pakshi,Pabna,14:10,14:12,,247
+728,Rupsha Express,15,Bheramara,Kushtia,14:24,14:27,,255
+728,Rupsha Express,16,Poradah,Kushtia,14:44,14:47,,274
+728,Rupsha Express,17,Alamdanga,Chuadanga,15:02,15:04,,290
+728,Rupsha Express,18,Chuadanga,Chuadanga,15:20,15:23,,306
+728,Rupsha Express,19,Darshana Halt,Chuadanga,15:45,15:48,,320
+728,Rupsha Express,20,Kotchandpur,Jhenaidah,16:14,16:16,,346
+728,Rupsha Express,21,Mobarakganj,Jhenaidah,16:28,16:30,,358
+728,Rupsha Express,22,Jashore,Jashore,16:58,17:08,,388
+728,Rupsha Express,23,Noyapara,Jashore,17:36,17:39,,414
+728,Rupsha Express,24,Khulna,Khulna,18:25,,,443
 729,Meghna Express,1,Chattogram,Chattogram,,17:15,0,0
 729,Meghna Express,2,Kumira,Chattogram,17:40,17:42,0,23
 729,Meghna Express,3,Feni,Feni,18:40,18:43,0,89
 729,Meghna Express,4,Nangalkot,Cumilla,19:15,19:17,0,116
 729,Meghna Express,5,Laksam,Cumilla,19:35,19:45,0,129
-729,Meghna Express,6,Chitoshi Road,Cumilla,20:10,20:12,0,140
+729,Meghna Express,6,Chitoshi Road,Chandpur,20:10,20:12,0,140
 729,Meghna Express,7,Meher,Chandpur,20:21,20:23,0,149
 729,Meghna Express,8,Hajiganj,Chandpur,20:37,20:39,0,160
 729,Meghna Express,9,Madhu Road,Chandpur,20:42,20:44,0,169
@@ -416,78 +416,78 @@
 730,Meghna Express,3,Madhu Road,Chandpur,5:22,5:24,0,12
 730,Meghna Express,4,Hajiganj,Chandpur,5:35,5:37,0,21
 730,Meghna Express,5,Meher,Chandpur,5:50,5:52,0,32
-730,Meghna Express,6,Chitoshi Road,Cumilla,6:04,6:06,0,41
+730,Meghna Express,6,Chitoshi Road,Chandpur,6:04,6:06,0,41
 730,Meghna Express,7,Laksam,Cumilla,6:20,6:40,0,52
 730,Meghna Express,8,Nangalkot,Cumilla,6:54,6:56,0,65
 730,Meghna Express,9,Feni,Feni,7:27,7:30,0,92
 730,Meghna Express,10,Kumira,Chattogram,8:30,8:32,0,158
 730,Meghna Express,11,Chattogram,Chattogram,9:00,,0,181
-731,Barendra Express,1,Rajshahi,,,15:00,,0
-731,Barendra Express,2,Abdulpur,,15:40,16:00,,45
-731,Barendra Express,3,Natore,,16:17,16:20,,62
-731,Barendra Express,4,Ahsanganj,,16:41,16:44,,84
-731,Barendra Express,5,Santahar,,17:20,17:30,,106
-731,Barendra Express,6,Akkelpur,,17:50,17:52,,123
-731,Barendra Express,7,Joypurhat,,18:07,18:10,,138
-731,Barendra Express,8,Panchbibi,,18:28,18:30,,148
-731,Barendra Express,9,Birampur,,18:50,18:53,,171
-731,Barendra Express,10,Fulbari,,19:04,19:07,,182
-731,Barendra Express,11,Parbatipur,,19:25,19:45,,200
-731,Barendra Express,12,Saidpur,,20:11,20:14,,215
-731,Barendra Express,13,Nilphamari,,20:33,20:36,,235
-731,Barendra Express,14,Damar,,20:58,21:01,,251
-731,Barendra Express,15,Chilahati,,21:30,,,267
-732,Barendra Express,1,Chilahati,,,5:00,,0
-732,Barendra Express,2,Damar,,5:18,5:21,,16
-732,Barendra Express,3,Nilphamari,,5:36,5:39,,32
-732,Barendra Express,4,Saidpur,,6:04,6:08,,51
-732,Barendra Express,5,Parbatipur,,6:25,6:45,,65
-732,Barendra Express,6,Fulbari,,7:03,7:06,,83
-732,Barendra Express,7,Birampur,,7:17,7:20,,94
-732,Barendra Express,8,Hili,,7:33,7:35,,109
-732,Barendra Express,9,Panchbibi,,7:45,7:47,,119
-732,Barendra Express,10,Joypurhat,,7:58,8:01,,127
-732,Barendra Express,11,Akkelpur,,8:15,8:17,,141
-732,Barendra Express,12,Santahar,,8:40,8:45,,159
-732,Barendra Express,13,Ahsanganj,,9:07,9:10,,180
-732,Barendra Express,14,Natore,,9:32,9:35,,203
-732,Barendra Express,15,Abdulpur,,9:55,10:15,,222
-732,Barendra Express,16,Rajshahi,,11:10,,,267
-733,Titumir Express,1,Rajshahi,,,6:20,,0
-733,Titumir Express,2,Abdulpur,,7:00,7:20,,45
-733,Titumir Express,3,Natore,,7:47,7:51,,62
-733,Titumir Express,4,Madhnagar,,8:05,8:07,,75
-733,Titumir Express,5,Ahsanganj,,8:16,8:19,,84
-733,Titumir Express,6,Santahar,,8:45,8:50,,106
-733,Titumir Express,7,Akkelpur,,9:10,9:12,,123
-733,Titumir Express,8,Jamalganj,,9:20,9:22,,131
-733,Titumir Express,9,Joypurhat,,9:30,9:33,,138
-733,Titumir Express,10,Panchbibi,,9:44,9:46,,148
-733,Titumir Express,11,Hili,,9:56,9:58,,158
-733,Titumir Express,12,Birampur,,10:10,10:13,,171
-733,Titumir Express,13,Fulbari,,10:31,10:34,,182
-733,Titumir Express,14,Parbatipur,,11:10,11:30,,200
-733,Titumir Express,15,Saidpur,,11:47,11:52,,215
-733,Titumir Express,16,Nilphamari,,12:11,12:14,,235
-733,Titumir Express,17,Damar,,12:30,12:33,,251
-733,Titumir Express,18,Chilahati,,13:00,,,267
-734,Titumir Express,1,Chilahati,,,15:00,,0
-734,Titumir Express,2,Damar,,15:21,15:24,,16
-734,Titumir Express,3,Nilphamari,,15:41,15:44,,32
-734,Titumir Express,4,Saidpur,,16:15,16:19,,51
-734,Titumir Express,5,Parbatipur,,16:35,16:55,,65
-734,Titumir Express,6,Fulbari,,17:13,17:16,,83
-734,Titumir Express,7,Birampur,,17:27,17:30,,94
-734,Titumir Express,8,Panchbibi,,17:59,18:01,,119
-734,Titumir Express,9,Joypurhat,,18:12,18:15,,127
-734,Titumir Express,10,Jamalganj,,18:23,18:25,,136
-734,Titumir Express,11,Akkelpur,,18:33,18:35,,141
-734,Titumir Express,12,Santahar,,18:55,19:00,,159
-734,Titumir Express,13,Ahsanganj,,19:22,19:24,,180
-734,Titumir Express,14,Madhnagar,,19:33,19:35,,192
-734,Titumir Express,15,Natore,,19:50,19:53,,203
-734,Titumir Express,16,Abdulpur,,20:10,20:30,,222
-734,Titumir Express,17,Rajshahi,,21:30,,,267
+731,Barendra Express,1,Rajshahi,Rajshahi,,15:00,,0
+731,Barendra Express,2,Abdulpur,Natore,15:40,16:00,,45
+731,Barendra Express,3,Natore,Natore,16:17,16:20,,62
+731,Barendra Express,4,Ahsanganj,Naogaon,16:41,16:44,,84
+731,Barendra Express,5,Santahar,Bogura,17:20,17:30,,106
+731,Barendra Express,6,Akkelpur,Joypurhat,17:50,17:52,,123
+731,Barendra Express,7,Joypurhat,Joypurhat,18:07,18:10,,138
+731,Barendra Express,8,Panchbibi,Joypurhat,18:28,18:30,,148
+731,Barendra Express,9,Birampur,Dinajpur,18:50,18:53,,171
+731,Barendra Express,10,Fulbari,Dinajpur,19:04,19:07,,182
+731,Barendra Express,11,Parbatipur,Dinajpur,19:25,19:45,,200
+731,Barendra Express,12,Saidpur,Nilphamari,20:11,20:14,,215
+731,Barendra Express,13,Nilphamari,Nilphamari,20:33,20:36,,235
+731,Barendra Express,14,Damar,Nilphamari,20:58,21:01,,251
+731,Barendra Express,15,Chilahati,Nilphamari,21:30,,,267
+732,Barendra Express,1,Chilahati,Nilphamari,,5:00,,0
+732,Barendra Express,2,Damar,Nilphamari,5:18,5:21,,16
+732,Barendra Express,3,Nilphamari,Nilphamari,5:36,5:39,,32
+732,Barendra Express,4,Saidpur,Nilphamari,6:04,6:08,,51
+732,Barendra Express,5,Parbatipur,Dinajpur,6:25,6:45,,65
+732,Barendra Express,6,Fulbari,Dinajpur,7:03,7:06,,83
+732,Barendra Express,7,Birampur,Dinajpur,7:17,7:20,,94
+732,Barendra Express,8,Hili,Dinajpur,7:33,7:35,,109
+732,Barendra Express,9,Panchbibi,Joypurhat,7:45,7:47,,119
+732,Barendra Express,10,Joypurhat,Joypurhat,7:58,8:01,,127
+732,Barendra Express,11,Akkelpur,Joypurhat,8:15,8:17,,141
+732,Barendra Express,12,Santahar,Bogura,8:40,8:45,,159
+732,Barendra Express,13,Ahsanganj,Naogaon,9:07,9:10,,180
+732,Barendra Express,14,Natore,Natore,9:32,9:35,,203
+732,Barendra Express,15,Abdulpur,Natore,9:55,10:15,,222
+732,Barendra Express,16,Rajshahi,Rajshahi,11:10,,,267
+733,Titumir Express,1,Rajshahi,Rajshahi,,6:20,,0
+733,Titumir Express,2,Abdulpur,Natore,7:00,7:20,,45
+733,Titumir Express,3,Natore,Natore,7:47,7:51,,62
+733,Titumir Express,4,Madhnagar,Natore,8:05,8:07,,75
+733,Titumir Express,5,Ahsanganj,Naogaon,8:16,8:19,,84
+733,Titumir Express,6,Santahar,Bogura,8:45,8:50,,106
+733,Titumir Express,7,Akkelpur,Joypurhat,9:10,9:12,,123
+733,Titumir Express,8,Jamalganj,Joypurhat,9:20,9:22,,131
+733,Titumir Express,9,Joypurhat,Joypurhat,9:30,9:33,,138
+733,Titumir Express,10,Panchbibi,Joypurhat,9:44,9:46,,148
+733,Titumir Express,11,Hili,Dinajpur,9:56,9:58,,158
+733,Titumir Express,12,Birampur,Dinajpur,10:10,10:13,,171
+733,Titumir Express,13,Fulbari,Dinajpur,10:31,10:34,,182
+733,Titumir Express,14,Parbatipur,Dinajpur,11:10,11:30,,200
+733,Titumir Express,15,Saidpur,Nilphamari,11:47,11:52,,215
+733,Titumir Express,16,Nilphamari,Nilphamari,12:11,12:14,,235
+733,Titumir Express,17,Damar,Nilphamari,12:30,12:33,,251
+733,Titumir Express,18,Chilahati,Nilphamari,13:00,,,267
+734,Titumir Express,1,Chilahati,Nilphamari,,15:00,,0
+734,Titumir Express,2,Damar,Nilphamari,15:21,15:24,,16
+734,Titumir Express,3,Nilphamari,Nilphamari,15:41,15:44,,32
+734,Titumir Express,4,Saidpur,Nilphamari,16:15,16:19,,51
+734,Titumir Express,5,Parbatipur,Dinajpur,16:35,16:55,,65
+734,Titumir Express,6,Fulbari,Dinajpur,17:13,17:16,,83
+734,Titumir Express,7,Birampur,Dinajpur,17:27,17:30,,94
+734,Titumir Express,8,Panchbibi,Joypurhat,17:59,18:01,,119
+734,Titumir Express,9,Joypurhat,Joypurhat,18:12,18:15,,127
+734,Titumir Express,10,Jamalganj,Joypurhat,18:23,18:25,,136
+734,Titumir Express,11,Akkelpur,Joypurhat,18:33,18:35,,141
+734,Titumir Express,12,Santahar,Bogura,18:55,19:00,,159
+734,Titumir Express,13,Ahsanganj,Naogaon,19:22,19:24,,180
+734,Titumir Express,14,Madhnagar,Natore,19:33,19:35,,192
+734,Titumir Express,15,Natore,Natore,19:50,19:53,,203
+734,Titumir Express,16,Abdulpur,Natore,20:10,20:30,,222
+734,Titumir Express,17,Rajshahi,Rajshahi,21:30,,,267
 735,Agnibina Express,1,Dhaka,Dhaka,,11:00,0,0
 735,Agnibina Express,2,Dhaka Airport,Dhaka,11:23,11:28,0,17
 735,Agnibina Express,3,Gafargaon,Mymensingh,13:42,13:47,0,84
@@ -541,52 +541,52 @@
 740,Upaban Express,9,Bhairab,Kishoreganj,4:03,4:06,1,208
 740,Upaban Express,10,Dhaka Airport,Dhaka,5:12,5:15,1,278
 740,Upaban Express,11,Dhaka,Dhaka,5:40,,1,295
-747,Simanta Express,1,Khulna,,,21:15,,0
-747,Simanta Express,2,Daulatpur,,21:27,21:29,,7
-747,Simanta Express,3,Noyapara,,21:52,21:55,,29
-747,Simanta Express,4,Jashore,,22:23,22:27,,55
-747,Simanta Express,5,Mobarakganj,,22:54,22:56,,85
-747,Simanta Express,6,Kotchandpur,,23:08,23:10,,97
-747,Simanta Express,7,Darshana Halt,,23:35,23:38,,123
-747,Simanta Express,8,Chuadanga,,23:57,0:00,,137
-747,Simanta Express,9,Alamdanga,,0:16,0:18,,153
-747,Simanta Express,10,Poradah,,0:34,0:37,,169
-747,Simanta Express,11,Bheramara,,0:54,0:57,,188
-747,Simanta Express,12,Ishwardi,,1:20,1:30,,204
-747,Simanta Express,13,Natore,,2:05,2:08,,240
-747,Simanta Express,14,Santahar,,3:05,3:10,,284
-747,Simanta Express,15,Akkelpur,,3:30,3:32,,302
-747,Simanta Express,16,Joypurhat,,3:46,3:49,,316
-747,Simanta Express,17,Birampur,,4:17,4:19,,349
-747,Simanta Express,18,Fulbari,,4:30,4:32,,360
-747,Simanta Express,19,Parbatipur,,4:50,5:00,,378
-747,Simanta Express,20,Saidpur,,5:17,5:22,,392
-747,Simanta Express,21,Nilphamari,,5:41,5:45,,411
-747,Simanta Express,22,Damar,,6:01,6:23,,427
-747,Simanta Express,23,Chilahati,,6:45,,,443
-748,Simanta Express,1,Chilahati,,,18:30,,0
-748,Simanta Express,2,Damar,,18:48,18:51,,16
-748,Simanta Express,3,Nilphamari,,19:07,19:10,,32
-748,Simanta Express,4,Saidpur,,19:29,19:34,,51
-748,Simanta Express,5,Parbatipur,,19:50,20:10,,65
-748,Simanta Express,6,Fulbari,,20:28,20:31,,83
-748,Simanta Express,7,Birampur,,20:42,20:45,,94
-748,Simanta Express,8,Joypurhat,,21:14,21:17,,127
-748,Simanta Express,9,Akkelpur,,21:31,21:33,,141
-748,Simanta Express,10,Santahar,,21:55,22:00,,159
-748,Simanta Express,11,Natore,,22:40,22:43,,203
-748,Simanta Express,12,Ishwardi,,23:20,23:40,,239
-748,Simanta Express,13,Bheramara,,0:00,0:03,,255
-748,Simanta Express,14,Poradah,,0:21,0:24,,274
-748,Simanta Express,15,Alamdanga,,0:40,0:42,,290
-748,Simanta Express,16,Chuadanga,,1:00,1:03,,306
-748,Simanta Express,17,Darshana Halt,,1:24,1:26,,320
-748,Simanta Express,18,Kotchandpur,,1:50,1:52,,346
-748,Simanta Express,19,Mobarakganj,,2:04,2:06,,358
-748,Simanta Express,20,Jashore,,2:41,2:45,,388
-748,Simanta Express,21,Noyapara,,3:13,3:16,,414
-748,Simanta Express,22,Daulatpur,,3:41,3:43,,436
-748,Simanta Express,23,Khulna,,4:10,,,443
+747,Simanta Express,1,Khulna,Khulna,,21:15,,0
+747,Simanta Express,2,Daulatpur,Khulna,21:27,21:29,,7
+747,Simanta Express,3,Noyapara,Jashore,21:52,21:55,,29
+747,Simanta Express,4,Jashore,Jashore,22:23,22:27,,55
+747,Simanta Express,5,Mobarakganj,Jhenaidah,22:54,22:56,,85
+747,Simanta Express,6,Kotchandpur,Jhenaidah,23:08,23:10,,97
+747,Simanta Express,7,Darshana Halt,Chuadanga,23:35,23:38,,123
+747,Simanta Express,8,Chuadanga,Chuadanga,23:57,0:00,,137
+747,Simanta Express,9,Alamdanga,Chuadanga,0:16,0:18,,153
+747,Simanta Express,10,Poradah,Kushtia,0:34,0:37,,169
+747,Simanta Express,11,Bheramara,Kushtia,0:54,0:57,,188
+747,Simanta Express,12,Ishwardi,Pabna,1:20,1:30,,204
+747,Simanta Express,13,Natore,Natore,2:05,2:08,,240
+747,Simanta Express,14,Santahar,Bogura,3:05,3:10,,284
+747,Simanta Express,15,Akkelpur,Joypurhat,3:30,3:32,,302
+747,Simanta Express,16,Joypurhat,Joypurhat,3:46,3:49,,316
+747,Simanta Express,17,Birampur,Dinajpur,4:17,4:19,,349
+747,Simanta Express,18,Fulbari,Dinajpur,4:30,4:32,,360
+747,Simanta Express,19,Parbatipur,Dinajpur,4:50,5:00,,378
+747,Simanta Express,20,Saidpur,Nilphamari,5:17,5:22,,392
+747,Simanta Express,21,Nilphamari,Nilphamari,5:41,5:45,,411
+747,Simanta Express,22,Damar,Nilphamari,6:01,6:23,,427
+747,Simanta Express,23,Chilahati,Nilphamari,6:45,,,443
+748,Simanta Express,1,Chilahati,Nilphamari,,18:30,,0
+748,Simanta Express,2,Damar,Nilphamari,18:48,18:51,,16
+748,Simanta Express,3,Nilphamari,Nilphamari,19:07,19:10,,32
+748,Simanta Express,4,Saidpur,Nilphamari,19:29,19:34,,51
+748,Simanta Express,5,Parbatipur,Dinajpur,19:50,20:10,,65
+748,Simanta Express,6,Fulbari,Dinajpur,20:28,20:31,,83
+748,Simanta Express,7,Birampur,Dinajpur,20:42,20:45,,94
+748,Simanta Express,8,Joypurhat,Joypurhat,21:14,21:17,,127
+748,Simanta Express,9,Akkelpur,Joypurhat,21:31,21:33,,141
+748,Simanta Express,10,Santahar,Bogura,21:55,22:00,,159
+748,Simanta Express,11,Natore,Natore,22:40,22:43,,203
+748,Simanta Express,12,Ishwardi,Pabna,23:20,23:40,,239
+748,Simanta Express,13,Bheramara,Kushtia,0:00,0:03,,255
+748,Simanta Express,14,Poradah,Kushtia,0:21,0:24,,274
+748,Simanta Express,15,Alamdanga,Chuadanga,0:40,0:42,,290
+748,Simanta Express,16,Chuadanga,Chuadanga,1:00,1:03,,306
+748,Simanta Express,17,Darshana Halt,Chuadanga,1:24,1:26,,320
+748,Simanta Express,18,Kotchandpur,Jhenaidah,1:50,1:52,,346
+748,Simanta Express,19,Mobarakganj,Jhenaidah,2:04,2:06,,358
+748,Simanta Express,20,Jashore,Jashore,2:41,2:45,,388
+748,Simanta Express,21,Noyapara,Jashore,3:13,3:16,,414
+748,Simanta Express,22,Daulatpur,Khulna,3:41,3:43,,436
+748,Simanta Express,23,Khulna,Khulna,4:10,,,443
 750,Egarosindhur Godhuli,1,Kishoreganj,Kishoreganj,,12:50,0,0
 750,Egarosindhur Godhuli,2,Gachihata,Kishoreganj,13:06,13:08,0,10
 750,Egarosindhur Godhuli,3,Manikkhali,Kishoreganj,13:31,13:33,0,16
@@ -597,404 +597,404 @@
 750,Egarosindhur Godhuli,8,Narsingdi,Narsingdi,15:29,15:31,0,80
 750,Egarosindhur Godhuli,9,Dhaka Airport,Dhaka,16:12,16:15,0,119
 750,Egarosindhur Godhuli,10,Dhaka,Dhaka,16:45,,0,136
-751,Lalmoni Express,1,Dhaka,,,21:45,,0
-751,Lalmoni Express,2,Dhaka Airport,,22:08,22:13,,17
-751,Lalmoni Express,3,Joydebpur,,22:36,22:38,,33
-751,Lalmoni Express,4,Tangail,,23:32,23:34,,96
-751,Lalmoni Express,5,Ibrahimabad,,23:54,23:56,,117
-751,Lalmoni Express,6,Shaheed M. Monsur Ali,,0:12,0:14,,132
-751,Lalmoni Express,7,Ullapara,,0:31,0:33,,150
-751,Lalmoni Express,8,Baral Bridge,,0:53,0:55,,170
-751,Lalmoni Express,9,Azimnagar,,2:07,2:09,,212
-751,Lalmoni Express,10,Natore,,2:35,2:38,,239
-751,Lalmoni Express,11,Santahar,,3:35,3:40,,282
-751,Lalmoni Express,12,Bogura,,4:20,4:23,,323
-751,Lalmoni Express,13,Sonatola,,4:53,4:55,,352
-751,Lalmoni Express,14,Banarpara,,5:11,5:14,,366
-751,Lalmoni Express,15,Gaibandha,,5:37,5:40,,385
-751,Lalmoni Express,16,Bamon Danga,,6:09,6:11,,409
-751,Lalmoni Express,17,Pirgacha,,6:29,6:31,,423
-751,Lalmoni Express,18,Kaunia,,6:48,6:51,,436
-751,Lalmoni Express,19,Tista,,6:58,7:00,,440
-751,Lalmoni Express,20,Lalmonirhat,,7:20,,,451
-752,Lalmoni Express,1,Lalmonirhat,,,9:50,,0
-752,Lalmoni Express,2,Tista,,10:06,10:08,,11
-752,Lalmoni Express,3,Kaunia,,10:15,10:18,,15
-752,Lalmoni Express,4,Pirgacha,,10:34,10:36,,28
-752,Lalmoni Express,5,Bamon Danga,,10:52,10:55,,42
-752,Lalmoni Express,6,Gaibandha,,11:24,11:27,,66
-752,Lalmoni Express,7,Banarpara,,11:49,11:52,,85
-752,Lalmoni Express,8,Sonatola,,12:09,12:11,,99
-752,Lalmoni Express,9,Bogura,,12:41,12:44,,128
-752,Lalmoni Express,10,Santahar,,13:30,13:35,,169
-752,Lalmoni Express,11,Natore,,14:18,14:21,,212
-752,Lalmoni Express,12,Azimnagar,,14:48,14:50,,239
-752,Lalmoni Express,13,Baral Bridge,,15:37,15:39,,281
-752,Lalmoni Express,14,Ullapara,,15:59,16:03,,301
-752,Lalmoni Express,15,Shaheed M. Monsur Ali,,16:22,16:25,,319
-752,Lalmoni Express,16,Ibrahimabad,,16:43,16:50,,334
-752,Lalmoni Express,17,Tangail,,17:10,17:18,,355
-752,Lalmoni Express,18,Joydebpur,,18:36,18:40,,418
-752,Lalmoni Express,19,Dhaka Airport,,19:07,19:10,,434
-752,Lalmoni Express,20,Dhaka,,19:45,,,451
-753,Silk City Express,1,Dhaka,,,14:30,,0
-753,Silk City Express,2,Dhaka Airport,,14:53,14:58,,17
-753,Silk City Express,3,Joydebpur,,15:21,15:24,,33
-753,Silk City Express,4,Mirzapur,,15:57,15:59,,70
-753,Silk City Express,5,Tangail,,16:26,16:28,,96
-753,Silk City Express,6,Ibrahimabad,,16:48,16:50,,117
-753,Silk City Express,7,Shaheed M. Monsur Ali,,17:06,17:09,,132
-753,Silk City Express,8,Jamtoil,,17:17,17:19,,138
-753,Silk City Express,9,Ullapara,,17:31,17:34,,150
-753,Silk City Express,10,Baral Bridge,,18:06,18:09,,170
-753,Silk City Express,11,Chatmohar,,18:23,18:28,,182
-753,Silk City Express,12,Ishwardi Bypass,,18:48,18:51,,213
-753,Silk City Express,13,Abdulpur,,19:06,19:09,,227
-753,Silk City Express,14,Rajshahi,,20:20,,,269
-754,Silk City Express,1,Rajshahi,,,7:40,,0
-754,Silk City Express,2,Abdulpur,,8:20,8:22,,42
-754,Silk City Express,3,Ishwardi Bypass,,8:37,8:39,,56
-754,Silk City Express,4,Chatmohar,,8:58,9:01,,87
-754,Silk City Express,5,Baral Bridge,,9:14,9:17,,99
-754,Silk City Express,6,Ullapara,,9:36,9:39,,119
-754,Silk City Express,7,Jamtoil,,9:51,9:53,,131
-754,Silk City Express,8,Shaheed M. Monsur Ali,,10:01,10:04,,137
-754,Silk City Express,9,Ibrahimabad,,10:20,10:22,,152
-754,Silk City Express,10,Tangail,,10:42,10:44,,173
-754,Silk City Express,11,Mirzapur,,11:08,11:10,,199
-754,Silk City Express,12,Joydebpur,,12:05,12:08,,236
-754,Silk City Express,13,Dhaka Airport,,12:34,12:37,,252
-754,Silk City Express,14,Dhaka,,13:10,,,269
-755,Madhumati Express,1,Dhaka,,,15:00,,0
-755,Madhumati Express,2,Mawa,,15:36,15:38,,40
-755,Madhumati Express,3,Padma,,15:51,15:53,,55
-755,Madhumati Express,4,Shibchar,,16:03,16:05,,65
-755,Madhumati Express,5,Bhanga,,16:28,16:30,,82
-755,Madhumati Express,6,Talma,,16:46,16:48,,98
-755,Madhumati Express,7,Faridpur,,17:03,17:06,,112
-755,Madhumati Express,8,Amirabad,,17:18,17:20,,124
-755,Madhumati Express,9,Pangsha,,17:35,17:37,,137
-755,Madhumati Express,10,Rajbari,,17:45,18:00,,145
-755,Madhumati Express,11,Kalkhali,,18:23,18:25,,162
-755,Madhumati Express,12,Pangsha,,18:35,18:37,,170
-755,Madhumati Express,13,Khaksha,,18:51,18:53,,183
-755,Madhumati Express,14,Markhali,,19:03,19:05,,190
-755,Madhumati Express,15,Khiyarkot,,19:22,19:25,,204
-755,Madhumati Express,16,Poradah,,19:45,20:10,,216
-755,Madhumati Express,17,Mirpur,,20:20,20:22,,225
-755,Madhumati Express,18,Bheramara,,20:32,20:35,,234
-755,Madhumati Express,19,Pakshi,,20:47,20:49,,242
-755,Madhumati Express,20,Ishwardi,,21:05,21:25,,250
-755,Madhumati Express,21,Rajshahi,,22:30,,,310
-756,Madhumati Express,1,Rajshahi,,,6:40,,0
-756,Madhumati Express,2,Ishwardi,,7:40,8:00,,59
-756,Madhumati Express,3,Pakshi,,8:10,8:12,,68
-756,Madhumati Express,4,Bheramara,,8:24,8:27,,76
-756,Madhumati Express,5,Mirpur,,8:37,8:39,,85
-756,Madhumati Express,6,Poradah,,8:50,9:10,,94
-756,Madhumati Express,7,Khiyarkot,,9:22,9:25,,106
-756,Madhumati Express,8,Markhali,,9:42,9:44,,120
-756,Madhumati Express,9,Khaksha,,10:01,10:03,,127
-756,Madhumati Express,10,Pangsha,,10:18,10:20,,140
-756,Madhumati Express,11,Kalkhali,,10:29,10:31,,148
-756,Madhumati Express,12,Rajbari,,10:50,11:05,,165
-756,Madhumati Express,13,Pakuria,,11:14,11:16,,173
-756,Madhumati Express,14,Amirabad,,11:32,11:34,,186
-756,Madhumati Express,15,Faridpur,,11:47,11:49,,198
-756,Madhumati Express,16,Talma,,12:05,12:07,,212
-756,Madhumati Express,17,Bhanga,,12:24,12:26,,228
-756,Madhumati Express,18,Shibchar,,12:47,12:49,,245
-756,Madhumati Express,19,Padma,,12:59,13:01,,255
-756,Madhumati Express,20,Mawa,,13:14,13:16,,270
-756,Madhumati Express,21,Dhaka,,14:00,,,310
-757,Drutojan Express,1,Dhaka,,,20:45,,0
-757,Drutojan Express,2,Dhaka Airport,,21:08,21:13,,17
-757,Drutojan Express,3,Joydebpur,,21:36,21:38,,33
-757,Drutojan Express,4,Tangail,,22:32,22:34,,96
-757,Drutojan Express,5,Ibrahimabad,,22:54,22:56,,117
-757,Drutojan Express,6,Jamtoil,,23:17,23:19,,138
-757,Drutojan Express,7,Chatmohar,,23:56,23:58,,184
-757,Drutojan Express,8,Natore,,0:49,0:52,,239
-757,Drutojan Express,9,Ahsanganj,,1:13,1:16,,261
-757,Drutojan Express,10,Santahar,,1:45,2:00,,282
-757,Drutojan Express,11,Akkelpur,,2:20,2:22,,299
-757,Drutojan Express,12,Joypurhat,,2:37,2:39,,314
-757,Drutojan Express,13,Panchbibi,,2:50,2:52,,323
-757,Drutojan Express,14,Birampur,,3:12,3:14,,346
-757,Drutojan Express,15,Fulbari,,3:25,3:27,,357
-757,Drutojan Express,16,Parbatipur,,3:50,4:10,,374
-757,Drutojan Express,17,Chirirbandar,,4:25,4:27,,392
-757,Drutojan Express,18,Dinajpur,,4:45,4:50,,407
-757,Drutojan Express,19,Setabganj,,5:20,5:22,,437
-757,Drutojan Express,20,Pirganj,,5:36,5:39,,451
-757,Drutojan Express,21,Thakurgaon Road,,6:02,6:05,,472
-757,Drutojan Express,22,Ruhia,,6:22,6:38,,488
-757,Drutojan Express,23,Kismat,,6:47,6:49,,495
-757,Drutojan Express,24,Panchagarh,,7:10,,,510
-758,Drutojan Express,1,Panchagarh,,,7:20,,0
-758,Drutojan Express,2,Kismat,,7:36,7:38,,15
-758,Drutojan Express,3,Ruhia,,7:46,7:48,,22
-758,Drutojan Express,4,Thakurgaon Road,,8:02,8:05,,38
-758,Drutojan Express,5,Pirganj,,8:46,8:48,,59
-758,Drutojan Express,6,Setabganj,,9:02,9:04,,73
-758,Drutojan Express,7,Dinajpur,,9:36,9:46,,103
-758,Drutojan Express,8,Chirirbandar,,10:05,10:07,,118
-758,Drutojan Express,9,Parbatipur,,10:25,10:45,,135
-758,Drutojan Express,10,Fulbari,,11:03,11:06,,153
-758,Drutojan Express,11,Birampur,,11:17,11:20,,164
-758,Drutojan Express,12,Panchbibi,,11:40,11:42,,187
-758,Drutojan Express,13,Joypurhat,,11:53,11:56,,196
-758,Drutojan Express,14,Akkelpur,,12:09,12:11,,211
-758,Drutojan Express,15,Santahar,,12:35,12:40,,228
-758,Drutojan Express,16,Ahsanganj,,13:14,13:16,,249
-758,Drutojan Express,17,Natore,,13:38,13:41,,271
-758,Drutojan Express,18,Abdulpur,,14:26,14:28,,282
-758,Drutojan Express,19,Chatmohar,,14:48,14:51,,326
-758,Drutojan Express,20,Jamtoil,,15:28,15:30,,372
-758,Drutojan Express,21,Ibrahimabad,,15:56,15:58,,393
-758,Drutojan Express,22,Tangail,,16:18,16:28,,414
-758,Drutojan Express,23,Joydebpur,,17:48,17:53,,477
-758,Drutojan Express,24,Dhaka Airport,,18:20,18:23,,493
-758,Drutojan Express,25,Dhaka,,18:55,,,510
-759,Padma Express,1,Dhaka,,,22:45,,0
-759,Padma Express,2,Dhaka Airport,,23:08,23:13,,17
-759,Padma Express,3,Joydebpur,,23:36,23:38,,33
-759,Padma Express,4,Tangail,,0:32,0:34,,96
-759,Padma Express,5,Ibrahimabad,,0:54,0:56,,117
-759,Padma Express,6,Shaheed M. Monsur Ali,,1:11,1:14,,132
-759,Padma Express,7,Ullapara,,1:30,1:33,,150
-759,Padma Express,8,Baral Bridge,,1:51,1:53,,170
-759,Padma Express,9,Chatmohar,,2:07,2:10,,182
-759,Padma Express,10,Ishwardi Bypass,,2:30,2:33,,213
-759,Padma Express,11,Abdulpur,,2:48,2:50,,227
-759,Padma Express,12,Sardah Road,,3:16,3:18,,282
-759,Padma Express,13,Rajshahi,,4:00,,,302
-760,Padma Express,1,Rajshahi,,,16:00,,0
-760,Padma Express,2,Sardah Road,,16:17,16:19,,20
-760,Padma Express,3,Abdulpur,,16:45,16:47,,75
-760,Padma Express,4,Ishwardi Bypass,,17:01,17:03,,89
-760,Padma Express,5,Chatmohar,,17:22,17:25,,120
-760,Padma Express,6,Baral Bridge,,17:38,17:40,,132
-760,Padma Express,7,Ullapara,,17:59,18:02,,152
-760,Padma Express,8,Shaheed M. Monsur Ali,,18:18,18:21,,170
-760,Padma Express,9,Ibrahimabad,,18:38,18:40,,185
-760,Padma Express,10,Tangail,,19:00,19:02,,206
-760,Padma Express,11,Joydebpur,,20:14,20:18,,269
-760,Padma Express,12,Dhaka Airport,,20:45,20:48,,285
-760,Padma Express,13,Dhaka,,21:15,,,302
-761,Sagardari Express,1,Khulna,,,16:00,,0
-761,Sagardari Express,2,Noyapara,,16:33,16:36,,29
-761,Sagardari Express,3,Jashore,,17:03,17:08,,55
-761,Sagardari Express,4,Mobarakganj,,17:35,17:37,,85
-761,Sagardari Express,5,Kotchandpur,,17:49,17:51,,97
-761,Sagardari Express,6,Safdarapur,,18:00,18:02,,105
-761,Sagardari Express,7,Darshana Halt,,18:21,18:24,,123
-761,Sagardari Express,8,Chuadanga,,18:43,18:46,,137
-761,Sagardari Express,9,Alamdanga,,19:02,19:04,,153
-761,Sagardari Express,10,Poradah,,19:20,19:23,,169
-761,Sagardari Express,11,Mirpur,,19:33,19:35,,178
-761,Sagardari Express,12,Bheramara,,19:45,19:47,,188
-761,Sagardari Express,13,Pakshi,,19:59,20:01,,196
-761,Sagardari Express,14,Ishwardi,,20:10,20:30,,204
-761,Sagardari Express,15,Azimnagar,,20:43,20:45,,214
-761,Sagardari Express,16,Abdulpur,,20:53,20:56,,221
-761,Sagardari Express,17,Rajshahi,,22:00,,,263
-762,Sagardari Express,1,Rajshahi,,,6:00,,0
-762,Sagardari Express,2,Abdulpur,,6:40,6:42,,42
-762,Sagardari Express,3,Azimnagar,,6:51,6:53,,49
-762,Sagardari Express,4,Ishwardi,,7:10,7:30,,59
-762,Sagardari Express,5,Pakshi,,7:40,7:42,,67
-762,Sagardari Express,6,Bheramara,,7:54,7:57,,75
-762,Sagardari Express,7,Mirpur,,8:07,8:09,,85
-762,Sagardari Express,8,Poradah,,8:19,8:22,,94
-762,Sagardari Express,9,Alamdanga,,8:38,8:40,,110
-762,Sagardari Express,10,Chuadanga,,8:56,8:59,,126
-762,Sagardari Express,11,Darshana Halt,,9:20,9:23,,140
-762,Sagardari Express,12,Safdarapur,,9:40,9:42,,158
-762,Sagardari Express,13,Kotchandpur,,9:51,9:53,,166
-762,Sagardari Express,14,Mobarakganj,,10:05,10:07,,178
-762,Sagardari Express,15,Jashore,,10:35,10:39,,208
-762,Sagardari Express,16,Noyapara,,11:07,11:10,,234
-762,Sagardari Express,17,Khulna,,12:10,,,263
-763,Chitra Express,1,Khulna,,,9:00,,0
-763,Chitra Express,2,Noyapara,,9:33,9:36,,29
-763,Chitra Express,3,Jashore,,10:04,10:08,,55
-763,Chitra Express,4,Mobarakganj,,10:49,10:51,,85
-763,Chitra Express,5,Kotchandpur,,11:02,11:04,,97
-763,Chitra Express,6,Darshana Halt,,11:28,11:31,,123
-763,Chitra Express,7,Chuadanga,,11:50,11:53,,137
-763,Chitra Express,8,Alamdanga,,12:09,12:11,,153
-763,Chitra Express,9,Poradah,,12:27,12:30,,169
-763,Chitra Express,10,Mirpur,,12:40,12:42,,178
-763,Chitra Express,11,Bheramara,,12:52,12:55,,188
-763,Chitra Express,12,Ishwardi,,13:15,13:25,,204
-763,Chitra Express,13,Chatmohar,,13:48,13:51,,229
-763,Chitra Express,14,Baral Bridge,,14:06,14:09,,241
-763,Chitra Express,15,Ullapara,,14:27,14:30,,263
-763,Chitra Express,16,Shaheed M. Monsur Ali,,14:45,14:48,,281
-763,Chitra Express,17,Ibrahimabad,,15:19,15:32,,296
-763,Chitra Express,18,Tangail,,15:52,15:54,,317
-763,Chitra Express,19,Joydebpur,,17:04,17:07,,380
-763,Chitra Express,20,Dhaka Airport,,17:33,17:36,,396
-763,Chitra Express,21,Dhaka,,18:05,,,413
-764,Chitra Express,1,Dhaka,,,19:30,,0
-764,Chitra Express,2,Dhaka Airport,,19:53,19:58,,17
-764,Chitra Express,3,Joydebpur,,20:21,20:23,,33
-764,Chitra Express,4,Tangail,,21:26,21:28,,96
-764,Chitra Express,5,Ibrahimabad,,21:48,21:50,,117
-764,Chitra Express,6,Shaheed M. Monsur Ali,,22:06,22:09,,132
-764,Chitra Express,7,Ullapara,,22:26,22:29,,150
-764,Chitra Express,8,Baral Bridge,,22:47,22:50,,170
-764,Chitra Express,9,Chatmohar,,23:04,23:07,,182
-764,Chitra Express,10,Ishwardi,,23:45,23:55,,209
-764,Chitra Express,11,Bheramara,,0:25,0:28,,225
-764,Chitra Express,12,Poradah,,0:46,0:49,,244
-764,Chitra Express,13,Alamdanga,,1:05,1:07,,260
-764,Chitra Express,14,Chuadanga,,1:24,1:27,,276
-764,Chitra Express,15,Kotchandpur,,2:16,2:18,,316
-764,Chitra Express,16,Mobarakganj,,2:30,2:32,,328
-764,Chitra Express,17,Jashore,,3:07,3:12,,358
-764,Chitra Express,18,Noyapara,,3:40,3:43,,384
-764,Chitra Express,19,Khulna,,4:40,,,413
-765,Nilsagar Express,1,Dhaka,,,6:45,,0
-765,Nilsagar Express,2,Dhaka Airport,,7:08,7:13,,17
-765,Nilsagar Express,3,Joydebpur,,7:36,7:39,,33
-765,Nilsagar Express,4,Tangail,,8:54,9:03,,96
-765,Nilsagar Express,5,Ibrahimabad,,10:16,10:18,,117
-765,Nilsagar Express,6,Ishwardi Bypass,,10:57,11:00,,204
-765,Nilsagar Express,7,Natore,,11:20,11:22,,241
-765,Nilsagar Express,8,Ahsanganj,,11:55,12:05,,264
-765,Nilsagar Express,9,Santahar,,12:38,12:40,,285
-765,Nilsagar Express,10,Joypurhat,,12:54,12:57,,317
-765,Nilsagar Express,11,Birampur,,13:25,13:28,,350
-765,Nilsagar Express,12,Fulbari,,13:39,13:42,,361
-765,Nilsagar Express,13,Parbatipur,,14:00,14:10,,379
-765,Nilsagar Express,14,Saidpur,,14:27,14:31,,393
-765,Nilsagar Express,15,Nilphamari,,14:50,14:55,,412
-765,Nilsagar Express,16,Damar,,15:16,15:26,,428
-765,Nilsagar Express,17,Chilahati,,16:00,,,444
-766,Nilsagar Express,1,Chilahati,,,20:00,,0
-766,Nilsagar Express,2,Damar,,20:18,20:21,,16
-766,Nilsagar Express,3,Nilphamari,,20:37,20:40,,32
-766,Nilsagar Express,4,Saidpur,,20:59,21:04,,51
-766,Nilsagar Express,5,Parbatipur,,21:20,21:40,,65
-766,Nilsagar Express,6,Fulbari,,21:58,22:00,,83
-766,Nilsagar Express,7,Birampur,,22:11,22:14,,94
-766,Nilsagar Express,8,Joypurhat,,22:43,22:46,,127
-766,Nilsagar Express,9,Akkelpur,,23:00,23:02,,141
-766,Nilsagar Express,10,Santahar,,23:20,23:25,,159
-766,Nilsagar Express,11,Ahsanganj,,23:47,23:49,,180
-766,Nilsagar Express,12,Natore,,0:10,0:13,,203
-766,Nilsagar Express,13,Ishwardi Bypass,,1:12,1:14,,240
-766,Nilsagar Express,14,Ibrahimabad,,2:46,2:49,,327
-766,Nilsagar Express,15,Joydebpur,,4:11,4:15,,411
-766,Nilsagar Express,16,Dhaka Airport,,4:45,4:48,,427
-766,Nilsagar Express,17,Dhaka,,5:25,,,444
-767,Dolonchapa Express,1,Santahar,,,11:00,,0
-767,Dolonchapa Express,2,Talora,,11:28,11:30,,21
-767,Dolonchapa Express,3,Bogura,,11:53,12:01,,40
-767,Dolonchapa Express,4,Sonatola,,12:50,12:52,,68
-767,Dolonchapa Express,5,Mahimaganj,,13:02,13:04,,75
-767,Dolonchapa Express,6,Banarpara,,13:13,13:18,,83
-767,Dolonchapa Express,7,Badiakhali Road,,13:28,13:30,,92
-767,Dolonchapa Express,8,Gaibandha,,13:45,13:50,,103
-767,Dolonchapa Express,9,Bamon Danga,,14:21,14:24,,127
-767,Dolonchapa Express,10,Pirgacha,,14:42,14:45,,142
-767,Dolonchapa Express,11,Kaunia,,15:05,15:25,,155
-767,Dolonchapa Express,12,Rangpur,,15:48,15:58,,173
-767,Dolonchapa Express,13,Badarganj,,16:26,16:29,,195
-767,Dolonchapa Express,14,Khalasha,,16:40,16:42,,202
-767,Dolonchapa Express,15,Parbatipur,,16:55,17:20,,210
-767,Dolonchapa Express,16,Chirirbandar,,17:40,17:43,,226
-767,Dolonchapa Express,17,Dinajpur,,18:05,18:13,,241
-767,Dolonchapa Express,18,Setabganj,,18:48,18:50,,271
-767,Dolonchapa Express,19,Pirganj,,19:06,19:08,,284
-767,Dolonchapa Express,20,Bhamradah,,19:18,19:20,,292
-767,Dolonchapa Express,21,Thakurgaon Road,,19:38,19:41,,306
-767,Dolonchapa Express,22,Ruhia,,20:00,20:02,,322
-767,Dolonchapa Express,23,Kismat,,20:12,20:14,,329
-767,Dolonchapa Express,24,Nayanibazar,,20:25,20:27,,337
-767,Dolonchapa Express,25,Panchagarh,,20:40,,,344
-768,Dolonchapa Express,1,Panchagarh,,,6:00,,0
-768,Dolonchapa Express,2,Nayanibazar,,6:10,6:12,,7
-768,Dolonchapa Express,3,Kismat,,6:21,6:23,,15
-768,Dolonchapa Express,4,Ruhia,,6:33,6:35,,22
-768,Dolonchapa Express,5,Thakurgaon Road,,6:51,6:54,,38
-768,Dolonchapa Express,6,Bhamradah,,7:13,7:15,,52
-768,Dolonchapa Express,7,Pirganj,,7:25,7:27,,60
-768,Dolonchapa Express,8,Setabganj,,7:43,7:46,,73
-768,Dolonchapa Express,9,Dinajpur,,8:21,8:31,,103
-768,Dolonchapa Express,10,Chirirbandar,,8:50,8:52,,118
-768,Dolonchapa Express,11,Parbatipur,,9:15,9:40,,134
-768,Dolonchapa Express,12,Kholahati,,9:52,9:54,,142
-768,Dolonchapa Express,13,Badarganj,,10:05,10:08,,149
-768,Dolonchapa Express,14,Rangpur,,10:35,10:40,,171
-768,Dolonchapa Express,15,Kaunia,,11:05,11:25,,189
-768,Dolonchapa Express,16,Pirgacha,,11:42,11:45,,202
-768,Dolonchapa Express,17,Bamon Danga,,12:04,12:07,,217
-768,Dolonchapa Express,18,Gaibandha,,12:52,12:57,,241
-768,Dolonchapa Express,19,Badiakhali Road,,13:13,13:33,,252
-768,Dolonchapa Express,20,Banarpara,,13:43,13:48,,261
-768,Dolonchapa Express,21,Mahimaganj,,13:57,13:59,,269
-768,Dolonchapa Express,22,Sonatola,,14:10,14:12,,276
-768,Dolonchapa Express,23,Bogura,,14:49,15:05,,304
-768,Dolonchapa Express,24,Talora,,15:43,15:45,,323
-768,Dolonchapa Express,25,Santahar,,16:15,,,344
-769,Dhumketu Express,1,Dhaka,,,5:25,,0
-769,Dhumketu Express,2,Dhaka Airport,,6:00,6:28,,17
-769,Dhumketu Express,3,Joydebpur,,6:23,6:53,,33
-769,Dhumketu Express,4,Tangail,,6:51,7:49,,96
-769,Dhumketu Express,5,Ibrahimabad,,7:47,8:11,,117
-769,Dhumketu Express,6,Shaheed M. Monsur Ali,,8:09,8:30,,132
-769,Dhumketu Express,7,Jamtoil,,8:27,8:44,,138
-769,Dhumketu Express,8,Ullapara,,8:38,8:59,,150
-769,Dhumketu Express,9,Baral Bridge,,8:56,9:31,,170
-769,Dhumketu Express,10,Chatmohar,,9:28,9:47,,182
-769,Dhumketu Express,11,Ishwardi Bypass,,9:44,10:15,,213
-769,Dhumketu Express,12,Abdulpur,,10:12,10:36,,227
-769,Dhumketu Express,13,Arani,,10:33,10:49,,238
-769,Dhumketu Express,14,Rajshahi,,10:47,,,269
-770,Dhumketu Express,1,Rajshahi,,,23:20,,0
-770,Dhumketu Express,2,Arani,,23:51,23:53,,31
-770,Dhumketu Express,3,Abdulpur,,0:05,0:07,,42
-770,Dhumketu Express,4,Ishwardi Bypass,,0:22,0:25,,56
-770,Dhumketu Express,5,Chatmohar,,0:45,0:48,,87
-770,Dhumketu Express,6,Baral Bridge,,1:05,1:08,,99
-770,Dhumketu Express,7,Ullapara,,1:57,1:59,,119
-770,Dhumketu Express,8,Shaheed M. Monsur Ali,,2:16,2:18,,137
-770,Dhumketu Express,9,Ibrahimabad,,3:32,3:35,,152
-770,Dhumketu Express,10,Joydebpur,,4:02,4:05,,236
-770,Dhumketu Express,11,Dhaka Airport,,4:40,,,252
-770,Dhumketu Express,12,Dhaka,,,,,269
-771,Rangpur Express,1,Dhaka,,,9:10,,0
-771,Rangpur Express,2,Dhaka Airport,,9:33,9:38,,17
-771,Rangpur Express,3,Ibrahimabad,,11:33,11:35,,116
-771,Rangpur Express,4,Chatmohar,,12:31,12:34,,182
-771,Rangpur Express,5,Natore,,13:43,13:46,,239
-771,Rangpur Express,6,Santahar,,14:45,14:50,,282
-771,Rangpur Express,7,Talora,,15:13,15:15,,303
-771,Rangpur Express,8,Bogura,,15:36,15:41,,323
-771,Rangpur Express,9,Sonatola,,16:11,16:13,,351
-771,Rangpur Express,10,Banarpara,,16:30,16:40,,365
-771,Rangpur Express,11,Gaibandha,,17:03,17:08,,385
-771,Rangpur Express,12,Bamon Danga,,17:37,17:40,,409
-771,Rangpur Express,13,Pirgacha,,17:58,18:00,,424
-771,Rangpur Express,14,Kaunia,,18:16,18:36,,437
-771,Rangpur Express,15,Rangpur,,19:00,,,455
-772,Rangpur Express,1,Rangpur,,,20:00,,0
-772,Rangpur Express,2,Kaunia,,20:20,20:40,,18
-772,Rangpur Express,3,Pirgacha,,20:56,20:58,,31
-772,Rangpur Express,4,Bamon Danga,,21:15,21:18,,46
-772,Rangpur Express,5,Gaibandha,,21:47,21:52,,70
-772,Rangpur Express,6,Banarpara,,22:15,22:25,,87
-772,Rangpur Express,7,Sonatola,,22:42,22:44,,104
-772,Rangpur Express,8,Bogura,,23:15,23:20,,132
-772,Rangpur Express,9,Talora,,23:40,23:42,,152
-772,Rangpur Express,10,Santahar,,0:10,0:15,,173
-772,Rangpur Express,11,Natore,,1:25,1:28,,216
-772,Rangpur Express,12,Ibrahimabad,,3:34,3:36,,338
-772,Rangpur Express,13,Dhaka Airport,,5:25,5:28,,438
-772,Rangpur Express,14,Dhaka,,6:00,,,455
+751,Lalmoni Express,1,Dhaka,Dhaka,,21:45,,0
+751,Lalmoni Express,2,Dhaka Airport,Dhaka,22:08,22:13,,17
+751,Lalmoni Express,3,Joydebpur,Gazipur,22:36,22:38,,33
+751,Lalmoni Express,4,Tangail,Tangail,23:32,23:34,,96
+751,Lalmoni Express,5,Ibrahimabad,Tangail,23:54,23:56,,117
+751,Lalmoni Express,6,Shaheed M. Monsur Ali,Sirajganj,0:12,0:14,,132
+751,Lalmoni Express,7,Ullapara,Sirajganj,0:31,0:33,,150
+751,Lalmoni Express,8,Baral Bridge,Pabna,0:53,0:55,,170
+751,Lalmoni Express,9,Azimnagar,Natore,2:07,2:09,,212
+751,Lalmoni Express,10,Natore,Natore,2:35,2:38,,239
+751,Lalmoni Express,11,Santahar,Bogura,3:35,3:40,,282
+751,Lalmoni Express,12,Bogura,Bogura,4:20,4:23,,323
+751,Lalmoni Express,13,Sonatola,Gaibandha,4:53,4:55,,352
+751,Lalmoni Express,14,Banarpara,Gaibandha,5:11,5:14,,366
+751,Lalmoni Express,15,Gaibandha,Gaibandha,5:37,5:40,,385
+751,Lalmoni Express,16,Bamon Danga,Gaibandha,6:09,6:11,,409
+751,Lalmoni Express,17,Pirgacha,Rangpur,6:29,6:31,,423
+751,Lalmoni Express,18,Kaunia,Rangpur,6:48,6:51,,436
+751,Lalmoni Express,19,Tista,Lalmonirhat,6:58,7:00,,440
+751,Lalmoni Express,20,Lalmonirhat,Lalmonirhat,7:20,,,451
+752,Lalmoni Express,1,Lalmonirhat,Lalmonirhat,,9:50,,0
+752,Lalmoni Express,2,Tista,Lalmonirhat,10:06,10:08,,11
+752,Lalmoni Express,3,Kaunia,Rangpur,10:15,10:18,,15
+752,Lalmoni Express,4,Pirgacha,Rangpur,10:34,10:36,,28
+752,Lalmoni Express,5,Bamon Danga,Gaibandha,10:52,10:55,,42
+752,Lalmoni Express,6,Gaibandha,Gaibandha,11:24,11:27,,66
+752,Lalmoni Express,7,Banarpara,Gaibandha,11:49,11:52,,85
+752,Lalmoni Express,8,Sonatola,Gaibandha,12:09,12:11,,99
+752,Lalmoni Express,9,Bogura,Bogura,12:41,12:44,,128
+752,Lalmoni Express,10,Santahar,Bogura,13:30,13:35,,169
+752,Lalmoni Express,11,Natore,Natore,14:18,14:21,,212
+752,Lalmoni Express,12,Azimnagar,Natore,14:48,14:50,,239
+752,Lalmoni Express,13,Baral Bridge,Pabna,15:37,15:39,,281
+752,Lalmoni Express,14,Ullapara,Sirajganj,15:59,16:03,,301
+752,Lalmoni Express,15,Shaheed M. Monsur Ali,Sirajganj,16:22,16:25,,319
+752,Lalmoni Express,16,Ibrahimabad,Tangail,16:43,16:50,,334
+752,Lalmoni Express,17,Tangail,Tangail,17:10,17:18,,355
+752,Lalmoni Express,18,Joydebpur,Gazipur,18:36,18:40,,418
+752,Lalmoni Express,19,Dhaka Airport,Dhaka,19:07,19:10,,434
+752,Lalmoni Express,20,Dhaka,Dhaka,19:45,,,451
+753,Silk City Express,1,Dhaka,Dhaka,,14:30,,0
+753,Silk City Express,2,Dhaka Airport,Dhaka,14:53,14:58,,17
+753,Silk City Express,3,Joydebpur,Gazipur,15:21,15:24,,33
+753,Silk City Express,4,Mirzapur,Tangail,15:57,15:59,,70
+753,Silk City Express,5,Tangail,Tangail,16:26,16:28,,96
+753,Silk City Express,6,Ibrahimabad,Tangail,16:48,16:50,,117
+753,Silk City Express,7,Shaheed M. Monsur Ali,Sirajganj,17:06,17:09,,132
+753,Silk City Express,8,Jamtoil,Sirajganj,17:17,17:19,,138
+753,Silk City Express,9,Ullapara,Sirajganj,17:31,17:34,,150
+753,Silk City Express,10,Baral Bridge,Pabna,18:06,18:09,,170
+753,Silk City Express,11,Chatmohar,Pabna,18:23,18:28,,182
+753,Silk City Express,12,Ishwardi Bypass,Natore,18:48,18:51,,213
+753,Silk City Express,13,Abdulpur,Natore,19:06,19:09,,227
+753,Silk City Express,14,Rajshahi,Rajshahi,20:20,,,269
+754,Silk City Express,1,Rajshahi,Rajshahi,,7:40,,0
+754,Silk City Express,2,Abdulpur,Natore,8:20,8:22,,42
+754,Silk City Express,3,Ishwardi Bypass,Natore,8:37,8:39,,56
+754,Silk City Express,4,Chatmohar,Pabna,8:58,9:01,,87
+754,Silk City Express,5,Baral Bridge,Pabna,9:14,9:17,,99
+754,Silk City Express,6,Ullapara,Sirajganj,9:36,9:39,,119
+754,Silk City Express,7,Jamtoil,Sirajganj,9:51,9:53,,131
+754,Silk City Express,8,Shaheed M. Monsur Ali,Sirajganj,10:01,10:04,,137
+754,Silk City Express,9,Ibrahimabad,Tangail,10:20,10:22,,152
+754,Silk City Express,10,Tangail,Tangail,10:42,10:44,,173
+754,Silk City Express,11,Mirzapur,Tangail,11:08,11:10,,199
+754,Silk City Express,12,Joydebpur,Gazipur,12:05,12:08,,236
+754,Silk City Express,13,Dhaka Airport,Dhaka,12:34,12:37,,252
+754,Silk City Express,14,Dhaka,Dhaka,13:10,,,269
+755,Madhumati Express,1,Dhaka,Dhaka,,15:00,,0
+755,Madhumati Express,2,Mawa,Munshiganj,15:36,15:38,,40
+755,Madhumati Express,3,Padma,Shariatpur,15:51,15:53,,55
+755,Madhumati Express,4,Shibchar,Madaripur,16:03,16:05,,65
+755,Madhumati Express,5,Bhanga,Faridpur,16:28,16:30,,82
+755,Madhumati Express,6,Talma,Faridpur,16:46,16:48,,98
+755,Madhumati Express,7,Faridpur,Faridpur,17:03,17:06,,112
+755,Madhumati Express,8,Amirabad,Faridpur,17:18,17:20,,124
+755,Madhumati Express,9,Pangsha,Rajbari,17:35,17:37,,137
+755,Madhumati Express,10,Rajbari,Rajbari,17:45,18:00,,145
+755,Madhumati Express,11,Kalkhali,Rajbari,18:23,18:25,,162
+755,Madhumati Express,12,Pangsha,Rajbari,18:35,18:37,,170
+755,Madhumati Express,13,Khaksha,Kushtia,18:51,18:53,,183
+755,Madhumati Express,14,Markhali,Kushtia,19:03,19:05,,190
+755,Madhumati Express,15,Khiyarkot,Kushtia,19:22,19:25,,204
+755,Madhumati Express,16,Poradah,Kushtia,19:45,20:10,,216
+755,Madhumati Express,17,Mirpur,Kushtia,20:20,20:22,,225
+755,Madhumati Express,18,Bheramara,Kushtia,20:32,20:35,,234
+755,Madhumati Express,19,Pakshi,Pabna,20:47,20:49,,242
+755,Madhumati Express,20,Ishwardi,Pabna,21:05,21:25,,250
+755,Madhumati Express,21,Rajshahi,Rajshahi,22:30,,,310
+756,Madhumati Express,1,Rajshahi,Rajshahi,,6:40,,0
+756,Madhumati Express,2,Ishwardi,Pabna,7:40,8:00,,59
+756,Madhumati Express,3,Pakshi,Pabna,8:10,8:12,,68
+756,Madhumati Express,4,Bheramara,Kushtia,8:24,8:27,,76
+756,Madhumati Express,5,Mirpur,Kushtia,8:37,8:39,,85
+756,Madhumati Express,6,Poradah,Kushtia,8:50,9:10,,94
+756,Madhumati Express,7,Khiyarkot,Kushtia,9:22,9:25,,106
+756,Madhumati Express,8,Markhali,Kushtia,9:42,9:44,,120
+756,Madhumati Express,9,Khaksha,Kushtia,10:01,10:03,,127
+756,Madhumati Express,10,Pangsha,Rajbari,10:18,10:20,,140
+756,Madhumati Express,11,Kalkhali,Rajbari,10:29,10:31,,148
+756,Madhumati Express,12,Rajbari,Rajbari,10:50,11:05,,165
+756,Madhumati Express,13,Pakuria,Rajbari,11:14,11:16,,173
+756,Madhumati Express,14,Amirabad,Faridpur,11:32,11:34,,186
+756,Madhumati Express,15,Faridpur,Faridpur,11:47,11:49,,198
+756,Madhumati Express,16,Talma,Faridpur,12:05,12:07,,212
+756,Madhumati Express,17,Bhanga,Faridpur,12:24,12:26,,228
+756,Madhumati Express,18,Shibchar,Madaripur,12:47,12:49,,245
+756,Madhumati Express,19,Padma,Shariatpur,12:59,13:01,,255
+756,Madhumati Express,20,Mawa,Munshiganj,13:14,13:16,,270
+756,Madhumati Express,21,Dhaka,Dhaka,14:00,,,310
+757,Drutojan Express,1,Dhaka,Dhaka,,20:45,,0
+757,Drutojan Express,2,Dhaka Airport,Dhaka,21:08,21:13,,17
+757,Drutojan Express,3,Joydebpur,Gazipur,21:36,21:38,,33
+757,Drutojan Express,4,Tangail,Tangail,22:32,22:34,,96
+757,Drutojan Express,5,Ibrahimabad,Tangail,22:54,22:56,,117
+757,Drutojan Express,6,Jamtoil,Sirajganj,23:17,23:19,,138
+757,Drutojan Express,7,Chatmohar,Pabna,23:56,23:58,,184
+757,Drutojan Express,8,Natore,Natore,0:49,0:52,,239
+757,Drutojan Express,9,Ahsanganj,Naogaon,1:13,1:16,,261
+757,Drutojan Express,10,Santahar,Bogura,1:45,2:00,,282
+757,Drutojan Express,11,Akkelpur,Joypurhat,2:20,2:22,,299
+757,Drutojan Express,12,Joypurhat,Joypurhat,2:37,2:39,,314
+757,Drutojan Express,13,Panchbibi,Joypurhat,2:50,2:52,,323
+757,Drutojan Express,14,Birampur,Dinajpur,3:12,3:14,,346
+757,Drutojan Express,15,Fulbari,Dinajpur,3:25,3:27,,357
+757,Drutojan Express,16,Parbatipur,Dinajpur,3:50,4:10,,374
+757,Drutojan Express,17,Chirirbandar,Dinajpur,4:25,4:27,,392
+757,Drutojan Express,18,Dinajpur,Dinajpur,4:45,4:50,,407
+757,Drutojan Express,19,Setabganj,Dinajpur,5:20,5:22,,437
+757,Drutojan Express,20,Pirganj,Thakurgaon,5:36,5:39,,451
+757,Drutojan Express,21,Thakurgaon Road,Thakurgaon,6:02,6:05,,472
+757,Drutojan Express,22,Ruhia,Thakurgaon,6:22,6:38,,488
+757,Drutojan Express,23,Kismat,Panchagarh,6:47,6:49,,495
+757,Drutojan Express,24,Panchagarh,Panchagarh,7:10,,,510
+758,Drutojan Express,1,Panchagarh,Panchagarh,,7:20,,0
+758,Drutojan Express,2,Kismat,Panchagarh,7:36,7:38,,15
+758,Drutojan Express,3,Ruhia,Thakurgaon,7:46,7:48,,22
+758,Drutojan Express,4,Thakurgaon Road,Thakurgaon,8:02,8:05,,38
+758,Drutojan Express,5,Pirganj,Thakurgaon,8:46,8:48,,59
+758,Drutojan Express,6,Setabganj,Dinajpur,9:02,9:04,,73
+758,Drutojan Express,7,Dinajpur,Dinajpur,9:36,9:46,,103
+758,Drutojan Express,8,Chirirbandar,Dinajpur,10:05,10:07,,118
+758,Drutojan Express,9,Parbatipur,Dinajpur,10:25,10:45,,135
+758,Drutojan Express,10,Fulbari,Dinajpur,11:03,11:06,,153
+758,Drutojan Express,11,Birampur,Dinajpur,11:17,11:20,,164
+758,Drutojan Express,12,Panchbibi,Joypurhat,11:40,11:42,,187
+758,Drutojan Express,13,Joypurhat,Joypurhat,11:53,11:56,,196
+758,Drutojan Express,14,Akkelpur,Joypurhat,12:09,12:11,,211
+758,Drutojan Express,15,Santahar,Bogura,12:35,12:40,,228
+758,Drutojan Express,16,Ahsanganj,Naogaon,13:14,13:16,,249
+758,Drutojan Express,17,Natore,Natore,13:38,13:41,,271
+758,Drutojan Express,18,Abdulpur,Natore,14:26,14:28,,282
+758,Drutojan Express,19,Chatmohar,Pabna,14:48,14:51,,326
+758,Drutojan Express,20,Jamtoil,Sirajganj,15:28,15:30,,372
+758,Drutojan Express,21,Ibrahimabad,Tangail,15:56,15:58,,393
+758,Drutojan Express,22,Tangail,Tangail,16:18,16:28,,414
+758,Drutojan Express,23,Joydebpur,Gazipur,17:48,17:53,,477
+758,Drutojan Express,24,Dhaka Airport,Dhaka,18:20,18:23,,493
+758,Drutojan Express,25,Dhaka,Dhaka,18:55,,,510
+759,Padma Express,1,Dhaka,Dhaka,,22:45,,0
+759,Padma Express,2,Dhaka Airport,Dhaka,23:08,23:13,,17
+759,Padma Express,3,Joydebpur,Gazipur,23:36,23:38,,33
+759,Padma Express,4,Tangail,Tangail,0:32,0:34,,96
+759,Padma Express,5,Ibrahimabad,Tangail,0:54,0:56,,117
+759,Padma Express,6,Shaheed M. Monsur Ali,Sirajganj,1:11,1:14,,132
+759,Padma Express,7,Ullapara,Sirajganj,1:30,1:33,,150
+759,Padma Express,8,Baral Bridge,Pabna,1:51,1:53,,170
+759,Padma Express,9,Chatmohar,Pabna,2:07,2:10,,182
+759,Padma Express,10,Ishwardi Bypass,Natore,2:30,2:33,,213
+759,Padma Express,11,Abdulpur,Natore,2:48,2:50,,227
+759,Padma Express,12,Sardah Road,Rajshahi,3:16,3:18,,282
+759,Padma Express,13,Rajshahi,Rajshahi,4:00,,,302
+760,Padma Express,1,Rajshahi,Rajshahi,,16:00,,0
+760,Padma Express,2,Sardah Road,Rajshahi,16:17,16:19,,20
+760,Padma Express,3,Abdulpur,Natore,16:45,16:47,,75
+760,Padma Express,4,Ishwardi Bypass,Natore,17:01,17:03,,89
+760,Padma Express,5,Chatmohar,Pabna,17:22,17:25,,120
+760,Padma Express,6,Baral Bridge,Pabna,17:38,17:40,,132
+760,Padma Express,7,Ullapara,Sirajganj,17:59,18:02,,152
+760,Padma Express,8,Shaheed M. Monsur Ali,Sirajganj,18:18,18:21,,170
+760,Padma Express,9,Ibrahimabad,Tangail,18:38,18:40,,185
+760,Padma Express,10,Tangail,Tangail,19:00,19:02,,206
+760,Padma Express,11,Joydebpur,Gazipur,20:14,20:18,,269
+760,Padma Express,12,Dhaka Airport,Dhaka,20:45,20:48,,285
+760,Padma Express,13,Dhaka,Dhaka,21:15,,,302
+761,Sagardari Express,1,Khulna,Khulna,,16:00,,0
+761,Sagardari Express,2,Noyapara,Jashore,16:33,16:36,,29
+761,Sagardari Express,3,Jashore,Jashore,17:03,17:08,,55
+761,Sagardari Express,4,Mobarakganj,Jhenaidah,17:35,17:37,,85
+761,Sagardari Express,5,Kotchandpur,Jhenaidah,17:49,17:51,,97
+761,Sagardari Express,6,Safdarapur,Jhenaidah,18:00,18:02,,105
+761,Sagardari Express,7,Darshana Halt,Chuadanga,18:21,18:24,,123
+761,Sagardari Express,8,Chuadanga,Chuadanga,18:43,18:46,,137
+761,Sagardari Express,9,Alamdanga,Chuadanga,19:02,19:04,,153
+761,Sagardari Express,10,Poradah,Kushtia,19:20,19:23,,169
+761,Sagardari Express,11,Mirpur,Kushtia,19:33,19:35,,178
+761,Sagardari Express,12,Bheramara,Kushtia,19:45,19:47,,188
+761,Sagardari Express,13,Pakshi,Pabna,19:59,20:01,,196
+761,Sagardari Express,14,Ishwardi,Pabna,20:10,20:30,,204
+761,Sagardari Express,15,Azimnagar,Natore,20:43,20:45,,214
+761,Sagardari Express,16,Abdulpur,Natore,20:53,20:56,,221
+761,Sagardari Express,17,Rajshahi,Rajshahi,22:00,,,263
+762,Sagardari Express,1,Rajshahi,Rajshahi,,6:00,,0
+762,Sagardari Express,2,Abdulpur,Natore,6:40,6:42,,42
+762,Sagardari Express,3,Azimnagar,Natore,6:51,6:53,,49
+762,Sagardari Express,4,Ishwardi,Pabna,7:10,7:30,,59
+762,Sagardari Express,5,Pakshi,Pabna,7:40,7:42,,67
+762,Sagardari Express,6,Bheramara,Kushtia,7:54,7:57,,75
+762,Sagardari Express,7,Mirpur,Kushtia,8:07,8:09,,85
+762,Sagardari Express,8,Poradah,Kushtia,8:19,8:22,,94
+762,Sagardari Express,9,Alamdanga,Chuadanga,8:38,8:40,,110
+762,Sagardari Express,10,Chuadanga,Chuadanga,8:56,8:59,,126
+762,Sagardari Express,11,Darshana Halt,Chuadanga,9:20,9:23,,140
+762,Sagardari Express,12,Safdarapur,Jhenaidah,9:40,9:42,,158
+762,Sagardari Express,13,Kotchandpur,Jhenaidah,9:51,9:53,,166
+762,Sagardari Express,14,Mobarakganj,Jhenaidah,10:05,10:07,,178
+762,Sagardari Express,15,Jashore,Jashore,10:35,10:39,,208
+762,Sagardari Express,16,Noyapara,Jashore,11:07,11:10,,234
+762,Sagardari Express,17,Khulna,Khulna,12:10,,,263
+763,Chitra Express,1,Khulna,Khulna,,9:00,,0
+763,Chitra Express,2,Noyapara,Jashore,9:33,9:36,,29
+763,Chitra Express,3,Jashore,Jashore,10:04,10:08,,55
+763,Chitra Express,4,Mobarakganj,Jhenaidah,10:49,10:51,,85
+763,Chitra Express,5,Kotchandpur,Jhenaidah,11:02,11:04,,97
+763,Chitra Express,6,Darshana Halt,Chuadanga,11:28,11:31,,123
+763,Chitra Express,7,Chuadanga,Chuadanga,11:50,11:53,,137
+763,Chitra Express,8,Alamdanga,Chuadanga,12:09,12:11,,153
+763,Chitra Express,9,Poradah,Kushtia,12:27,12:30,,169
+763,Chitra Express,10,Mirpur,Kushtia,12:40,12:42,,178
+763,Chitra Express,11,Bheramara,Kushtia,12:52,12:55,,188
+763,Chitra Express,12,Ishwardi,Pabna,13:15,13:25,,204
+763,Chitra Express,13,Chatmohar,Pabna,13:48,13:51,,229
+763,Chitra Express,14,Baral Bridge,Pabna,14:06,14:09,,241
+763,Chitra Express,15,Ullapara,Sirajganj,14:27,14:30,,263
+763,Chitra Express,16,Shaheed M. Monsur Ali,Sirajganj,14:45,14:48,,281
+763,Chitra Express,17,Ibrahimabad,Tangail,15:19,15:32,,296
+763,Chitra Express,18,Tangail,Tangail,15:52,15:54,,317
+763,Chitra Express,19,Joydebpur,Gazipur,17:04,17:07,,380
+763,Chitra Express,20,Dhaka Airport,Dhaka,17:33,17:36,,396
+763,Chitra Express,21,Dhaka,Dhaka,18:05,,,413
+764,Chitra Express,1,Dhaka,Dhaka,,19:30,,0
+764,Chitra Express,2,Dhaka Airport,Dhaka,19:53,19:58,,17
+764,Chitra Express,3,Joydebpur,Gazipur,20:21,20:23,,33
+764,Chitra Express,4,Tangail,Tangail,21:26,21:28,,96
+764,Chitra Express,5,Ibrahimabad,Tangail,21:48,21:50,,117
+764,Chitra Express,6,Shaheed M. Monsur Ali,Sirajganj,22:06,22:09,,132
+764,Chitra Express,7,Ullapara,Sirajganj,22:26,22:29,,150
+764,Chitra Express,8,Baral Bridge,Pabna,22:47,22:50,,170
+764,Chitra Express,9,Chatmohar,Pabna,23:04,23:07,,182
+764,Chitra Express,10,Ishwardi,Pabna,23:45,23:55,,209
+764,Chitra Express,11,Bheramara,Kushtia,0:25,0:28,,225
+764,Chitra Express,12,Poradah,Kushtia,0:46,0:49,,244
+764,Chitra Express,13,Alamdanga,Chuadanga,1:05,1:07,,260
+764,Chitra Express,14,Chuadanga,Chuadanga,1:24,1:27,,276
+764,Chitra Express,15,Kotchandpur,Jhenaidah,2:16,2:18,,316
+764,Chitra Express,16,Mobarakganj,Jhenaidah,2:30,2:32,,328
+764,Chitra Express,17,Jashore,Jashore,3:07,3:12,,358
+764,Chitra Express,18,Noyapara,Jashore,3:40,3:43,,384
+764,Chitra Express,19,Khulna,Khulna,4:40,,,413
+765,Nilsagar Express,1,Dhaka,Dhaka,,6:45,,0
+765,Nilsagar Express,2,Dhaka Airport,Dhaka,7:08,7:13,,17
+765,Nilsagar Express,3,Joydebpur,Gazipur,7:36,7:39,,33
+765,Nilsagar Express,4,Tangail,Tangail,8:54,9:03,,96
+765,Nilsagar Express,5,Ibrahimabad,Tangail,10:16,10:18,,117
+765,Nilsagar Express,6,Ishwardi Bypass,Natore,10:57,11:00,,204
+765,Nilsagar Express,7,Natore,Natore,11:20,11:22,,241
+765,Nilsagar Express,8,Ahsanganj,Naogaon,11:55,12:05,,264
+765,Nilsagar Express,9,Santahar,Bogura,12:38,12:40,,285
+765,Nilsagar Express,10,Joypurhat,Joypurhat,12:54,12:57,,317
+765,Nilsagar Express,11,Birampur,Dinajpur,13:25,13:28,,350
+765,Nilsagar Express,12,Fulbari,Dinajpur,13:39,13:42,,361
+765,Nilsagar Express,13,Parbatipur,Dinajpur,14:00,14:10,,379
+765,Nilsagar Express,14,Saidpur,Nilphamari,14:27,14:31,,393
+765,Nilsagar Express,15,Nilphamari,Nilphamari,14:50,14:55,,412
+765,Nilsagar Express,16,Damar,Nilphamari,15:16,15:26,,428
+765,Nilsagar Express,17,Chilahati,Nilphamari,16:00,,,444
+766,Nilsagar Express,1,Chilahati,Nilphamari,,20:00,,0
+766,Nilsagar Express,2,Damar,Nilphamari,20:18,20:21,,16
+766,Nilsagar Express,3,Nilphamari,Nilphamari,20:37,20:40,,32
+766,Nilsagar Express,4,Saidpur,Nilphamari,20:59,21:04,,51
+766,Nilsagar Express,5,Parbatipur,Dinajpur,21:20,21:40,,65
+766,Nilsagar Express,6,Fulbari,Dinajpur,21:58,22:00,,83
+766,Nilsagar Express,7,Birampur,Dinajpur,22:11,22:14,,94
+766,Nilsagar Express,8,Joypurhat,Joypurhat,22:43,22:46,,127
+766,Nilsagar Express,9,Akkelpur,Joypurhat,23:00,23:02,,141
+766,Nilsagar Express,10,Santahar,Bogura,23:20,23:25,,159
+766,Nilsagar Express,11,Ahsanganj,Naogaon,23:47,23:49,,180
+766,Nilsagar Express,12,Natore,Natore,0:10,0:13,,203
+766,Nilsagar Express,13,Ishwardi Bypass,Natore,1:12,1:14,,240
+766,Nilsagar Express,14,Ibrahimabad,Tangail,2:46,2:49,,327
+766,Nilsagar Express,15,Joydebpur,Gazipur,4:11,4:15,,411
+766,Nilsagar Express,16,Dhaka Airport,Dhaka,4:45,4:48,,427
+766,Nilsagar Express,17,Dhaka,Dhaka,5:25,,,444
+767,Dolonchapa Express,1,Santahar,Bogura,,11:00,,0
+767,Dolonchapa Express,2,Talora,Bogura,11:28,11:30,,21
+767,Dolonchapa Express,3,Bogura,Bogura,11:53,12:01,,40
+767,Dolonchapa Express,4,Sonatola,Gaibandha,12:50,12:52,,68
+767,Dolonchapa Express,5,Mahimaganj,Gaibandha,13:02,13:04,,75
+767,Dolonchapa Express,6,Banarpara,Gaibandha,13:13,13:18,,83
+767,Dolonchapa Express,7,Badiakhali Road,Gaibandha,13:28,13:30,,92
+767,Dolonchapa Express,8,Gaibandha,Gaibandha,13:45,13:50,,103
+767,Dolonchapa Express,9,Bamon Danga,Gaibandha,14:21,14:24,,127
+767,Dolonchapa Express,10,Pirgacha,Rangpur,14:42,14:45,,142
+767,Dolonchapa Express,11,Kaunia,Rangpur,15:05,15:25,,155
+767,Dolonchapa Express,12,Rangpur,Rangpur,15:48,15:58,,173
+767,Dolonchapa Express,13,Badarganj,Rangpur,16:26,16:29,,195
+767,Dolonchapa Express,14,Khalasha,Dinajpur,16:40,16:42,,202
+767,Dolonchapa Express,15,Parbatipur,Dinajpur,16:55,17:20,,210
+767,Dolonchapa Express,16,Chirirbandar,Dinajpur,17:40,17:43,,226
+767,Dolonchapa Express,17,Dinajpur,Dinajpur,18:05,18:13,,241
+767,Dolonchapa Express,18,Setabganj,Dinajpur,18:48,18:50,,271
+767,Dolonchapa Express,19,Pirganj,Thakurgaon,19:06,19:08,,284
+767,Dolonchapa Express,20,Bhamradah,Thakurgaon,19:18,19:20,,292
+767,Dolonchapa Express,21,Thakurgaon Road,Thakurgaon,19:38,19:41,,306
+767,Dolonchapa Express,22,Ruhia,Thakurgaon,20:00,20:02,,322
+767,Dolonchapa Express,23,Kismat,Panchagarh,20:12,20:14,,329
+767,Dolonchapa Express,24,Nayanibazar,Panchagarh,20:25,20:27,,337
+767,Dolonchapa Express,25,Panchagarh,Panchagarh,20:40,,,344
+768,Dolonchapa Express,1,Panchagarh,Panchagarh,,6:00,,0
+768,Dolonchapa Express,2,Nayanibazar,Panchagarh,6:10,6:12,,7
+768,Dolonchapa Express,3,Kismat,Panchagarh,6:21,6:23,,15
+768,Dolonchapa Express,4,Ruhia,Thakurgaon,6:33,6:35,,22
+768,Dolonchapa Express,5,Thakurgaon Road,Thakurgaon,6:51,6:54,,38
+768,Dolonchapa Express,6,Bhamradah,Thakurgaon,7:13,7:15,,52
+768,Dolonchapa Express,7,Pirganj,Thakurgaon,7:25,7:27,,60
+768,Dolonchapa Express,8,Setabganj,Dinajpur,7:43,7:46,,73
+768,Dolonchapa Express,9,Dinajpur,Dinajpur,8:21,8:31,,103
+768,Dolonchapa Express,10,Chirirbandar,Dinajpur,8:50,8:52,,118
+768,Dolonchapa Express,11,Parbatipur,Dinajpur,9:15,9:40,,134
+768,Dolonchapa Express,12,Kholahati,Dinajpur,9:52,9:54,,142
+768,Dolonchapa Express,13,Badarganj,Rangpur,10:05,10:08,,149
+768,Dolonchapa Express,14,Rangpur,Rangpur,10:35,10:40,,171
+768,Dolonchapa Express,15,Kaunia,Rangpur,11:05,11:25,,189
+768,Dolonchapa Express,16,Pirgacha,Rangpur,11:42,11:45,,202
+768,Dolonchapa Express,17,Bamon Danga,Gaibandha,12:04,12:07,,217
+768,Dolonchapa Express,18,Gaibandha,Gaibandha,12:52,12:57,,241
+768,Dolonchapa Express,19,Badiakhali Road,Gaibandha,13:13,13:33,,252
+768,Dolonchapa Express,20,Banarpara,Gaibandha,13:43,13:48,,261
+768,Dolonchapa Express,21,Mahimaganj,Gaibandha,13:57,13:59,,269
+768,Dolonchapa Express,22,Sonatola,Gaibandha,14:10,14:12,,276
+768,Dolonchapa Express,23,Bogura,Bogura,14:49,15:05,,304
+768,Dolonchapa Express,24,Talora,Bogura,15:43,15:45,,323
+768,Dolonchapa Express,25,Santahar,Bogura,16:15,,,344
+769,Dhumketu Express,1,Dhaka,Dhaka,,5:25,,0
+769,Dhumketu Express,2,Dhaka Airport,Dhaka,6:00,6:28,,17
+769,Dhumketu Express,3,Joydebpur,Gazipur,6:23,6:53,,33
+769,Dhumketu Express,4,Tangail,Tangail,6:51,7:49,,96
+769,Dhumketu Express,5,Ibrahimabad,Tangail,7:47,8:11,,117
+769,Dhumketu Express,6,Shaheed M. Monsur Ali,Sirajganj,8:09,8:30,,132
+769,Dhumketu Express,7,Jamtoil,Sirajganj,8:27,8:44,,138
+769,Dhumketu Express,8,Ullapara,Sirajganj,8:38,8:59,,150
+769,Dhumketu Express,9,Baral Bridge,Pabna,8:56,9:31,,170
+769,Dhumketu Express,10,Chatmohar,Pabna,9:28,9:47,,182
+769,Dhumketu Express,11,Ishwardi Bypass,Natore,9:44,10:15,,213
+769,Dhumketu Express,12,Abdulpur,Natore,10:12,10:36,,227
+769,Dhumketu Express,13,Arani,Rajshahi,10:33,10:49,,238
+769,Dhumketu Express,14,Rajshahi,Rajshahi,10:47,,,269
+770,Dhumketu Express,1,Rajshahi,Rajshahi,,23:20,,0
+770,Dhumketu Express,2,Arani,Rajshahi,23:51,23:53,,31
+770,Dhumketu Express,3,Abdulpur,Natore,0:05,0:07,,42
+770,Dhumketu Express,4,Ishwardi Bypass,Natore,0:22,0:25,,56
+770,Dhumketu Express,5,Chatmohar,Pabna,0:45,0:48,,87
+770,Dhumketu Express,6,Baral Bridge,Pabna,1:05,1:08,,99
+770,Dhumketu Express,7,Ullapara,Sirajganj,1:57,1:59,,119
+770,Dhumketu Express,8,Shaheed M. Monsur Ali,Sirajganj,2:16,2:18,,137
+770,Dhumketu Express,9,Ibrahimabad,Tangail,3:32,3:35,,152
+770,Dhumketu Express,10,Joydebpur,Gazipur,4:02,4:05,,236
+770,Dhumketu Express,11,Dhaka Airport,Dhaka,4:40,,,252
+770,Dhumketu Express,12,Dhaka,Dhaka,,,,269
+771,Rangpur Express,1,Dhaka,Dhaka,,9:10,,0
+771,Rangpur Express,2,Dhaka Airport,Dhaka,9:33,9:38,,17
+771,Rangpur Express,3,Ibrahimabad,Tangail,11:33,11:35,,116
+771,Rangpur Express,4,Chatmohar,Pabna,12:31,12:34,,182
+771,Rangpur Express,5,Natore,Natore,13:43,13:46,,239
+771,Rangpur Express,6,Santahar,Bogura,14:45,14:50,,282
+771,Rangpur Express,7,Talora,Bogura,15:13,15:15,,303
+771,Rangpur Express,8,Bogura,Bogura,15:36,15:41,,323
+771,Rangpur Express,9,Sonatola,Gaibandha,16:11,16:13,,351
+771,Rangpur Express,10,Banarpara,Gaibandha,16:30,16:40,,365
+771,Rangpur Express,11,Gaibandha,Gaibandha,17:03,17:08,,385
+771,Rangpur Express,12,Bamon Danga,Gaibandha,17:37,17:40,,409
+771,Rangpur Express,13,Pirgacha,Rangpur,17:58,18:00,,424
+771,Rangpur Express,14,Kaunia,Rangpur,18:16,18:36,,437
+771,Rangpur Express,15,Rangpur,Rangpur,19:00,,,455
+772,Rangpur Express,1,Rangpur,Rangpur,,20:00,,0
+772,Rangpur Express,2,Kaunia,Rangpur,20:20,20:40,,18
+772,Rangpur Express,3,Pirgacha,Rangpur,20:56,20:58,,31
+772,Rangpur Express,4,Bamon Danga,Gaibandha,21:15,21:18,,46
+772,Rangpur Express,5,Gaibandha,Gaibandha,21:47,21:52,,70
+772,Rangpur Express,6,Banarpara,Gaibandha,22:15,22:25,,87
+772,Rangpur Express,7,Sonatola,Gaibandha,22:42,22:44,,104
+772,Rangpur Express,8,Bogura,Bogura,23:15,23:20,,132
+772,Rangpur Express,9,Talora,Bogura,23:40,23:42,,152
+772,Rangpur Express,10,Santahar,Bogura,0:10,0:15,,173
+772,Rangpur Express,11,Natore,Natore,1:25,1:28,,216
+772,Rangpur Express,12,Ibrahimabad,Tangail,3:34,3:36,,338
+772,Rangpur Express,13,Dhaka Airport,Dhaka,5:25,5:28,,438
+772,Rangpur Express,14,Dhaka,Dhaka,6:00,,,455
 773,Kalani Express,1,Dhaka,Dhaka,,15:00,0,0
 773,Kalani Express,2,Dhaka Airport,Dhaka,15:17,15:22,0,17
 773,Kalani Express,3,Brahmanbaria,Brahmanbaria,16:46,16:51,0,103
@@ -1017,28 +1017,28 @@
 774,Kalani Express,10,Narsingdi,Narsingdi,11:43,11:45,0,239
 774,Kalani Express,11,Dhaka Airport,Dhaka,12:24,12:27,0,278
 774,Kalani Express,12,Dhaka,Dhaka,12:55,,0,295
-775,Sirajganj Express,1,Sirajganj Bazar,,,6:00,,0
-775,Sirajganj Express,2,Sirajganj Raipur,,6:08,6:10,,1
-775,Sirajganj Express,3,Jamtoil,,6:25,6:45,,7
-775,Sirajganj Express,4,Shaheed M. Monsur Ali,,6:53,6:56,,9
-775,Sirajganj Express,5,Saydabad,,7:03,7:06,,14
-775,Sirajganj Express,6,Ibrahimabad,,7:18,7:20,,23
-775,Sirajganj Express,7,Tangail,,7:40,7:48,,44
-775,Sirajganj Express,8,Mirzapur,,8:12,8:16,,70
-775,Sirajganj Express,9,Hi-Tech City,,8:31,8:33,,84
-775,Sirajganj Express,10,Joydebpur,,9:14,9:17,,107
-775,Sirajganj Express,11,Dhaka Airport,,9:43,9:46,,123
-775,Sirajganj Express,12,Dhaka,,10:15,,,140
-776,Sirajganj Express,1,Dhaka,,,16:15,,0
-776,Sirajganj Express,2,Dhaka Airport,,16:38,16:43,,17
-776,Sirajganj Express,3,Joydebpur,,17:06,17:09,,33
-776,Sirajganj Express,4,Mirzapur,,17:42,17:46,,70
-776,Sirajganj Express,5,Tangail,,18:11,18:13,,96
-776,Sirajganj Express,6,Ibrahimabad,,18:33,18:39,,117
-776,Sirajganj Express,7,Shaheed M. Monsur Ali,,18:55,18:57,,132
-776,Sirajganj Express,8,Jamtoil,,19:05,19:30,,138
-776,Sirajganj Express,9,Sirajganj Raipur,,19:43,19:45,,139
-776,Sirajganj Express,10,Sirajganj Bazar,,20:10,,,140
+775,Sirajganj Express,1,Sirajganj Bazar,Sirajganj,,6:00,,0
+775,Sirajganj Express,2,Sirajganj Raipur,Sirajganj,6:08,6:10,,1
+775,Sirajganj Express,3,Jamtoil,Sirajganj,6:25,6:45,,7
+775,Sirajganj Express,4,Shaheed M. Monsur Ali,Sirajganj,6:53,6:56,,9
+775,Sirajganj Express,5,Saydabad,Sirajganj,7:03,7:06,,14
+775,Sirajganj Express,6,Ibrahimabad,Tangail,7:18,7:20,,23
+775,Sirajganj Express,7,Tangail,Tangail,7:40,7:48,,44
+775,Sirajganj Express,8,Mirzapur,Tangail,8:12,8:16,,70
+775,Sirajganj Express,9,Hi-Tech City,Gazipur,8:31,8:33,,84
+775,Sirajganj Express,10,Joydebpur,Gazipur,9:14,9:17,,107
+775,Sirajganj Express,11,Dhaka Airport,Dhaka,9:43,9:46,,123
+775,Sirajganj Express,12,Dhaka,Dhaka,10:15,,,140
+776,Sirajganj Express,1,Dhaka,Dhaka,,16:15,,0
+776,Sirajganj Express,2,Dhaka Airport,Dhaka,16:38,16:43,,17
+776,Sirajganj Express,3,Joydebpur,Gazipur,17:06,17:09,,33
+776,Sirajganj Express,4,Mirzapur,Tangail,17:42,17:46,,70
+776,Sirajganj Express,5,Tangail,Tangail,18:11,18:13,,96
+776,Sirajganj Express,6,Ibrahimabad,Tangail,18:33,18:39,,117
+776,Sirajganj Express,7,Shaheed M. Monsur Ali,Sirajganj,18:55,18:57,,132
+776,Sirajganj Express,8,Jamtoil,Sirajganj,19:05,19:30,,138
+776,Sirajganj Express,9,Sirajganj Raipur,Sirajganj,19:43,19:45,,139
+776,Sirajganj Express,10,Sirajganj Bazar,Sirajganj,20:10,,,140
 777,Haor Express,1,Dhaka,Dhaka,,22:15,0,0
 777,Haor Express,2,Dhaka Airport,Dhaka,22:38,22:43,0,17
 777,Haor Express,3,Joydebpur,Gazipur,23:18,23:20,0,33
@@ -1061,40 +1061,40 @@
 778,Haor Express,9,Joydebpur,Gazipur,12:43,12:45,0,155
 778,Haor Express,10,Dhaka Airport,Dhaka,13:22,13:25,0,171
 778,Haor Express,11,Dhaka,Dhaka,13:55,,0,188
-779,Dhalarchar Express,1,Dhalarchar,,,6:30,,0
-779,Dhalarchar Express,2,Bhedarganj,,6:41,6:43,,7
-779,Dhalarchar Express,3,Kashinathpur,,6:57,6:59,,18
-779,Dhalarchar Express,4,Sathia Rajapur,,7:13,7:15,,28
-779,Dhalarchar Express,5,Tantibandha,,7:26,7:28,,36
-779,Dhalarchar Express,6,Balia,,7:36,7:38,,40
-779,Dhalarchar Express,7,Raghobpur,,7:47,7:49,,47
-779,Dhalarchar Express,8,Pabna,,8:01,8:04,,53
-779,Dhalarchar Express,9,Tekani,,8:16,8:18,,61
-779,Dhalarchar Express,10,Dashuria,,8:30,8:32,,89
-779,Dhalarchar Express,11,Majhgram,,8:43,8:45,,97
-779,Dhalarchar Express,12,Ishwardi Bypass,,9:00,9:03,,101
-779,Dhalarchar Express,13,Azimnagar,,9:12,9:15,,108
-779,Dhalarchar Express,14,Abdulpur,,9:24,9:27,,115
-779,Dhalarchar Express,15,Arani,,9:38,9:40,,126
-779,Dhalarchar Express,16,Sardah Road,,9:56,9:58,,140
-779,Dhalarchar Express,17,Rajshahi,,10:25,,,156
-780,Dhalarchar Express,1,Rajshahi,,,17:20,,0
-780,Dhalarchar Express,2,Sardah Road,,17:37,17:39,,16
-780,Dhalarchar Express,3,Arani,,17:55,17:57,,30
-780,Dhalarchar Express,4,Abdulpur,,18:09,18:11,,41
-780,Dhalarchar Express,5,Azimnagar,,18:19,18:21,,48
-780,Dhalarchar Express,6,Ishwardi Bypass,,18:30,18:32,,55
-780,Dhalarchar Express,7,Majhgram,,18:38,18:40,,59
-780,Dhalarchar Express,8,Dashuria,,18:52,18:54,,67
-780,Dhalarchar Express,9,Tekani,,19:08,19:10,,95
-780,Dhalarchar Express,10,Pabna,,19:23,19:25,,103
-780,Dhalarchar Express,11,Raghobpur,,19:35,19:38,,109
-780,Dhalarchar Express,12,Balia,,19:49,19:51,,116
-780,Dhalarchar Express,13,Tantibandha,,19:58,20:00,,120
-780,Dhalarchar Express,14,Sathia Rajapur,,20:12,20:14,,128
-780,Dhalarchar Express,15,Kashinathpur,,20:30,20:32,,138
-780,Dhalarchar Express,16,Bhedarganj,,20:48,20:50,,149
-780,Dhalarchar Express,17,Dhalarchar,,21:15,,,156
+779,Dhalarchar Express,1,Dhalarchar,Pabna,,6:30,,0
+779,Dhalarchar Express,2,Bhedarganj,Shariatpur,6:41,6:43,,7
+779,Dhalarchar Express,3,Kashinathpur,Pabna,6:57,6:59,,18
+779,Dhalarchar Express,4,Sathia Rajapur,Pabna,7:13,7:15,,28
+779,Dhalarchar Express,5,Tantibandha,Pabna,7:26,7:28,,36
+779,Dhalarchar Express,6,Balia,Pabna,7:36,7:38,,40
+779,Dhalarchar Express,7,Raghobpur,Pabna,7:47,7:49,,47
+779,Dhalarchar Express,8,Pabna,Pabna,8:01,8:04,,53
+779,Dhalarchar Express,9,Tekani,Pabna,8:16,8:18,,61
+779,Dhalarchar Express,10,Dashuria,Pabna,8:30,8:32,,89
+779,Dhalarchar Express,11,Majhgram,Natore,8:43,8:45,,97
+779,Dhalarchar Express,12,Ishwardi Bypass,Natore,9:00,9:03,,101
+779,Dhalarchar Express,13,Azimnagar,Natore,9:12,9:15,,108
+779,Dhalarchar Express,14,Abdulpur,Natore,9:24,9:27,,115
+779,Dhalarchar Express,15,Arani,Rajshahi,9:38,9:40,,126
+779,Dhalarchar Express,16,Sardah Road,Rajshahi,9:56,9:58,,140
+779,Dhalarchar Express,17,Rajshahi,Rajshahi,10:25,,,156
+780,Dhalarchar Express,1,Rajshahi,Rajshahi,,17:20,,0
+780,Dhalarchar Express,2,Sardah Road,Rajshahi,17:37,17:39,,16
+780,Dhalarchar Express,3,Arani,Rajshahi,17:55,17:57,,30
+780,Dhalarchar Express,4,Abdulpur,Natore,18:09,18:11,,41
+780,Dhalarchar Express,5,Azimnagar,Natore,18:19,18:21,,48
+780,Dhalarchar Express,6,Ishwardi Bypass,Natore,18:30,18:32,,55
+780,Dhalarchar Express,7,Majhgram,Natore,18:38,18:40,,59
+780,Dhalarchar Express,8,Dashuria,Pabna,18:52,18:54,,67
+780,Dhalarchar Express,9,Tekani,Pabna,19:08,19:10,,95
+780,Dhalarchar Express,10,Pabna,Pabna,19:23,19:25,,103
+780,Dhalarchar Express,11,Raghobpur,Pabna,19:35,19:38,,109
+780,Dhalarchar Express,12,Balia,Pabna,19:49,19:51,,116
+780,Dhalarchar Express,13,Tantibandha,Pabna,19:58,20:00,,120
+780,Dhalarchar Express,14,Sathia Rajapur,Pabna,20:12,20:14,,128
+780,Dhalarchar Express,15,Kashinathpur,Pabna,20:30,20:32,,138
+780,Dhalarchar Express,16,Bhedarganj,Shariatpur,20:48,20:50,,149
+780,Dhalarchar Express,17,Dhalarchar,Pabna,21:15,,,156
 781,Kishoreganj Express,1,Dhaka,Dhaka,,10:30,0,0
 781,Kishoreganj Express,2,Dhaka Airport,Dhaka,10:52,10:57,0,17
 781,Kishoreganj Express,3,Narsingdi,Narsingdi,11:36,11:39,0,56
@@ -1115,46 +1115,46 @@
 782,Kishoreganj Express,8,Narsingdi,Narsingdi,18:27,18:30,0,80
 782,Kishoreganj Express,9,Dhaka Airport,Dhaka,19:20,19:23,0,119
 782,Kishoreganj Express,10,Dhaka,Dhaka,20:00,,0,136
-783,Tungipara Express,1,Gobra,,,6:20,,0
-783,Tungipara Express,2,Khatra,,6:30,6:41,,6
-783,Tungipara Express,3,Gopalganj,,6:39,6:53,,12
-783,Tungipara Express,4,Chandradighalia,,6:50,7:07,,20
-783,Tungipara Express,5,Chhatbaria,,7:05,7:20,,28
-783,Tungipara Express,6,Chapta,,7:18,7:34,,36
-783,Tungipara Express,7,Kashiani,,7:32,7:47,,43
-783,Tungipara Express,8,Boalmari,,7:44,8:11,,64
-783,Tungipara Express,9,Mokhali,,8:09,8:32,,83
-783,Tungipara Express,10,Naliagram,,8:30,8:43,,89
-783,Tungipara Express,11,Bahar Pur,,8:41,8:57,,101
-783,Tungipara Express,12,Kalkhali,,8:55,9:12,,114
-783,Tungipara Express,13,Pangsha,,9:10,9:23,,122
-783,Tungipara Express,14,Khaksha,,9:21,9:38,,134
-783,Tungipara Express,15,Markhali,,9:36,9:49,,142
-783,Tungipara Express,16,Khiyarkot,,9:47,10:09,,155
-783,Tungipara Express,17,Poradah,,10:06,11:00,,167
-783,Tungipara Express,18,Bheramara,,10:30,11:20,,186
-783,Tungipara Express,19,Ishwardi,,11:17,12:00,,202
-783,Tungipara Express,20,Rajshahi,,11:40,,,261
-784,Tungipara Express,1,Rajshahi,,,15:30,,0
-784,Tungipara Express,2,Ishwardi,,16:30,16:40,,59
-784,Tungipara Express,3,Bheramara,,17:00,17:03,,75
-784,Tungipara Express,4,Poradah,,17:20,17:45,,94
-784,Tungipara Express,5,Khiyarkot,,17:57,18:00,,106
-784,Tungipara Express,6,Markhali,,18:18,18:20,,119
-784,Tungipara Express,7,Khaksha,,18:30,18:32,,127
-784,Tungipara Express,8,Pangsha,,18:58,19:00,,139
-784,Tungipara Express,9,Kalkhali,,19:10,19:12,,147
-784,Tungipara Express,10,Bahar Pur,,19:26,19:28,,160
-784,Tungipara Express,11,Naliagram,,19:40,19:42,,172
-784,Tungipara Express,12,Mokhali,,19:51,19:54,,178
-784,Tungipara Express,13,Boalmari,,20:14,20:16,,197
-784,Tungipara Express,14,Kashiani,,20:40,20:43,,218
-784,Tungipara Express,15,Chapta,,20:52,20:54,,225
-784,Tungipara Express,16,Chhatbaria,,21:06,21:08,,233
-784,Tungipara Express,17,Chandradighalia,,21:19,21:21,,241
-784,Tungipara Express,18,Gopalganj,,21:33,21:38,,249
-784,Tungipara Express,19,Khatra,,22:49,21:51,,255
-784,Tungipara Express,20,Gobra,,22:10,,,261
+783,Tungipara Express,1,Gobra,Gopalganj,,6:20,,0
+783,Tungipara Express,2,Khatra,Gopalganj,6:30,6:41,,6
+783,Tungipara Express,3,Gopalganj,Gopalganj,6:39,6:53,,12
+783,Tungipara Express,4,Chandradighalia,Gopalganj,6:50,7:07,,20
+783,Tungipara Express,5,Chhatbaria,Gopalganj,7:05,7:20,,28
+783,Tungipara Express,6,Chapta,Gopalganj,7:18,7:34,,36
+783,Tungipara Express,7,Kashiani,Gopalganj,7:32,7:47,,43
+783,Tungipara Express,8,Boalmari,Faridpur,7:44,8:11,,64
+783,Tungipara Express,9,Mokhali,Faridpur,8:09,8:32,,83
+783,Tungipara Express,10,Naliagram,Rajbari,8:30,8:43,,89
+783,Tungipara Express,11,Bahar Pur,Rajbari,8:41,8:57,,101
+783,Tungipara Express,12,Kalkhali,Rajbari,8:55,9:12,,114
+783,Tungipara Express,13,Pangsha,Rajbari,9:10,9:23,,122
+783,Tungipara Express,14,Khaksha,Kushtia,9:21,9:38,,134
+783,Tungipara Express,15,Markhali,Kushtia,9:36,9:49,,142
+783,Tungipara Express,16,Khiyarkot,Kushtia,9:47,10:09,,155
+783,Tungipara Express,17,Poradah,Kushtia,10:06,11:00,,167
+783,Tungipara Express,18,Bheramara,Kushtia,10:30,11:20,,186
+783,Tungipara Express,19,Ishwardi,Pabna,11:17,12:00,,202
+783,Tungipara Express,20,Rajshahi,Rajshahi,11:40,,,261
+784,Tungipara Express,1,Rajshahi,Rajshahi,,15:30,,0
+784,Tungipara Express,2,Ishwardi,Pabna,16:30,16:40,,59
+784,Tungipara Express,3,Bheramara,Kushtia,17:00,17:03,,75
+784,Tungipara Express,4,Poradah,Kushtia,17:20,17:45,,94
+784,Tungipara Express,5,Khiyarkot,Kushtia,17:57,18:00,,106
+784,Tungipara Express,6,Markhali,Kushtia,18:18,18:20,,119
+784,Tungipara Express,7,Khaksha,Kushtia,18:30,18:32,,127
+784,Tungipara Express,8,Pangsha,Rajbari,18:58,19:00,,139
+784,Tungipara Express,9,Kalkhali,Rajbari,19:10,19:12,,147
+784,Tungipara Express,10,Bahar Pur,Rajbari,19:26,19:28,,160
+784,Tungipara Express,11,Naliagram,Rajbari,19:40,19:42,,172
+784,Tungipara Express,12,Mokhali,Faridpur,19:51,19:54,,178
+784,Tungipara Express,13,Boalmari,Faridpur,20:14,20:16,,197
+784,Tungipara Express,14,Kashiani,Gopalganj,20:40,20:43,,218
+784,Tungipara Express,15,Chapta,Gopalganj,20:52,20:54,,225
+784,Tungipara Express,16,Chhatbaria,Gopalganj,21:06,21:08,,233
+784,Tungipara Express,17,Chandradighalia,Gopalganj,21:19,21:21,,241
+784,Tungipara Express,18,Gopalganj,Gopalganj,21:33,21:38,,249
+784,Tungipara Express,19,Khatra,Gopalganj,22:49,21:51,,255
+784,Tungipara Express,20,Gobra,Gopalganj,22:10,,,261
 785,Bijoy Express,1,Chattogram,Chattogram,,9:15,0,0
 785,Bijoy Express,2,Feni,Feni,10:39,10:41,0,89
 785,Bijoy Express,3,Laksam,Cumilla,11:18,11:23,0,129
@@ -1163,7 +1163,7 @@
 785,Bijoy Express,6,Bhairab,Kishoreganj,13:12,13:25,0,233
 785,Bijoy Express,7,Sararchar,Kishoreganj,13:42,14:00,0,256
 785,Bijoy Express,8,Kishoreganj,Kishoreganj,14:28,14:33,0,282
-785,Bijoy Express,9,Atharabari,Kishoreganj,15:02,15:07,0,308
+785,Bijoy Express,9,Atharabari,Mymensingh,15:02,15:07,0,308
 785,Bijoy Express,10,Gouripur Myna,Mymensingh,15:23,15:25,0,331
 785,Bijoy Express,11,Mymensingh,Mymensingh,16:23,16:28,0,349
 785,Bijoy Express,12,Piyarpur,Mymensingh,17:04,17:06,0,375
@@ -1172,7 +1172,7 @@
 786,Bijoy Express,2,Piyarpur,Mymensingh,20:30,20:32,0,28
 786,Bijoy Express,3,Mymensingh,Mymensingh,21:05,21:35,0,54
 786,Bijoy Express,4,Gouripur Myna,Mymensingh,22:00,22:23,0,72
-786,Bijoy Express,5,Atharabari,Kishoreganj,22:47,22:49,0,95
+786,Bijoy Express,5,Atharabari,Mymensingh,22:47,22:49,0,95
 786,Bijoy Express,6,Kishoreganj,Kishoreganj,23:21,23:26,0,121
 786,Bijoy Express,7,Sararchar,Kishoreganj,23:59,0:01,1,147
 786,Bijoy Express,8,Bhairab,Kishoreganj,0:30,0:35,1,170
@@ -1207,84 +1207,84 @@
 790,Mohanganj Express,8,Gafargaon,Mymensingh,2:18,2:21,1,104
 790,Mohanganj Express,9,Dhaka Airport,Dhaka,4:14,4:17,1,171
 790,Mohanganj Express,10,Dhaka,Dhaka,4:45,,1,188
-791,Banalata Express,1,Dhaka,,,13:30,,0
-791,Banalata Express,2,Dhaka Airport,,13:53,13:58,,17
-791,Banalata Express,3,Rajshahi,,17:45,18:05,,269
-791,Banalata Express,4,Chapainawabganj,,19:15,,,317
-792,Banalata Express,1,Chapainawabganj,,,6:00,,0
-792,Banalata Express,2,Rajshahi,,6:50,7:00,,48
-792,Banalata Express,3,Dhaka Airport,,11:06,11:09,,300
-792,Banalata Express,4,Dhaka,,11:35,,,317
-793,Panchagarh Express,1,Dhaka,,,23:30,,0
-793,Panchagarh Express,2,Dhaka Airport,,23:53,23:58,,17
-793,Panchagarh Express,3,Natore,,3:27,3:30,,239
-793,Panchagarh Express,4,Santahar,,4:25,4:30,,282
-793,Panchagarh Express,5,Joypurhat,,5:01,5:04,,314
-793,Panchagarh Express,6,Parbatipur,,6:05,6:25,,374
-793,Panchagarh Express,7,Dinajpur,,6:58,7:03,,407
-793,Panchagarh Express,8,Pirganj,,8:05,8:08,,451
-793,Panchagarh Express,9,Thakurgaon Road,,8:33,8:36,,472
-793,Panchagarh Express,10,Panchagarh,,9:50,,,510
-794,Panchagarh Express,1,Panchagarh,,,12:10,,0
-794,Panchagarh Express,2,Thakurgaon Road,,12:50,12:55,,38
-794,Panchagarh Express,3,Pirganj,,13:20,13:23,,59
-794,Panchagarh Express,4,Dinajpur,,14:12,14:20,,103
-794,Panchagarh Express,5,Parbatipur,,15:00,15:20,,136
-794,Panchagarh Express,6,Joypurhat,,16:13,16:16,,196
-794,Panchagarh Express,7,Santahar,,16:50,16:55,,228
-794,Panchagarh Express,8,Natore,,17:36,17:39,,271
-794,Panchagarh Express,9,Dhaka Airport,,21:37,21:40,,493
-794,Panchagarh Express,10,Dhaka,,22:10,,,510
-795,Benapole Express,1,Benapole,,,12:25,,0
-795,Benapole Express,2,Jhikargachha,,12:55,12:57,,22
-795,Benapole Express,3,Jashore,,13:20,13:40,,35
-795,Benapole Express,4,Mobarakganj,,14:19,14:21,,65
-795,Benapole Express,5,Kotchandpur,,14:33,14:35,,77
-795,Benapole Express,6,Darshana Halt,,14:59,15:02,,103
-795,Benapole Express,7,Chuadanga,,15:26,15:29,,118
-795,Benapole Express,8,Poradah,,15:57,16:00,,149
-795,Benapole Express,9,Kushtia Court,,16:12,16:15,,160
-795,Benapole Express,10,Khoksha,,16:49,16:51,,181
-795,Benapole Express,11,Rajbari,,17:30,17:50,,218
-795,Benapole Express,12,Faridpur,,18:22,18:25,,251
-795,Benapole Express,13,Bhanga,,18:56,18:58,,282
-795,Benapole Express,14,Dhaka,,20:30,,,365
-796,Benapole Express,1,Dhaka,,,23:30,,0
-796,Benapole Express,2,Bhanga,,0:40,0:42,,83
-796,Benapole Express,3,Faridpur,,1:13,1:16,,114
-796,Benapole Express,4,Rajbari,,1:50,2:00,,147
-796,Benapole Express,5,Khoksha,,2:36,2:38,,184
-796,Benapole Express,6,Kushtia Court,,3:01,3:04,,205
-796,Benapole Express,7,Poradah,,3:20,3:23,,216
-796,Benapole Express,8,Chuadanga,,3:52,3:55,,247
-796,Benapole Express,9,Darshana Halt,,4:16,4:19,,262
-796,Benapole Express,10,Kotchandpur,,4:44,4:46,,288
-796,Benapole Express,11,Mobarakganj,,4:58,5:00,,300
-796,Benapole Express,12,Jashore,,5:35,6:00,,330
-796,Benapole Express,13,Jhikargachha,,6:19,9:21,,343
-796,Benapole Express,14,Benapole,,7:00,,,365
-797,Kurigram Express,1,Dhaka,,,20:00,,0
-797,Kurigram Express,2,Dhaka Airport,,20:23,20:28,,17
-797,Kurigram Express,3,Natore,,0:15,0:17,,239
-797,Kurigram Express,4,Madhnagar,,0:31,0:33,,253
-797,Kurigram Express,5,Santahar,,1:05,1:10,,282
-797,Kurigram Express,6,Joypurhat,,1:55,1:58,,314
-797,Kurigram Express,7,Parbatipur,,3:00,3:10,,374
-797,Kurigram Express,8,Badarganj,,3:29,3:31,,390
-797,Kurigram Express,9,Rangpur,,3:58,4:03,,413
-797,Kurigram Express,10,Kaunia,,4:25,4:28,,431
-797,Kurigram Express,11,Kurigram,,5:10,,,455
-798,Kurigram Express,1,Kurigram,,,7:10,,0
-798,Kurigram Express,2,Kaunia,,7:50,7:53,,24
-798,Kurigram Express,3,Rangpur,,8:13,8:23,,42
-798,Kurigram Express,4,Badarganj,,8:51,8:54,,65
-798,Kurigram Express,5,Parbatipur,,9:25,9:45,,81
-798,Kurigram Express,6,Joypurhat,,10:42,10:45,,141
-798,Kurigram Express,7,Santahar,,11:20,11:30,,173
-798,Kurigram Express,8,Madhnagar,,12:02,12:04,,202
-798,Kurigram Express,9,Natore,,12:19,12:22,,216
-798,Kurigram Express,10,Dhaka Airport,,16:32,16:35,,438
-798,Kurigram Express,11,Dhaka,,17:05,,,455
+791,Banalata Express,1,Dhaka,Dhaka,,13:30,,0
+791,Banalata Express,2,Dhaka Airport,Dhaka,13:53,13:58,,17
+791,Banalata Express,3,Rajshahi,Rajshahi,17:45,18:05,,269
+791,Banalata Express,4,Chapainawabganj,Chapainawabganj,19:15,,,317
+792,Banalata Express,1,Chapainawabganj,Chapainawabganj,,6:00,,0
+792,Banalata Express,2,Rajshahi,Rajshahi,6:50,7:00,,48
+792,Banalata Express,3,Dhaka Airport,Dhaka,11:06,11:09,,300
+792,Banalata Express,4,Dhaka,Dhaka,11:35,,,317
+793,Panchagarh Express,1,Dhaka,Dhaka,,23:30,,0
+793,Panchagarh Express,2,Dhaka Airport,Dhaka,23:53,23:58,,17
+793,Panchagarh Express,3,Natore,Natore,3:27,3:30,,239
+793,Panchagarh Express,4,Santahar,Bogura,4:25,4:30,,282
+793,Panchagarh Express,5,Joypurhat,Joypurhat,5:01,5:04,,314
+793,Panchagarh Express,6,Parbatipur,Dinajpur,6:05,6:25,,374
+793,Panchagarh Express,7,Dinajpur,Dinajpur,6:58,7:03,,407
+793,Panchagarh Express,8,Pirganj,Thakurgaon,8:05,8:08,,451
+793,Panchagarh Express,9,Thakurgaon Road,Thakurgaon,8:33,8:36,,472
+793,Panchagarh Express,10,Panchagarh,Panchagarh,9:50,,,510
+794,Panchagarh Express,1,Panchagarh,Panchagarh,,12:10,,0
+794,Panchagarh Express,2,Thakurgaon Road,Thakurgaon,12:50,12:55,,38
+794,Panchagarh Express,3,Pirganj,Thakurgaon,13:20,13:23,,59
+794,Panchagarh Express,4,Dinajpur,Dinajpur,14:12,14:20,,103
+794,Panchagarh Express,5,Parbatipur,Dinajpur,15:00,15:20,,136
+794,Panchagarh Express,6,Joypurhat,Joypurhat,16:13,16:16,,196
+794,Panchagarh Express,7,Santahar,Bogura,16:50,16:55,,228
+794,Panchagarh Express,8,Natore,Natore,17:36,17:39,,271
+794,Panchagarh Express,9,Dhaka Airport,Dhaka,21:37,21:40,,493
+794,Panchagarh Express,10,Dhaka,Dhaka,22:10,,,510
+795,Benapole Express,1,Benapole,Jashore,,12:25,,0
+795,Benapole Express,2,Jhikargachha,Jashore,12:55,12:57,,22
+795,Benapole Express,3,Jashore,Jashore,13:20,13:40,,35
+795,Benapole Express,4,Mobarakganj,Jhenaidah,14:19,14:21,,65
+795,Benapole Express,5,Kotchandpur,Jhenaidah,14:33,14:35,,77
+795,Benapole Express,6,Darshana Halt,Chuadanga,14:59,15:02,,103
+795,Benapole Express,7,Chuadanga,Chuadanga,15:26,15:29,,118
+795,Benapole Express,8,Poradah,Kushtia,15:57,16:00,,149
+795,Benapole Express,9,Kushtia Court,Kushtia,16:12,16:15,,160
+795,Benapole Express,10,Khoksha,Kushtia,16:49,16:51,,181
+795,Benapole Express,11,Rajbari,Rajbari,17:30,17:50,,218
+795,Benapole Express,12,Faridpur,Faridpur,18:22,18:25,,251
+795,Benapole Express,13,Bhanga,Faridpur,18:56,18:58,,282
+795,Benapole Express,14,Dhaka,Dhaka,20:30,,,365
+796,Benapole Express,1,Dhaka,Dhaka,,23:30,,0
+796,Benapole Express,2,Bhanga,Faridpur,0:40,0:42,,83
+796,Benapole Express,3,Faridpur,Faridpur,1:13,1:16,,114
+796,Benapole Express,4,Rajbari,Rajbari,1:50,2:00,,147
+796,Benapole Express,5,Khoksha,Kushtia,2:36,2:38,,184
+796,Benapole Express,6,Kushtia Court,Kushtia,3:01,3:04,,205
+796,Benapole Express,7,Poradah,Kushtia,3:20,3:23,,216
+796,Benapole Express,8,Chuadanga,Chuadanga,3:52,3:55,,247
+796,Benapole Express,9,Darshana Halt,Chuadanga,4:16,4:19,,262
+796,Benapole Express,10,Kotchandpur,Jhenaidah,4:44,4:46,,288
+796,Benapole Express,11,Mobarakganj,Jhenaidah,4:58,5:00,,300
+796,Benapole Express,12,Jashore,Jashore,5:35,6:00,,330
+796,Benapole Express,13,Jhikargachha,Jashore,6:19,9:21,,343
+796,Benapole Express,14,Benapole,Jashore,7:00,,,365
+797,Kurigram Express,1,Dhaka,Dhaka,,20:00,,0
+797,Kurigram Express,2,Dhaka Airport,Dhaka,20:23,20:28,,17
+797,Kurigram Express,3,Natore,Natore,0:15,0:17,,239
+797,Kurigram Express,4,Madhnagar,Natore,0:31,0:33,,253
+797,Kurigram Express,5,Santahar,Bogura,1:05,1:10,,282
+797,Kurigram Express,6,Joypurhat,Joypurhat,1:55,1:58,,314
+797,Kurigram Express,7,Parbatipur,Dinajpur,3:00,3:10,,374
+797,Kurigram Express,8,Badarganj,Rangpur,3:29,3:31,,390
+797,Kurigram Express,9,Rangpur,Rangpur,3:58,4:03,,413
+797,Kurigram Express,10,Kaunia,Rangpur,4:25,4:28,,431
+797,Kurigram Express,11,Kurigram,Kurigram,5:10,,,455
+798,Kurigram Express,1,Kurigram,Kurigram,,7:10,,0
+798,Kurigram Express,2,Kaunia,Rangpur,7:50,7:53,,24
+798,Kurigram Express,3,Rangpur,Rangpur,8:13,8:23,,42
+798,Kurigram Express,4,Badarganj,Rangpur,8:51,8:54,,65
+798,Kurigram Express,5,Parbatipur,Dinajpur,9:25,9:45,,81
+798,Kurigram Express,6,Joypurhat,Joypurhat,10:42,10:45,,141
+798,Kurigram Express,7,Santahar,Bogura,11:20,11:30,,173
+798,Kurigram Express,8,Madhnagar,Natore,12:02,12:04,,202
+798,Kurigram Express,9,Natore,Natore,12:19,12:22,,216
+798,Kurigram Express,10,Dhaka Airport,Dhaka,16:32,16:35,,438
+798,Kurigram Express,11,Dhaka,Dhaka,17:05,,,455
 799,Jamalpur Express,1,Dhaka,Dhaka,,10:00,0,0
 799,Jamalpur Express,2,Dhaka Airport,Dhaka,10:22,10:27,0,17
 799,Jamalpur Express,3,Joydebpur,Gazipur,10:53,10:56,0,33
@@ -1325,129 +1325,129 @@
 802,Chattala Express,11,Feni,Feni,18:53,18:55,0,231
 802,Chattala Express,12,Kumira,Chattogram,19:56,19:58,0,297
 802,Chattala Express,13,Chattogram,Chattogram,20:30,,0,320
-803,Banglabandha Express,1,Rajshahi,,,21:00,,0
-803,Banglabandha Express,2,Abdulpur,,21:40,22:00,,45
-803,Banglabandha Express,3,Natore,,22:17,22:20,,62
-803,Banglabandha Express,4,Madhnagar,,22:46,22:48,,75
-803,Banglabandha Express,5,Ahsanganj,,22:57,22:59,,84
-803,Banglabandha Express,6,Santahar,,23:21,23:25,,106
-803,Banglabandha Express,7,Akkelpur,,23:45,23:47,,123
-803,Banglabandha Express,8,Joypurhat,,0:02,0:04,,138
-803,Banglabandha Express,9,Panchbibi,,0:15,0:17,,148
-803,Banglabandha Express,10,Birampur,,0:37,0:40,,171
-803,Banglabandha Express,11,Fulbari,,0:58,1:01,,182
-803,Banglabandha Express,12,Parbatipur,,1:30,1:50,,200
-803,Banglabandha Express,13,Chirirbandar,,2:05,2:07,,215
-803,Banglabandha Express,14,Dinajpur,,2:25,2:30,,230
-803,Banglabandha Express,15,Setabganj,,3:01,3:03,,259
-803,Banglabandha Express,16,Pirganj,,3:17,3:19,,272
-803,Banglabandha Express,17,Shibganj,,3:34,3:36,,289
-803,Banglabandha Express,18,Thakurgaon Road,,3:43,3:47,,294
-803,Banglabandha Express,19,Ruhia,,4:02,4:04,,310
-803,Banglabandha Express,20,Kismat,,4:15,4:17,,317
-803,Banglabandha Express,21,Panchagarh,,4:40,,,332
-804,Banglabandha Express,1,Panchagarh,,,9:00,,0
-804,Banglabandha Express,2,Kismat,,9:18,9:20,,15
-804,Banglabandha Express,3,Ruhia,,9:29,9:31,,22
-804,Banglabandha Express,4,Thakurgaon Road,,9:47,9:50,,38
-804,Banglabandha Express,5,Shibganj,,9:57,9:59,,43
-804,Banglabandha Express,6,Pirganj,,10:15,10:17,,60
-804,Banglabandha Express,7,Setabganj,,10:34,10:36,,73
-804,Banglabandha Express,8,Dinajpur,,11:07,11:15,,102
-804,Banglabandha Express,9,Chirirbandar,,11:34,11:36,,117
-804,Banglabandha Express,10,Parbatipur,,12:00,12:20,,132
-804,Banglabandha Express,11,Fulbari,,12:38,12:41,,150
-804,Banglabandha Express,12,Birampur,,12:52,12:55,,161
-804,Banglabandha Express,13,Panchbibi,,13:30,13:32,,184
-804,Banglabandha Express,14,Joypurhat,,13:43,13:46,,194
-804,Banglabandha Express,15,Akkelpur,,14:12,14:14,,209
-804,Banglabandha Express,16,Santahar,,14:40,14:45,,226
-804,Banglabandha Express,17,Ahsanganj,,15:07,15:09,,248
-804,Banglabandha Express,18,Madhnagar,,15:18,15:20,,257
-804,Banglabandha Express,19,Natore,,15:35,15:37,,270
-804,Banglabandha Express,20,Abdulpur,,15:55,16:15,,287
-804,Banglabandha Express,21,Rajshahi,,17:15,,,332
-805,Chilahati (Express),1,Dhaka,,,17:00,,0
-805,Chilahati (Express),2,Dhaka Airport,,17:23,17:28,,17
-805,Chilahati (Express),3,Joydebpur,,17:51,17:54,,33
-805,Chilahati (Express),4,Ishwardi Bypass,,20:55,20:57,,204
-805,Chilahati (Express),5,Natore,,21:27,21:30,,241
-805,Chilahati (Express),6,Santahar,,22:30,22:35,,285
-805,Chilahati (Express),7,Joypurhat,,23:19,23:22,,317
-805,Chilahati (Express),8,Birampur,,23:51,23:53,,350
-805,Chilahati (Express),9,Fulbari,,0:04,0:06,,361
-805,Chilahati (Express),10,Parbatipur,,0:40,1:00,,379
-805,Chilahati (Express),11,Saidpur,,1:17,1:22,,393
-805,Chilahati (Express),12,Nilphamari,,1:41,1:44,,412
-805,Chilahati (Express),13,Damar,,2:00,2:03,,428
-805,Chilahati (Express),14,Chilahati,,2:45,,,444
-806,Chilahati (Express),1,Chilahati,,,6:00,,0
-806,Chilahati (Express),2,Damar,,6:18,6:21,,16
-806,Chilahati (Express),3,Nilphamari,,6:37,6:40,,32
-806,Chilahati (Express),4,Saidpur,,6:59,7:04,,51
-806,Chilahati (Express),5,Parbatipur,,7:20,7:30,,65
-806,Chilahati (Express),6,Fulbari,,7:48,7:50,,83
-806,Chilahati (Express),7,Birampur,,8:01,8:03,,94
-806,Chilahati (Express),8,Joypurhat,,8:32,8:35,,127
-806,Chilahati (Express),9,Santahar,,9:15,9:20,,159
-806,Chilahati (Express),10,Natore,,10:01,10:04,,203
-806,Chilahati (Express),11,Ishwardi Bypass,,10:34,10:36,,240
-806,Chilahati (Express),12,Joydebpur,,13:52,13:55,,411
-806,Chilahati (Express),13,Dhaka Airport,,14:22,14:25,,427
-806,Chilahati (Express),14,Dhaka,,14:55,,,444
-807,Express (name not legible in source),1,Dhaka,,,15:25,,0
-807,Express (name not legible in source),2,Dhaka Airport,,,15:53,,17
-807,Express (name not legible in source),3,Joydebpur,,15:48,17:20,,33
-807,Express (name not legible in source),4,Tangail,,17:17,17:58,,96
-807,Express (name not legible in source),5,Shaheed M. Monsur Ali,,17:55,18:29,,132
-807,Express (name not legible in source),6,Ullapara,,18:26,19:02,,151
-807,Express (name not legible in source),7,Baral Bridge,,18:59,19:20,,170
-807,Express (name not legible in source),8,Chatmohar,,19:16,20:05,,189
-807,Express (name not legible in source),9,Majhgram,,19:40,20:18,,217
-807,Express (name not legible in source),10,Dashuria,,20:16,20:32,,224
-807,Express (name not legible in source),11,Tebunia,,20:30,,,252
-807,Express (name not legible in source),12,Pabna,,21:00,,,261
-808,Express (name not legible in source),1,Pabna,,,8:25,,0
-808,Express (name not legible in source),2,Tebunia,,,8:40,,9
-808,Express (name not legible in source),3,Dashuria,,8:38,8:55,,37
-808,Express (name not legible in source),4,Majhgram,,8:53,9:25,,44
-808,Express (name not legible in source),5,Chatmohar,,9:05,9:45,,72
-808,Express (name not legible in source),6,Baral Bridge,,9:41,10:08,,91
-808,Express (name not legible in source),7,Ullapara,,10:05,10:33,,110
-808,Express (name not legible in source),8,Shaheed M. Monsur Ali,,10:27,10:53,,129
-808,Express (name not legible in source),9,Tangail,,10:50,12:04,,165
-808,Express (name not legible in source),10,Joydebpur,,11:54,13:38,,228
-808,Express (name not legible in source),11,Dhaka Airport,,13:35,,,244
-808,Express (name not legible in source),12,Dhaka,,14:10,,,261
-809,Burimari Express,1,Dhaka,,,8:30,,0
-809,Burimari Express,2,Dhaka Airport,,8:53,8:58,,17
-809,Burimari Express,3,Ishwardi Bypass,,12:30,12:32,,208
-809,Burimari Express,4,Natore,,13:02,13:05,,239
-809,Burimari Express,5,Santahar,,14:15,14:20,,282
-809,Burimari Express,6,Bogura,,15:00,15:05,,323
-809,Burimari Express,7,Mahimaganj,,15:46,15:48,,358
-809,Burimari Express,8,Banarpara,,15:58,16:03,,366
-809,Burimari Express,9,Gaibandha,,16:28,16:33,,385
-809,Burimari Express,10,Kaunia,,17:43,17:46,,436
-809,Burimari Express,11,Lalmonirhat,,18:10,18:30,,451
-809,Burimari Express,12,Kakina,,18:55,18:57,,475
-809,Burimari Express,13,Hatibandha,,19:24,19:26,,499
-809,Burimari Express,14,Patgram,,20:00,20:03,,526
-809,Burimari Express,15,Burimari,,20:20,,,537
-810,Burimari Express,1,Burimari,,,21:20,,0
-810,Burimari Express,2,Patgram,,21:35,21:38,,11
-810,Burimari Express,3,Hatibandha,,22:11,22:13,,38
-810,Burimari Express,4,Kakina,,22:43,22:45,,62
-810,Burimari Express,5,Lalmonirhat,,23:10,23:20,,86
-810,Burimari Express,6,Kaunia,,23:43,23:46,,101
-810,Burimari Express,7,Gaibandha,,0:52,0:55,,152
-810,Burimari Express,8,Banarpara,,1:17,1:20,,171
-810,Burimari Express,9,Mahimaganj,,1:30,1:32,,179
-810,Burimari Express,10,Bogura,,2:13,2:16,,214
-810,Burimari Express,11,Santahar,,3:00,3:05,,255
-810,Burimari Express,12,Natore,,4:01,4:04,,298
-810,Burimari Express,13,Dhaka Airport,,8:10,8:13,,520
-810,Burimari Express,14,Dhaka,,8:50,,,537
+803,Banglabandha Express,1,Rajshahi,Rajshahi,,21:00,,0
+803,Banglabandha Express,2,Abdulpur,Natore,21:40,22:00,,45
+803,Banglabandha Express,3,Natore,Natore,22:17,22:20,,62
+803,Banglabandha Express,4,Madhnagar,Natore,22:46,22:48,,75
+803,Banglabandha Express,5,Ahsanganj,Naogaon,22:57,22:59,,84
+803,Banglabandha Express,6,Santahar,Bogura,23:21,23:25,,106
+803,Banglabandha Express,7,Akkelpur,Joypurhat,23:45,23:47,,123
+803,Banglabandha Express,8,Joypurhat,Joypurhat,0:02,0:04,,138
+803,Banglabandha Express,9,Panchbibi,Joypurhat,0:15,0:17,,148
+803,Banglabandha Express,10,Birampur,Dinajpur,0:37,0:40,,171
+803,Banglabandha Express,11,Fulbari,Dinajpur,0:58,1:01,,182
+803,Banglabandha Express,12,Parbatipur,Dinajpur,1:30,1:50,,200
+803,Banglabandha Express,13,Chirirbandar,Dinajpur,2:05,2:07,,215
+803,Banglabandha Express,14,Dinajpur,Dinajpur,2:25,2:30,,230
+803,Banglabandha Express,15,Setabganj,Dinajpur,3:01,3:03,,259
+803,Banglabandha Express,16,Pirganj,Thakurgaon,3:17,3:19,,272
+803,Banglabandha Express,17,Shibganj,Thakurgaon,3:34,3:36,,289
+803,Banglabandha Express,18,Thakurgaon Road,Thakurgaon,3:43,3:47,,294
+803,Banglabandha Express,19,Ruhia,Thakurgaon,4:02,4:04,,310
+803,Banglabandha Express,20,Kismat,Panchagarh,4:15,4:17,,317
+803,Banglabandha Express,21,Panchagarh,Panchagarh,4:40,,,332
+804,Banglabandha Express,1,Panchagarh,Panchagarh,,9:00,,0
+804,Banglabandha Express,2,Kismat,Panchagarh,9:18,9:20,,15
+804,Banglabandha Express,3,Ruhia,Thakurgaon,9:29,9:31,,22
+804,Banglabandha Express,4,Thakurgaon Road,Thakurgaon,9:47,9:50,,38
+804,Banglabandha Express,5,Shibganj,Thakurgaon,9:57,9:59,,43
+804,Banglabandha Express,6,Pirganj,Thakurgaon,10:15,10:17,,60
+804,Banglabandha Express,7,Setabganj,Dinajpur,10:34,10:36,,73
+804,Banglabandha Express,8,Dinajpur,Dinajpur,11:07,11:15,,102
+804,Banglabandha Express,9,Chirirbandar,Dinajpur,11:34,11:36,,117
+804,Banglabandha Express,10,Parbatipur,Dinajpur,12:00,12:20,,132
+804,Banglabandha Express,11,Fulbari,Dinajpur,12:38,12:41,,150
+804,Banglabandha Express,12,Birampur,Dinajpur,12:52,12:55,,161
+804,Banglabandha Express,13,Panchbibi,Joypurhat,13:30,13:32,,184
+804,Banglabandha Express,14,Joypurhat,Joypurhat,13:43,13:46,,194
+804,Banglabandha Express,15,Akkelpur,Joypurhat,14:12,14:14,,209
+804,Banglabandha Express,16,Santahar,Bogura,14:40,14:45,,226
+804,Banglabandha Express,17,Ahsanganj,Naogaon,15:07,15:09,,248
+804,Banglabandha Express,18,Madhnagar,Natore,15:18,15:20,,257
+804,Banglabandha Express,19,Natore,Natore,15:35,15:37,,270
+804,Banglabandha Express,20,Abdulpur,Natore,15:55,16:15,,287
+804,Banglabandha Express,21,Rajshahi,Rajshahi,17:15,,,332
+805,Chilahati (Express),1,Dhaka,Dhaka,,17:00,,0
+805,Chilahati (Express),2,Dhaka Airport,Dhaka,17:23,17:28,,17
+805,Chilahati (Express),3,Joydebpur,Gazipur,17:51,17:54,,33
+805,Chilahati (Express),4,Ishwardi Bypass,Natore,20:55,20:57,,204
+805,Chilahati (Express),5,Natore,Natore,21:27,21:30,,241
+805,Chilahati (Express),6,Santahar,Bogura,22:30,22:35,,285
+805,Chilahati (Express),7,Joypurhat,Joypurhat,23:19,23:22,,317
+805,Chilahati (Express),8,Birampur,Dinajpur,23:51,23:53,,350
+805,Chilahati (Express),9,Fulbari,Dinajpur,0:04,0:06,,361
+805,Chilahati (Express),10,Parbatipur,Dinajpur,0:40,1:00,,379
+805,Chilahati (Express),11,Saidpur,Nilphamari,1:17,1:22,,393
+805,Chilahati (Express),12,Nilphamari,Nilphamari,1:41,1:44,,412
+805,Chilahati (Express),13,Damar,Nilphamari,2:00,2:03,,428
+805,Chilahati (Express),14,Chilahati,Nilphamari,2:45,,,444
+806,Chilahati (Express),1,Chilahati,Nilphamari,,6:00,,0
+806,Chilahati (Express),2,Damar,Nilphamari,6:18,6:21,,16
+806,Chilahati (Express),3,Nilphamari,Nilphamari,6:37,6:40,,32
+806,Chilahati (Express),4,Saidpur,Nilphamari,6:59,7:04,,51
+806,Chilahati (Express),5,Parbatipur,Dinajpur,7:20,7:30,,65
+806,Chilahati (Express),6,Fulbari,Dinajpur,7:48,7:50,,83
+806,Chilahati (Express),7,Birampur,Dinajpur,8:01,8:03,,94
+806,Chilahati (Express),8,Joypurhat,Joypurhat,8:32,8:35,,127
+806,Chilahati (Express),9,Santahar,Bogura,9:15,9:20,,159
+806,Chilahati (Express),10,Natore,Natore,10:01,10:04,,203
+806,Chilahati (Express),11,Ishwardi Bypass,Natore,10:34,10:36,,240
+806,Chilahati (Express),12,Joydebpur,Gazipur,13:52,13:55,,411
+806,Chilahati (Express),13,Dhaka Airport,Dhaka,14:22,14:25,,427
+806,Chilahati (Express),14,Dhaka,Dhaka,14:55,,,444
+807,Express (name not legible in source),1,Dhaka,Dhaka,,15:25,,0
+807,Express (name not legible in source),2,Dhaka Airport,Dhaka,,15:53,,17
+807,Express (name not legible in source),3,Joydebpur,Gazipur,15:48,17:20,,33
+807,Express (name not legible in source),4,Tangail,Tangail,17:17,17:58,,96
+807,Express (name not legible in source),5,Shaheed M. Monsur Ali,Sirajganj,17:55,18:29,,132
+807,Express (name not legible in source),6,Ullapara,Sirajganj,18:26,19:02,,151
+807,Express (name not legible in source),7,Baral Bridge,Pabna,18:59,19:20,,170
+807,Express (name not legible in source),8,Chatmohar,Pabna,19:16,20:05,,189
+807,Express (name not legible in source),9,Majhgram,Natore,19:40,20:18,,217
+807,Express (name not legible in source),10,Dashuria,Pabna,20:16,20:32,,224
+807,Express (name not legible in source),11,Tebunia,Pabna,20:30,,,252
+807,Express (name not legible in source),12,Pabna,Pabna,21:00,,,261
+808,Express (name not legible in source),1,Pabna,Pabna,,8:25,,0
+808,Express (name not legible in source),2,Tebunia,Pabna,,8:40,,9
+808,Express (name not legible in source),3,Dashuria,Pabna,8:38,8:55,,37
+808,Express (name not legible in source),4,Majhgram,Natore,8:53,9:25,,44
+808,Express (name not legible in source),5,Chatmohar,Pabna,9:05,9:45,,72
+808,Express (name not legible in source),6,Baral Bridge,Pabna,9:41,10:08,,91
+808,Express (name not legible in source),7,Ullapara,Sirajganj,10:05,10:33,,110
+808,Express (name not legible in source),8,Shaheed M. Monsur Ali,Sirajganj,10:27,10:53,,129
+808,Express (name not legible in source),9,Tangail,Tangail,10:50,12:04,,165
+808,Express (name not legible in source),10,Joydebpur,Gazipur,11:54,13:38,,228
+808,Express (name not legible in source),11,Dhaka Airport,Dhaka,13:35,,,244
+808,Express (name not legible in source),12,Dhaka,Dhaka,14:10,,,261
+809,Burimari Express,1,Dhaka,Dhaka,,8:30,,0
+809,Burimari Express,2,Dhaka Airport,Dhaka,8:53,8:58,,17
+809,Burimari Express,3,Ishwardi Bypass,Natore,12:30,12:32,,208
+809,Burimari Express,4,Natore,Natore,13:02,13:05,,239
+809,Burimari Express,5,Santahar,Bogura,14:15,14:20,,282
+809,Burimari Express,6,Bogura,Bogura,15:00,15:05,,323
+809,Burimari Express,7,Mahimaganj,Gaibandha,15:46,15:48,,358
+809,Burimari Express,8,Banarpara,Gaibandha,15:58,16:03,,366
+809,Burimari Express,9,Gaibandha,Gaibandha,16:28,16:33,,385
+809,Burimari Express,10,Kaunia,Rangpur,17:43,17:46,,436
+809,Burimari Express,11,Lalmonirhat,Lalmonirhat,18:10,18:30,,451
+809,Burimari Express,12,Kakina,Lalmonirhat,18:55,18:57,,475
+809,Burimari Express,13,Hatibandha,Lalmonirhat,19:24,19:26,,499
+809,Burimari Express,14,Patgram,Lalmonirhat,20:00,20:03,,526
+809,Burimari Express,15,Burimari,Lalmonirhat,20:20,,,537
+810,Burimari Express,1,Burimari,Lalmonirhat,,21:20,,0
+810,Burimari Express,2,Patgram,Lalmonirhat,21:35,21:38,,11
+810,Burimari Express,3,Hatibandha,Lalmonirhat,22:11,22:13,,38
+810,Burimari Express,4,Kakina,Lalmonirhat,22:43,22:45,,62
+810,Burimari Express,5,Lalmonirhat,Lalmonirhat,23:10,23:20,,86
+810,Burimari Express,6,Kaunia,Rangpur,23:43,23:46,,101
+810,Burimari Express,7,Gaibandha,Gaibandha,0:52,0:55,,152
+810,Burimari Express,8,Banarpara,Gaibandha,1:17,1:20,,171
+810,Burimari Express,9,Mahimaganj,Gaibandha,1:30,1:32,,179
+810,Burimari Express,10,Bogura,Bogura,2:13,2:16,,214
+810,Burimari Express,11,Santahar,Bogura,3:00,3:05,,255
+810,Burimari Express,12,Natore,Natore,4:01,4:04,,298
+810,Burimari Express,13,Dhaka Airport,Dhaka,8:10,8:13,,520
+810,Burimari Express,14,Dhaka,Dhaka,8:50,,,537
 813,Coxs Bazar Express,1,Coxs Bazar,Coxs Bazar,,12:30,0,0
 813,Coxs Bazar Express,2,Chattogram,Chattogram,14:40,15:00,0,135.44
 813,Coxs Bazar Express,3,Dhaka Airport,Dhaka,20:32,20:35,0,438.44
@@ -1510,31 +1510,31 @@
 824,Saikat Express,9,Janalihat,Chattogram,23:10,23:12,0,120.44
 824,Saikat Express,10,Sholashahar,Chattogram,23:23,23:25,0,125.44
 824,Saikat Express,11,Chattogram,Chattogram,23:50,,0,135.44
-825,Jahanabad Express,1,Khulna,,,6:00,,0
-825,Jahanabad Express,2,Noyapara,,6:33,6:36,,29
-825,Jahanabad Express,3,Singiya,,6:51,6:53,,41
-825,Jahanabad Express,4,Narail,,7:13,7:16,,60
-825,Jahanabad Express,5,Lohagara,,7:29,7:31,,76
-825,Jahanabad Express,6,Kashiani,,7:41,7:44,,86
-825,Jahanabad Express,7,Bhanga Junction,,8:13,8:16,,123
-825,Jahanabad Express,8,Dhaka,,9:45,,,197
-826,Jahanabad Express,1,Dhaka,,,20:00,,0
-826,Jahanabad Express,2,Bhanga Junction,,21:03,21:06,,74
-826,Jahanabad Express,3,Kashiani,,21:34,21:37,,111
-826,Jahanabad Express,4,Lohagara,,21:48,21:50,,121
-826,Jahanabad Express,5,Narail,,22:03,22:06,,137
-826,Jahanabad Express,6,Singiya,,22:34,22:40,,156
-826,Jahanabad Express,7,Noyapara,,22:54,22:56,,168
-826,Jahanabad Express,8,Khulna,,23:45,,,197
-827,Pashchimanchal Express (transliterated),1,Benapole,,,15:25,,0
-827,Pashchimanchal Express (transliterated),2,Jashore,,16:12,16:15,,35
-827,Pashchimanchal Express (transliterated),3,Narail,,16:43,16:46,,68
-827,Pashchimanchal Express (transliterated),4,Kashiani,,17:08,17:11,,94
-827,Pashchimanchal Express (transliterated),5,Bhanga Junction,,17:44,17:47,,131
-827,Pashchimanchal Express (transliterated),6,Dhaka,,19:00,,,205
-828,Pashchimanchal Express (transliterated),1,Dhaka,,,10:45,,0
-828,Pashchimanchal Express (transliterated),2,Bhanga Junction,,11:47,11:50,,74
-828,Pashchimanchal Express (transliterated),3,Kashiani,,12:19,12:22,,111
-828,Pashchimanchal Express (transliterated),4,Narail,,12:42,12:45,,137
-828,Pashchimanchal Express (transliterated),5,Jashore,,13:15,13:25,,170
-828,Pashchimanchal Express (transliterated),6,Benapole,,14:25,,,205
+825,Jahanabad Express,1,Khulna,Khulna,,6:00,,0
+825,Jahanabad Express,2,Noyapara,Jashore,6:33,6:36,,29
+825,Jahanabad Express,3,Singiya,Jashore,6:51,6:53,,41
+825,Jahanabad Express,4,Narail,Narail,7:13,7:16,,60
+825,Jahanabad Express,5,Lohagara,Narail,7:29,7:31,,76
+825,Jahanabad Express,6,Kashiani,Gopalganj,7:41,7:44,,86
+825,Jahanabad Express,7,Bhanga Junction,Faridpur,8:13,8:16,,123
+825,Jahanabad Express,8,Dhaka,Dhaka,9:45,,,197
+826,Jahanabad Express,1,Dhaka,Dhaka,,20:00,,0
+826,Jahanabad Express,2,Bhanga Junction,Faridpur,21:03,21:06,,74
+826,Jahanabad Express,3,Kashiani,Gopalganj,21:34,21:37,,111
+826,Jahanabad Express,4,Lohagara,Narail,21:48,21:50,,121
+826,Jahanabad Express,5,Narail,Narail,22:03,22:06,,137
+826,Jahanabad Express,6,Singiya,Jashore,22:34,22:40,,156
+826,Jahanabad Express,7,Noyapara,Jashore,22:54,22:56,,168
+826,Jahanabad Express,8,Khulna,Khulna,23:45,,,197
+827,Pashchimanchal Express (transliterated),1,Benapole,Jashore,,15:25,,0
+827,Pashchimanchal Express (transliterated),2,Jashore,Jashore,16:12,16:15,,35
+827,Pashchimanchal Express (transliterated),3,Narail,Narail,16:43,16:46,,68
+827,Pashchimanchal Express (transliterated),4,Kashiani,Gopalganj,17:08,17:11,,94
+827,Pashchimanchal Express (transliterated),5,Bhanga Junction,Faridpur,17:44,17:47,,131
+827,Pashchimanchal Express (transliterated),6,Dhaka,Dhaka,19:00,,,205
+828,Pashchimanchal Express (transliterated),1,Dhaka,Dhaka,,10:45,,0
+828,Pashchimanchal Express (transliterated),2,Bhanga Junction,Faridpur,11:47,11:50,,74
+828,Pashchimanchal Express (transliterated),3,Kashiani,Gopalganj,12:19,12:22,,111
+828,Pashchimanchal Express (transliterated),4,Narail,Narail,12:42,12:45,,137
+828,Pashchimanchal Express (transliterated),5,Jashore,Jashore,13:15,13:25,,170
+828,Pashchimanchal Express (transliterated),6,Benapole,Jashore,14:25,,,205
