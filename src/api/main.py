@@ -216,7 +216,7 @@ def version():
         "frontend_version": "20261121_sr_frontend_v2",
         "render_git_commit": os.getenv("RENDER_GIT_COMMIT", "local-dev"),
         "render_git_branch": os.getenv("RENDER_GIT_BRANCH", "main"),
-        "render_git_repo_slug": os.getenv("RENDER_GIT_REPO_SLUG", "alifsadman798/practice_412"),
+        "render_git_repo_slug": os.getenv("RENDER_GIT_REPO_SLUG", "alifsadman798/412_map"),
     }
 
 
