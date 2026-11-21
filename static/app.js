@@ -5647,6 +5647,7 @@ document.querySelectorAll(".sidebar-nav-item").forEach((item) => {
 // Startup initializations
 loadDistricts();
 initAuth();
+loadGeoLayers();
 
 // Initialize page view based on initial URL (direct visit or browser refresh)
 const initialPage = getPageFromUrl();
