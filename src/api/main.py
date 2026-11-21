@@ -90,6 +90,16 @@ app = FastAPI(
     version=APP_VERSION,
     lifespan=lifespan,
 )
+
+@app.middleware("http")
+async def add_cache_control_headers(request: Request, call_next):
+    response = await call_next(request)
+    path = request.url.path
+    if path.startswith("/static/") or path in ["/", "/admin", "/journey", "/plan", "/timetables"]:
+        response.headers["Cache-Control"] = "no-cache, must-revalidate"
+        response.headers["Pragma"] = "no-cache"
+    return response
+
 app.mount("/static", StaticFiles(directory=app_dir / "static"), name="static")
 if (app_dir / "image").exists():
     app.mount("/image", StaticFiles(directory=app_dir / "image"), name="image")
@@ -168,12 +178,18 @@ def commit_or_conflict(session: Session) -> None:
 @app.get("/plan", include_in_schema=False)
 @app.get("/timetables", include_in_schema=False)
 def home():
-    return FileResponse(app_dir / "static" / "index.html")
+    return FileResponse(
+        app_dir / "static" / "index.html",
+        headers={"Cache-Control": "no-cache, must-revalidate", "Pragma": "no-cache"},
+    )
 
 
 @app.get("/admin", include_in_schema=False)
 def admin_page():
-    return FileResponse(app_dir / "static" / "admin.html")
+    return FileResponse(
+        app_dir / "static" / "admin.html",
+        headers={"Cache-Control": "no-cache, must-revalidate", "Pragma": "no-cache"},
+    )
 
 
 @app.get("/api/health", tags=["System"])
@@ -194,7 +210,14 @@ def health(session: Annotated[Session, Depends(get_db)]):
 
 @app.get("/api/version", tags=["System"])
 def version():
-    return {"name": "SmartRoute BD", "version": APP_VERSION}
+    return {
+        "name": "SmartRoute BD",
+        "version": APP_VERSION,
+        "frontend_version": "20261121_sr_frontend_v2",
+        "render_git_commit": os.getenv("RENDER_GIT_COMMIT", "local-dev"),
+        "render_git_branch": os.getenv("RENDER_GIT_BRANCH", "main"),
+        "render_git_repo_slug": os.getenv("RENDER_GIT_REPO_SLUG", "alifsadman798/practice_412"),
+    }
 
 
 @app.get("/api/districts", response_model=list[str], tags=["Locations"])
