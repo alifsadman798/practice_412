@@ -338,6 +338,7 @@ def resolve_route_geometry(req: RouteGeometryRequest):
     bus_route_lookup = cache["bus_route_lookup"]
     train_hop_lookup = cache["train_hop_lookup"]
     local_link_lookup = cache["local_link_lookup"]
+    location_by_name_cat = cache.get("location_by_name_cat", {})
 
     enriched_legs = []
     tot_verified_km = 0.0
