@@ -84,10 +84,11 @@ def _load_geo_cache():
                 elif cat == "local_place":
                     local_places.append(item)
 
-    # 2. Bus Corridor GeoJSON (11 corridors)
+    # 2. Bus Corridor GeoJSON (118 verified road corridors)
     bus_geojson_path = _find_file("bus_corridor_geometry.geojson", [PHASE_4B1_DIR, LOCAL_GEO_DIR])
     bus_corridors = []
     bus_corridor_by_edge = {}
+    bus_corridor_by_endpoints = {}
     if bus_geojson_path:
         with open(bus_geojson_path, "r", encoding="utf-8") as f:
             data = json.load(f)
@@ -96,19 +97,28 @@ def _load_geo_cache():
                 eid = props.get("Edge_ID", "")
                 geom = feat.get("geometry", {})
                 coords = geom.get("coordinates", [])
+                from_d = (props.get("From_District") or props.get("Origin_District") or "").strip()
+                to_d = (props.get("To_District") or props.get("Destination_District") or "").strip()
+                path_len = float(props.get("Extracted_Path_Length_KM") or props.get("Path_Length_KM") or props.get("Operational_Distance_KM") or 0.0)
+                op_dist = float(props.get("Operational_Distance_KM") or path_len)
+                ver_status = props.get("Verification_Status", "verified_osm_road_path")
+                geom_cat = props.get("Geometry_Category", "verified_road_geometry")
                 item = {
                     "edge_id": eid,
-                    "from_district": props.get("Origin_District", props.get("From_District", "")),
-                    "to_district": props.get("Destination_District", props.get("To_District", "")),
-                    "operational_distance_km": float(props.get("Operational_Distance_KM", 0)),
-                    "extracted_length_km": float(props.get("Path_Length_KM", props.get("Extracted_Path_Length_KM", 0))),
+                    "from_district": from_d,
+                    "to_district": to_d,
+                    "operational_distance_km": op_dist,
+                    "extracted_length_km": path_len,
                     "node_count": int(props.get("Node_Count", len(coords))),
                     "coordinates": coords,
-                    "verification_status": "verified_osm_road_path",
-                    "geometry_category": "estimated_highway_corridor",
+                    "verification_status": ver_status,
+                    "geometry_category": geom_cat,
                 }
                 bus_corridors.append(item)
                 bus_corridor_by_edge[eid] = item
+                if from_d and to_d:
+                    bus_corridor_by_endpoints[(from_d.casefold(), to_d.casefold())] = (eid, item, False)
+                    bus_corridor_by_endpoints[(to_d.casefold(), from_d.casefold())] = (eid, item, True)
 
     # 3. Railway Link GeoJSON (190 generated mainline links)
     rail_geojson_path = _find_file("railway_link_geometry.geojson", [PHASE_4B2B_DIR, LOCAL_GEO_DIR])
@@ -217,6 +227,7 @@ def _load_geo_cache():
     _CACHE["location_by_name_cat"] = location_by_name_cat
     _CACHE["bus_corridors"] = bus_corridors
     _CACHE["bus_corridor_by_edge"] = bus_corridor_by_edge
+    _CACHE["bus_corridor_by_endpoints"] = bus_corridor_by_endpoints
     _CACHE["railway_links"] = railway_links
     _CACHE["railway_link_by_id"] = railway_link_by_id
     _CACHE["bus_route_lookup"] = bus_route_lookup
@@ -334,6 +345,7 @@ def resolve_route_geometry(req: RouteGeometryRequest):
             local_place_map[lp.get("canonical_name").casefold()] = lp
 
     bus_corridor_map = cache["bus_corridor_by_edge"]
+    bus_corridor_by_endpoints = cache.get("bus_corridor_by_endpoints", {})
     rail_link_map = cache["railway_link_by_id"]
     bus_route_lookup = cache["bus_route_lookup"]
     train_hop_lookup = cache["train_hop_lookup"]
@@ -355,80 +367,96 @@ def resolve_route_geometry(req: RouteGeometryRequest):
         resolved_stops = []
 
         if mode == "bus":
-            lookup_key = (orig.casefold(), dest.casefold())
-            route_info = bus_route_lookup.get(lookup_key)
-            edge_ids = []
-            if route_info and route_info.get("District_Edge_IDs"):
-                edge_ids = [e.strip() for e in route_info["District_Edge_IDs"].split(";") if e.strip()]
+            # 1. Determine bus points / stops sequence
+            bus_points = []
+            if leg.path and len(leg.path) > 2:
+                bus_points = [p.strip() for p in leg.path if p and p.strip()]
+            else:
+                lookup_key = (orig.casefold(), dest.casefold())
+                route_info = bus_route_lookup.get(lookup_key)
+                if route_info and route_info.get("District_Edge_IDs"):
+                    edge_ids = [e.strip() for e in route_info["District_Edge_IDs"].split(";") if e.strip()]
+                    seq = [orig]
+                    for eid in edge_ids:
+                        if eid in bus_corridor_map:
+                            corr = bus_corridor_map[eid]
+                            nxt = corr["to_district"] if corr["from_district"].casefold() == seq[-1].casefold() else corr["from_district"]
+                            if nxt.casefold() != seq[-1].casefold():
+                                seq.append(nxt)
+                    if len(seq) >= 2:
+                        bus_points = seq
+                if not bus_points:
+                    bus_points = [p.strip() for p in leg.path if p and p.strip()] if (leg.path and len(leg.path) >= 2) else [orig, dest]
 
-            if edge_ids:
-                for eid in edge_ids:
-                    if eid in bus_corridor_map:
-                        corr = bus_corridor_map[eid]
-                        coords = corr["coordinates"]
-                        # Check direction
-                        if orig.casefold() == corr["to_district"].casefold():
-                            coords = list(reversed(coords))
+            # 2. Resolve geometry for each consecutive hop in bus_points
+            for i in range(len(bus_points) - 1):
+                u_name = re.sub(r'\(.*?\)', '', bus_points[i]).strip() or bus_points[i]
+                v_name = re.sub(r'\(.*?\)', '', bus_points[i + 1]).strip() or bus_points[i + 1]
+                pair_key = (u_name.casefold(), v_name.casefold())
+
+                if pair_key in bus_corridor_by_endpoints:
+                    eid, corr, is_rev = bus_corridor_by_endpoints[pair_key]
+                    coords = list(reversed(corr["coordinates"])) if is_rev else corr["coordinates"]
+                    lkm = corr["extracted_length_km"]
+                    tot_verified_km += lkm
+                    segments.append({
+                        "segment_id": eid,
+                        "segment_type": "verified_bus_corridor",
+                        "geometry_status": "verified_geometry",
+                        "verification_status": corr.get("verification_status", "verified_osm_road_path"),
+                        "coordinates": coords,
+                        "length_km": lkm,
+                        "from_district": u_name,
+                        "to_district": v_name,
+                        "notes": f"Verified OSM road path ({eid}: {u_name} -> {v_name}, {len(coords)} nodes, {lkm:.2f} km).",
+                    })
+                else:
+                    # Check if an edge ID matches in bus_corridor_map
+                    resolved_corr = None
+                    rev_corr = False
+                    for eid, corr in bus_corridor_map.items():
+                        c_from = corr["from_district"].casefold()
+                        c_to = corr["to_district"].casefold()
+                        if c_from == u_name.casefold() and c_to == v_name.casefold():
+                            resolved_corr = (eid, corr)
+                            rev_corr = False
+                            break
+                        elif c_to == u_name.casefold() and c_from == v_name.casefold():
+                            resolved_corr = (eid, corr)
+                            rev_corr = True
+                            break
+                    if resolved_corr:
+                        eid, corr = resolved_corr
+                        coords = list(reversed(corr["coordinates"])) if rev_corr else corr["coordinates"]
                         lkm = corr["extracted_length_km"]
                         tot_verified_km += lkm
                         segments.append({
                             "segment_id": eid,
                             "segment_type": "verified_bus_corridor",
                             "geometry_status": "verified_geometry",
-                            "verification_status": "verified_osm_road_path",
+                            "verification_status": corr.get("verification_status", "verified_osm_road_path"),
                             "coordinates": coords,
                             "length_km": lkm,
-                            "notes": f"High-fidelity OSM road path ({eid}: {corr['from_district']} <-> {corr['to_district']}).",
+                            "from_district": u_name,
+                            "to_district": v_name,
+                            "notes": f"Verified OSM road path ({eid}: {u_name} -> {v_name}, {len(coords)} nodes, {lkm:.2f} km).",
                         })
                     else:
-                        # Provisional anchor line
-                        u_d = dist_map.get(orig.casefold())
-                        v_d = dist_map.get(dest.casefold())
-                        if u_d and v_d and u_d["latitude"] and v_d["latitude"]:
-                            coords = [[u_d["longitude"], u_d["latitude"]], [v_d["longitude"], v_d["latitude"]]]
-                            tot_provisional_km += 50.0  # nominal
-                            segments.append({
-                                "segment_id": eid,
-                                "segment_type": "provisional_anchor_corridor",
-                                "geometry_status": "provisional_anchor",
-                                "verification_status": "provisional_highway_reference",
-                                "coordinates": coords,
-                                "length_km": 0.0,
-                                "notes": f"Provisional road anchor edge {eid}. Detailed OSM centerline pending.",
-                            })
-            else:
-                # Direct centroid connection if no edge IDs found
-                u_d = dist_map.get(orig.casefold())
-                v_d = dist_map.get(dest.casefold())
-                if u_d and v_d and u_d["latitude"] and v_d["latitude"]:
-                    coords = [[u_d["longitude"], u_d["latitude"]], [v_d["longitude"], v_d["latitude"]]]
-                    tot_provisional_km += 50.0
-                    segments.append({
-                        "segment_id": f"ANCH_{orig}_{dest}",
-                        "segment_type": "provisional_district_anchor",
-                        "geometry_status": "provisional_anchor",
-                        "verification_status": "provisional_highway_reference",
-                        "coordinates": coords,
-                        "length_km": 0.0,
-                        "notes": "District centroid reference connection.",
-                    })
+                        # Missing verified geometry - do not invent fake straight lines
+                        tot_missing_count += 1
+                        segments.append({
+                            "segment_id": f"MISSING_{u_name}_{v_name}",
+                            "segment_type": "missing_road_corridor",
+                            "geometry_status": "missing_geometry",
+                            "verification_status": "provisional_anchor_only",
+                            "coordinates": [],
+                            "length_km": 0.0,
+                            "from_district": u_name,
+                            "to_district": v_name,
+                            "notes": f"No verified road geometry for hop {u_name} -> {v_name} (classified as provisional_anchor_only).",
+                        })
 
-            # Resolve bus route stops
-            bus_points = []
-            if leg.path and len(leg.path) >= 2:
-                bus_points = leg.path
-            elif edge_ids:
-                seq = [orig]
-                for eid in edge_ids:
-                    if eid in bus_corridor_map:
-                        corr = bus_corridor_map[eid]
-                        nxt = corr["to_district"] if corr["from_district"].casefold() == seq[-1].casefold() else corr["from_district"]
-                        if nxt.casefold() != seq[-1].casefold():
-                            seq.append(nxt)
-                bus_points = seq if len(seq) >= 2 else [orig, dest]
-            else:
-                bus_points = [orig, dest]
-
+            # 3. Resolve bus route stops
             for i, p_name in enumerate(bus_points):
                 clean_p = re.sub(r'\(.*?\)', '', p_name).strip() or p_name
                 d_ent = dist_map.get(clean_p.casefold())
@@ -453,7 +481,7 @@ def resolve_route_geometry(req: RouteGeometryRequest):
         elif mode == "train":
             # Train stops resolution
             train_stops_data = leg.stops
-            if len(train_stops_data) < 2 and leg.service:
+            if (not train_stops_data or len(train_stops_data) < 2) and leg.service:
                 m_no = re.search(r'\b(\d{3,4})\b', leg.service)
                 if m_no:
                     t_no = m_no.group(1)
@@ -472,6 +500,12 @@ def resolve_route_geometry(req: RouteGeometryRequest):
                                 "departure_time": s["Departure"],
                                 "stop_order": int(s["Stop_Order"]),
                             } for s in raw_sched_stops[i1:i2+1]]
+
+            if (not train_stops_data or len(train_stops_data) < 2) and leg.path and len(leg.path) >= 2:
+                train_stops_data = [{
+                    "station": st_name.strip(),
+                    "stop_order": i + 1,
+                } for i, st_name in enumerate(leg.path)]
 
             for i, st in enumerate(train_stops_data):
                 st_name = st.get("station", "").strip()
@@ -705,11 +739,4 @@ def resolve_route_geometry(req: RouteGeometryRequest):
         },
         "legs": enriched_legs,
         "all_stops": all_stops,
-        "legs": enriched_legs,
-        "summary": {
-            "verified_geometry_km": round(tot_verified_km, 2),
-            "provisional_anchor_km": round(tot_provisional_km, 2),
-            "schematic_connector_km": round(tot_schematic_km, 2),
-            "missing_geometry_segments_count": tot_missing_count,
-        },
     }
