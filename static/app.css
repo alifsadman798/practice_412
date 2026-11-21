@@ -5653,22 +5653,24 @@ footer a {
    Map Modal & Interactive Zoom Viewer
    ========================================================================== */
 .map-modal-card {
-  max-width: 980px;
-  width: 95vw;
-  max-height: 92vh;
+  max-width: 1560px;
+  width: 98vw;
+  height: 96vh;
+  max-height: 96vh;
   display: flex;
   flex-direction: column;
-  padding: 20px 24px;
+  padding: 16px 20px;
   background: white;
   border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .map-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 14px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -5757,25 +5759,479 @@ footer a {
 .legend-chip.syl { background: #ccfbf1; color: #115e59; }
 .legend-chip.rang { background: #ffedd5; color: #9a3412; }
 .legend-chip.mym { background: #f1f5f9; color: #334155; }
+.legend-chip.verified { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.legend-chip.provisional { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+.legend-chip.schematic { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+.legend-chip.manual { background: #ffedd5; color: #9a3412; border: 1px solid #fdba74; }
+.legend-chip.missing { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+.map-mode-tabs {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.map-layer-toggles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.layer-toggle-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.layer-toggle-chip:hover {
+  background: #f1f5f9;
+}
+
+.layer-toggle-chip input {
+  cursor: pointer;
+}
+
+.map-modal-body-layout {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  margin-top: 10px;
+  align-items: stretch;
+}
+
+.map-vector-container {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#bd-vector-svg {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  display: block;
+  transition: transform 0.15s ease-out;
+  transform-origin: center center;
+}
+
+/* Google Maps-style light basemap polygons */
+.geo-district-poly {
+  fill: #f8fafc;
+  stroke: #cbd5e1;
+  stroke-width: 0.8px;
+  cursor: pointer;
+  transition: fill 0.15s ease, stroke 0.15s ease;
+}
+.geo-district-poly:hover {
+  fill: #f1f5f9;
+  stroke: #94a3b8;
+}
+
+/* Highway corridors (Google Maps major highway styling) */
+.feat-corridor {
+  stroke: #2563eb;
+  stroke-width: 3.5;
+  cursor: pointer;
+  transition: stroke-width 0.15s ease;
+}
+.feat-corridor:hover {
+  stroke-width: 5;
+}
+
+/* Railway tracks (Google Maps sharp railway styling) */
+.feat-rail {
+  stroke: #475569;
+  stroke-width: 2.2;
+  cursor: pointer;
+}
+.feat-rail:hover {
+  stroke: #1e293b;
+  stroke-width: 3.2;
+}
+
+/* Local feeder connectors */
+.feat-local-link {
+  stroke: #94a3b8;
+  stroke-width: 1.2;
+  stroke-dasharray: 3,3;
+}
+
+/* Base Station dots */
+.feat-station {
+  fill: #dc2626;
+  stroke: #ffffff;
+  stroke-width: 1.2px;
+  cursor: pointer;
+}
+.feat-station:hover {
+  r: 4.5px;
+  fill: #b91c1c;
+}
+
+/* District centroid anchors */
+.feat-district {
+  fill: #0284c7;
+  stroke: #ffffff;
+  stroke-width: 1.5px;
+  cursor: pointer;
+}
+.feat-district:hover {
+  r: 5.5px;
+}
+
+/* Local place dots */
+.feat-local-place {
+  fill: #f59e0b;
+  stroke: #ffffff;
+  stroke-width: 0.8px;
+  cursor: pointer;
+}
+
+.map-tooltip {
+  position: absolute;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+  border: 1px solid #cbd5e1;
+  max-width: 300px;
+  line-height: 1.4;
+  transition: opacity 0.1s ease;
+}
+
+.map-inspector-bar {
+  font-size: 0.82rem;
+  color: var(--navy);
+  line-height: 1.5;
+}
+
+/* Place Name Labels on SVG Map (Google Maps Clean Light Styling) - Increased sizes and bold halos */
+.map-label-district {
+  font-size: 14px;
+  font-weight: 800;
+  fill: #1e293b;
+  stroke: #ffffff;
+  stroke-width: 4.5px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  text-anchor: middle;
+  pointer-events: none;
+  letter-spacing: 0.3px;
+  user-select: none;
+}
+
+.map-label-station {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #991b1b;
+  stroke: #ffffff;
+  stroke-width: 3.8px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+.station-tier-2 {
+  display: none;
+}
+
+#bd-vector-svg.zoom-level-2 .station-tier-2,
+#bd-vector-svg.zoom-level-3 .station-tier-2 {
+  display: inline;
+}
+
+.map-label-local {
+  font-size: 10px;
+  font-weight: 600;
+  fill: #92400e;
+  stroke: #ffffff;
+  stroke-width: 3.0px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+.local-tier-2 {
+  display: none;
+}
+
+#bd-vector-svg.zoom-level-3 .local-tier-2 {
+  display: inline;
+}
+
+/* Selected Route Stop Labels (ALWAYS visible on active route) */
+.route-stop-label {
+  font-size: 13.5px;
+  font-weight: 800;
+  fill: #0f172a;
+  stroke: #ffffff;
+  stroke-width: 4.5px;
+  stroke-linejoin: round;
+  paint-order: stroke fill;
+  pointer-events: none;
+  user-select: none;
+  display: inline !important;
+}
+
+.route-stop-pill {
+  fill: #ffffff;
+  fill-opacity: 0.94;
+  stroke: #cbd5e1;
+  stroke-width: 1px;
+  rx: 4;
+  ry: 4;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+}
+
+/* Route origin/destination callout badges */
+.route-callout-badge rect {
+  rx: 6;
+  ry: 6;
+  filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.35));
+}
+
+.route-callout-badge text {
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 900;
+  fill: #ffffff;
+  pointer-events: none;
+}
+
+.layer-toggle-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.map-view-btn {
+  background: #f0fdf4 !important;
+  color: #166534 !important;
+  border: 1px solid #bbf7d0 !important;
+}
+
+.map-view-btn:hover {
+  background: #dcfce7 !important;
+}
 
 .map-viewport {
   flex: 1;
-  min-height: 420px;
-  max-height: 58vh;
-  overflow: auto;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden; /* No ugly double scrollbars */
   position: relative;
-  background: #0f172a;
+  background: #e0f2fe; /* Google Maps Pale Water Blue */
+  border: 1px solid #cbd5e1;
   border-radius: 10px;
-  margin-top: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: grab;
-  padding: 16px;
+  padding: 0;
 }
 
 .map-viewport:active {
   cursor: grabbing;
+}
+
+/* Route stops styling */
+.feat-route-stop {
+  cursor: pointer;
+}
+.feat-route-stop:hover {
+  r: 8;
+}
+
+#stop-highlight-ring {
+  transition: cx 0.2s ease-out, cy 0.2s ease-out, opacity 0.2s ease;
+  pointer-events: none;
+}
+
+/* Journey Stop Itinerary Panel */
+.map-itinerary-panel {
+  width: 340px;
+  height: 100%;
+  max-height: none;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.itinerary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+}
+
+.itinerary-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.itinerary-icon {
+  font-size: 1.3rem;
+}
+
+.itinerary-header h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0;
+}
+
+.itinerary-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.itinerary-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.itinerary-close-btn:hover {
+  background: #e2e8f0;
+  color: var(--navy);
+}
+
+.itinerary-summary-bar {
+  padding: 6px 14px;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.74rem;
+  color: var(--text);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.itinerary-stops-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.itinerary-stop-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.itinerary-stop-card:hover {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+.itinerary-stop-card.active {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.itinerary-stop-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  color: white;
+  margin-top: 2px;
+}
+.itinerary-stop-badge.origin { background: #10b981; }
+.itinerary-stop-badge.intermediate { background: #3b82f6; }
+.itinerary-stop-badge.destination { background: #ef4444; }
+
+.itinerary-stop-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.itinerary-stop-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.itinerary-stop-district {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.itinerary-stop-times {
+  font-size: 0.72rem;
+  color: #475569;
+  margin-top: 3px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.itinerary-stop-times span {
+  background: #f8fafc;
+  padding: 1px 4px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.itinerary-connector {
+  width: 2px;
+  height: 10px;
+  background: #cbd5e1;
+  margin-left: 18px;
 }
 
 .map-full-img {
@@ -5783,7 +6239,7 @@ footer a {
   height: auto;
   transform-origin: center center;
   transition: transform 0.15s ease-out;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   border-radius: 4px;
   user-select: none;
   -webkit-user-drag: none;

@@ -2200,6 +2200,9 @@ function renderMultimodalRouteCard(route, routeIdx = 0) {
             <h3 class="route-main-heading">${escapeHtml(originDist)} ➔ ${escapeHtml(destDist)}</h3>
           </div>
           <div class="route-header-actions">
+            <button type="button" class="save-fav-btn map-view-btn" onclick="viewRouteOnMap(${routeIdx})">
+              🗺️ View on Map
+            </button>
             <button type="button" class="save-fav-btn" onclick="saveFavouriteRoute('${escapeHtml(originDist)}', '${escapeHtml(destDist)}')">
               ⭐ Save Route
             </button>
@@ -2455,6 +2458,9 @@ function renderRouteCard(route, routeIdx = 0) {
             <h3 class="route-main-heading">${escapeHtml(originDist)} ➔ ${escapeHtml(destDist)}</h3>
           </div>
           <div class="route-header-actions">
+            <button type="button" class="save-fav-btn map-view-btn" onclick="viewRouteOnMap(${routeIdx})">
+              🗺️ View on Map
+            </button>
             <button type="button" class="save-fav-btn" onclick="saveFavouriteRoute('${escapeHtml(originDist)}', '${escapeHtml(destDist)}')">
               ⭐ Save Route
             </button>
@@ -3466,6 +3472,9 @@ function renderEmptyJourneyResults(origin, dest, date, time, data = {}) {
 function renderJourneyResults(data, mode = "all") {
   results.replaceChildren();
 
+  // Store globally for map route inspection
+  window.latestJourneyData = data;
+
   // Filter routes based on mode
   let filteredRoutes = data.routes || [];
   if (mode === "bus") {
@@ -3475,6 +3484,7 @@ function renderJourneyResults(data, mode = "all") {
   } else if (mode === "local") {
     filteredRoutes = filteredRoutes.filter((r) => r.kind.toLowerCase() === "multimodal" || (r.legs && r.legs.some((l) => l.mode.toLowerCase() === "local")));
   }
+  window.latestFilteredRoutes = filteredRoutes;
 
   let directTrainAlert = "";
   if (data.direct_train_available === false && (mode === "all" || mode === "train")) {
@@ -4720,17 +4730,748 @@ setInterval(loadUnreadNotificationCount, 30000);
 // -------------------------------------------------------------
 // Interactive 64 Districts Map Modal & Zoom Viewer
 // -------------------------------------------------------------
+// -------------------------------------------------------------
+// Interactive Transit Map & Vector Geo Viewer
+// -------------------------------------------------------------
 let mapZoom = 1;
+let currentMapMode = "vector"; // "vector" or "image"
+let cachedGeoLayers = null;
+let activeRouteOverlay = null;
+
+// Major transit hub stations visible at normal 100% zoom
+const MAJOR_STATION_NAMES = new Set([
+  "dhaka", "dhaka airport", "chattogram", "sylhet", "rajshahi", "khulna",
+  "bogura", "natore", "ishwardi", "ishwardi bypass", "akhaura", "brahmanbaria",
+  "cumilla", "feni", "joydebpur", "mymensingh", "rangpur", "dinajpur",
+  "santahar", "parbatipur", "bhairab bazar", "kulaura", "srimangal",
+  "chandpur", "noakhali", "poradaha", "jashore", "benapole", "tongi"
+]);
+
+function projectCoord(lon, lat) {
+  // Bounding box of Bangladesh: Lon 88.0 - 92.7, Lat 20.5 - 26.7 -> SVG 1000 x 1200
+  const x = ((lon - 88.0) / (92.7 - 88.0)) * 1000;
+  const y = ((26.7 - lat) / (26.7 - 20.5)) * 1200;
+  return [Math.round(x * 10) / 10, Math.round(y * 10) / 10];
+}
 
 function applyMapZoom(zoom) {
-  mapZoom = Math.min(Math.max(zoom, 0.75), 3.5);
+  mapZoom = Math.min(Math.max(zoom, 0.6), 4.0);
   const img = $("#map-full-image");
+  const svg = $("#bd-vector-svg");
   const badge = $("#map-zoom-val");
-  if (img) {
+
+  if (currentMapMode === "image" && img) {
     img.style.transform = `scale(${mapZoom})`;
+  } else if (currentMapMode === "vector" && svg) {
+    svg.style.transform = `scale(${mapZoom})`;
+
+    // Adaptive label visibility based on zoom scale
+    svg.classList.remove("zoom-level-1", "zoom-level-2", "zoom-level-3");
+    if (mapZoom >= 2.0) {
+      svg.classList.add("zoom-level-3");
+    } else if (mapZoom >= 1.35) {
+      svg.classList.add("zoom-level-2");
+    } else {
+      svg.classList.add("zoom-level-1");
+    }
   }
   if (badge) {
     badge.textContent = `${Math.round(mapZoom * 100)}%`;
+  }
+}
+
+function setMapMode(mode) {
+  currentMapMode = mode;
+  const vectorWrap = $("#map-vector-container");
+  const img = $("#map-full-image");
+  const tabVector = $("#map-tab-vector");
+  const tabImage = $("#map-tab-image");
+
+  if (mode === "vector") {
+    if (vectorWrap) vectorWrap.classList.remove("hidden");
+    if (img) img.classList.add("hidden");
+    if (tabVector) { tabVector.classList.add("primary"); tabVector.classList.remove("outline"); }
+    if (tabImage) { tabImage.classList.remove("primary"); tabImage.classList.add("outline"); }
+  } else {
+    if (vectorWrap) vectorWrap.classList.add("hidden");
+    if (img) img.classList.remove("hidden");
+    if (tabVector) { tabVector.classList.remove("primary"); tabVector.classList.add("outline"); }
+    if (tabImage) { tabImage.classList.add("primary"); tabImage.classList.remove("outline"); }
+  }
+  applyMapZoom(1);
+}
+
+async function loadGeoLayers() {
+  if (cachedGeoLayers) return cachedGeoLayers;
+  try {
+    const res = await fetch("/api/geo/layers");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    cachedGeoLayers = await res.json();
+    renderStaticVectorLayers(cachedGeoLayers);
+    return cachedGeoLayers;
+  } catch (err) {
+    console.warn("Could not load geographic layers:", err);
+    return null;
+  }
+}
+
+function renderStaticVectorLayers(data) {
+  const gBoundaries = $("#layer-group-district-boundaries");
+  const gDistricts = $("#layer-group-districts");
+  const gLabelsDistricts = $("#layer-labels-districts");
+  const gCorridors = $("#layer-group-bus-corridors");
+  const gRail = $("#layer-group-rail-tracks");
+  const gLocal = $("#layer-group-local-links");
+  const gStations = $("#layer-group-stations");
+  const gLabelsStations = $("#layer-labels-stations");
+  const gLocalPlaces = $("#layer-group-local-places");
+  const gLabelsLocalPlaces = $("#layer-labels-local-places");
+
+  if (!gDistricts || !gCorridors || !gRail) return;
+
+  // 0. District Boundaries (Google Maps-style Light Landmass)
+  if (gBoundaries && Array.isArray(data.district_boundaries)) {
+    let bHtml = "";
+    data.district_boundaries.forEach((d) => {
+      bHtml += `
+        <path d="${d.path_d}" class="geo-feat geo-district-poly"
+              data-id="poly-${escapeHtml(d.name)}"
+              data-title="District: ${escapeHtml(d.name)}"
+              data-status="verified_geometry"
+              data-desc="Official Administrative District Boundary Area." />
+      `;
+    });
+    gBoundaries.innerHTML = bHtml;
+  }
+
+  // 1. Bus Corridors (11 Verified)
+  let corridorsHtml = "";
+  (data.bus_corridors || []).forEach((c) => {
+    const pts = (c.coordinates || []).map((coord) => projectCoord(coord[0], coord[1]));
+    if (pts.length >= 2) {
+      const dStr = "M " + pts.map((p) => `${p[0]} ${p[1]}`).join(" L ");
+      corridorsHtml += `
+        <path d="${dStr}" fill="none" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+              class="geo-feat feat-corridor"
+              data-id="${escapeHtml(c.edge_id)}"
+              data-title="Bus Corridor: ${escapeHtml(c.from_district)} ➔ ${escapeHtml(c.to_district)}"
+              data-status="verified_geometry"
+              data-desc="Verified high-fidelity OSM road path (${c.extracted_length_km.toFixed(1)} km, ${c.node_count} nodes). Edge: ${escapeHtml(c.edge_id)}." />
+      `;
+    }
+  });
+  gCorridors.innerHTML = corridorsHtml;
+
+  // 2. Railway Mainline Tracks (190 Links)
+  let railHtml = "";
+  (data.railway_links || []).forEach((r) => {
+    const pts = (r.coordinates || []).map((coord) => projectCoord(coord[0], coord[1]));
+    if (pts.length >= 2) {
+      const dStr = "M " + pts.map((p) => `${p[0]} ${p[1]}`).join(" L ");
+      railHtml += `
+        <path d="${dStr}" fill="none" stroke="#475569" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+              class="geo-feat feat-rail"
+              data-id="${escapeHtml(r.rlink_id)}"
+              data-title="Rail Link: ${escapeHtml(r.origin_station)} ➔ ${escapeHtml(r.destination_station)}"
+              data-status="verified_geometry"
+              data-desc="Verified OSM mainline railway track (${r.path_length_km.toFixed(1)} km). Link: ${escapeHtml(r.rlink_id)}." />
+      `;
+    }
+  });
+  gRail.innerHTML = railHtml;
+
+  // 3. Local Feeder Links (Schematic Connectors - Strictly Labelled)
+  let localHtml = "";
+  (data.local_links || []).forEach((l) => {
+    if (l.origin_lon && l.origin_lat && l.destination_lon && l.destination_lat) {
+      const p1 = projectCoord(l.origin_lon, l.origin_lat);
+      const p2 = projectCoord(l.destination_lon, l.destination_lat);
+      localHtml += `
+        <line x1="${p1[0]}" y1="${p1[1]}" x2="${p2[0]}" y2="${p2[1]}" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.6"
+              class="geo-feat feat-local-link"
+              data-id="${escapeHtml(l.local_link_id)}"
+              data-title="Local Link: ${escapeHtml(l.from_place)} ➔ ${escapeHtml(l.to_place)}"
+              data-status="schematic_connector"
+              data-desc="SCHEMATIC CONNECTOR ONLY (${l.distance_km} km). Straight-line reference between local places. NOT A VERIFIED ROAD ROUTE." />
+      `;
+    }
+  });
+  if (gLocal) gLocal.innerHTML = localHtml;
+
+  // 4. Railway Stations & Station Labels (201 entities, 175 with coordinates)
+  let stationsHtml = "";
+  let stationLabelsHtml = "";
+  (data.stations || []).forEach((s) => {
+    if (s.longitude && s.latitude) {
+      const pt = projectCoord(s.longitude, s.latitude);
+      
+      // Disambiguate duplicate station names using district context
+      let displayName = s.name;
+      if (s.name === "Lohagara" || s.name === "Noyapara") {
+        displayName = `${s.name} (${s.district})`;
+      }
+
+      // Classify into zoom tiers: major junction/terminal stations visible at normal zoom
+      const sNameLower = s.name.trim().toLowerCase();
+      const isMajor = (s.trip_count >= 18) || MAJOR_STATION_NAMES.has(sNameLower);
+      const tierClass = isMajor ? "station-tier-1" : "station-tier-2";
+
+      stationsHtml += `
+        <circle cx="${pt[0]}" cy="${pt[1]}" r="2.8" fill="#dc2626" stroke="#ffffff" stroke-width="0.8"
+                class="geo-feat feat-station"
+                data-id="${escapeHtml(s.entity_id)}"
+                data-title="Railway Station: ${escapeHtml(displayName)}"
+                data-status="verified_geometry"
+                data-desc="Station in district ${escapeHtml(s.district)}. Status: ${escapeHtml(s.verification_status || 'verified_station_point')} (${s.trip_count || 0} scheduled dwell stops)." />
+      `;
+
+      stationLabelsHtml += `
+        <text x="${pt[0] + 5}" y="${pt[1] + 3}" class="map-label-station ${tierClass}">${escapeHtml(displayName)}</text>
+      `;
+    }
+  });
+  if (gStations) gStations.innerHTML = stationsHtml;
+  if (gLabelsStations) gLabelsStations.innerHTML = stationLabelsHtml;
+
+  // 5. Districts & District Labels (64 District centroids)
+  let districtsHtml = "";
+  let districtLabelsHtml = "";
+  (data.districts || []).forEach((d) => {
+    if (d.longitude && d.latitude) {
+      const pt = projectCoord(d.longitude, d.latitude);
+      districtsHtml += `
+        <circle cx="${pt[0]}" cy="${pt[1]}" r="3.5" fill="#0284c7" stroke="#ffffff" stroke-width="1.2" opacity="0.85"
+                class="geo-feat feat-district"
+                data-id="${escapeHtml(d.entity_id)}"
+                data-title="District: ${escapeHtml(d.name)}"
+                data-status="verified_geometry"
+                data-desc="Official Administrative District. Central Road Anchor: ${escapeHtml(d.road_anchor_name || d.name)} (${escapeHtml(d.road_anchor_category || 'bus_terminal')})." />
+      `;
+
+      // 64 District name labels visible at normal zoom with outline
+      districtLabelsHtml += `
+        <text x="${pt[0]}" y="${pt[1] - 7}" class="map-label-district">${escapeHtml(d.name)}</text>
+      `;
+    }
+  });
+  if (gDistricts) gDistricts.innerHTML = districtsHtml;
+  if (gLabelsDistricts) gLabelsDistricts.innerHTML = districtLabelsHtml;
+
+  // 6. Local Places & Local Labels (212 places, 206 with coordinates)
+  let localPlacesHtml = "";
+  let localLabelsHtml = "";
+  (data.local_places || []).forEach((lp) => {
+    if (lp.longitude && lp.latitude) {
+      const pt = projectCoord(lp.longitude, lp.latitude);
+      
+      let displayName = lp.name;
+      if (lp.name === "Lohagara" || lp.name === "Noyapara") {
+        displayName = `${lp.name} (${lp.district || lp.parent_district})`;
+      }
+
+      localPlacesHtml += `
+        <circle cx="${pt[0]}" cy="${pt[1]}" r="2" fill="#f59e0b" stroke="#ffffff" stroke-width="0.6" opacity="0.75"
+                class="geo-feat feat-local-place"
+                data-id="${escapeHtml(lp.entity_id)}"
+                data-title="Local Place: ${escapeHtml(displayName)}"
+                data-status="verified_geometry"
+                data-desc="Local hub under parent district ${escapeHtml(lp.district || lp.parent_district)}. Status: ${escapeHtml(lp.verification_status || 'matched_local_place')}." />
+      `;
+
+      localLabelsHtml += `
+        <text x="${pt[0] + 4}" y="${pt[1] + 2}" class="map-label-local local-tier-2">${escapeHtml(displayName)}</text>
+      `;
+    }
+  });
+  if (gLocalPlaces) gLocalPlaces.innerHTML = localPlacesHtml;
+  if (gLabelsLocalPlaces) gLabelsLocalPlaces.innerHTML = localLabelsHtml;
+
+  // Setup interactive hover tooltips
+  setupMapTooltipListeners();
+}
+
+function setupMapTooltipListeners() {
+  const svg = $("#bd-vector-svg");
+  const tooltip = $("#map-tooltip");
+  const inspectorText = $("#map-inspector-text");
+  if (!svg || !tooltip) return;
+
+  svg.querySelectorAll(".geo-feat").forEach((el) => {
+    el.addEventListener("mouseenter", (e) => {
+      const title = el.getAttribute("data-title") || "";
+      const desc = el.getAttribute("data-desc") || "";
+      const status = el.getAttribute("data-status") || "";
+
+      let statusBadge = "🟢 Verified geometry";
+      if (status === "provisional_anchor") statusBadge = "🟡 Provisional anchor";
+      else if (status === "schematic_connector") statusBadge = "🟣 Schematic connector";
+      else if (status === "manual_review_required") statusBadge = "🟠 Manual review required";
+      else if (status === "missing_geometry") statusBadge = "⚪ Missing geometry";
+
+      tooltip.innerHTML = `
+        <div style="font-weight: 700; margin-bottom: 2px;">${title}</div>
+        <div style="font-size: 0.72rem; margin-bottom: 4px; color: #94a3b8;">${statusBadge}</div>
+        <div style="font-size: 0.74rem; line-height: 1.3;">${desc}</div>
+      `;
+      tooltip.classList.remove("hidden");
+
+      if (inspectorText) {
+        inspectorText.innerHTML = `📍 <b>${title}</b> &mdash; <span>${statusBadge}</span>: ${desc}`;
+      }
+    });
+
+    el.addEventListener("mousemove", (e) => {
+      const container = $("#map-vector-container") || $("#map-viewport");
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      // Position offset to top-right of cursor so it doesn't occlude the clicked or hovered marker (Requirement 5)
+      let x = e.clientX - rect.left + 20;
+      let y = e.clientY - rect.top - 45;
+      if (y < 12) y = e.clientY - rect.top + 22; // If close to top edge, flip below
+      tooltip.style.left = `${Math.max(10, Math.min(x, rect.width - 280))}px`;
+      tooltip.style.top = `${Math.max(10, Math.min(y, rect.height - 130))}px`;
+    });
+
+    el.addEventListener("mouseleave", () => {
+      tooltip.classList.add("hidden");
+    });
+  });
+
+  // Ensure tooltip hides when cursor leaves entire SVG canvas
+  svg.addEventListener("mouseleave", () => {
+    tooltip.classList.add("hidden");
+  });
+}
+
+let activeRouteViewBox = "0 0 1000 1200";
+
+function fitSvgToRoute(coords) {
+  const svg = $("#bd-vector-svg");
+  if (!svg || !coords || coords.length === 0) return;
+
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  coords.forEach(([x, y]) => {
+    if (x < minX) minX = x;
+    if (x > maxX) maxX = x;
+    if (y < minY) minY = y;
+    if (y > maxY) maxY = y;
+  });
+
+  const spanX = maxX - minX;
+  const spanY = maxY - minY;
+  // Padding around route to keep callout badges and labels fully in view
+  const padX = Math.max(spanX * 0.28, 55);
+  const padY = Math.max(spanY * 0.28, 55);
+
+  let targetX = Math.max(0, minX - padX);
+  let targetY = Math.max(0, minY - padY);
+  let targetW = (maxX - minX) + padX * 2;
+  let targetH = (maxY - minY) + padY * 2;
+
+  // Minimum bounding box dimension so short routes don't over-magnify
+  if (targetW < 240) {
+    const diff = 240 - targetW;
+    targetX = Math.max(0, targetX - diff / 2);
+    targetW = 240;
+  }
+  if (targetH < 240) {
+    const diff = 240 - targetH;
+    targetY = Math.max(0, targetY - diff / 2);
+    targetH = 240;
+  }
+
+  // Clamp within full SVG coordinate bounds
+  if (targetX + targetW > 1000) targetW = 1000 - targetX;
+  if (targetY + targetH > 1200) targetH = 1200 - targetY;
+
+  activeRouteViewBox = `${Math.round(targetX)} ${Math.round(targetY)} ${Math.round(targetW)} ${Math.round(targetH)}`;
+  svg.setAttribute("viewBox", activeRouteViewBox);
+  applyMapZoom(1);
+
+  const fitBtn = $("#map-fit-route");
+  if (fitBtn) fitBtn.style.display = "inline-flex";
+}
+
+function resetSvgViewBox() {
+  const svg = $("#bd-vector-svg");
+  if (svg) svg.setAttribute("viewBox", "0 0 1000 1200");
+  applyMapZoom(1);
+}
+
+async function viewRouteOnMap(routeIdx) {
+  const route = (window.latestFilteredRoutes || [])[routeIdx];
+  if (!route) {
+    showToast("Route alternative not found.", "warning");
+    return;
+  }
+
+  // Open modal and switch to interactive vector map
+  openMapModal();
+  setMapMode("vector");
+  await loadGeoLayers();
+
+  const gRouteOverlay = $("#layer-group-route-overlay");
+  const gRouteLabels = $("#layer-group-route-labels");
+  const inspectorText = $("#map-inspector-text");
+  const itineraryPanel = $("#map-itinerary-panel");
+  if (!gRouteOverlay) return;
+
+  gRouteOverlay.innerHTML = '<text x="500" y="600" fill="#64748b" text-anchor="middle" font-size="16">Resolving route geometry and stops...</text>';
+  if (gRouteLabels) gRouteLabels.innerHTML = '';
+
+  try {
+    const res = await fetch("/api/geo/route-geometry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        legs: (route.legs || []).map((l) => ({
+          mode: l.mode,
+          origin: l.origin,
+          destination: l.destination,
+          service: l.service || "",
+          stops: l.stops || [],
+          path: l.path || [],
+        })),
+      }),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const geomData = await res.json();
+
+    let overlayHtml = "";
+    let routeLabelsHtml = "";
+    const allRouteCoords = [];
+
+    // 1. Render Route Geometry Lines with White Under-Casing (Requirement 9)
+    (geomData.legs || []).forEach((leg, lIdx) => {
+      const mode = leg.mode.toLowerCase();
+      (leg.geometry_segments || []).forEach((seg) => {
+        const coords = seg.coordinates || [];
+        if (coords.length >= 2) {
+          const pts = coords.map((c) => {
+            const p = projectCoord(c[0], c[1]);
+            allRouteCoords.push(p);
+            return p;
+          });
+          const dStr = "M " + pts.map((p) => `${p[0]} ${p[1]}`).join(" L ");
+
+          let strokeColor = "#2563eb"; // Bus vibrant blue
+          let strokeWidth = 5.5;
+          let dashArray = "";
+
+          if (mode === "train") {
+            strokeColor = "#059669"; // Train emerald
+            strokeWidth = 5.0;
+            if (seg.geometry_status === "manual_review_required") {
+              strokeColor = "#ea580c";
+              dashArray = 'stroke-dasharray="6,4"';
+            }
+          } else if (mode === "local") {
+            strokeColor = "#d97706"; // Local amber
+            strokeWidth = 3.5;
+            dashArray = 'stroke-dasharray="5,4"';
+          } else if (mode === "walk" || mode === "transfer") {
+            strokeColor = "#7c3aed"; // Transfer violet
+            strokeWidth = 3.0;
+            dashArray = 'stroke-dasharray="3,3"';
+          } else if (seg.geometry_status === "provisional_anchor") {
+            strokeColor = "#eab308";
+            dashArray = 'stroke-dasharray="8,4"';
+          }
+
+          // Layer A: White under-casing outline (Requirement 9)
+          overlayHtml += `
+            <path d="${dStr}" fill="none" stroke="#ffffff" stroke-width="${strokeWidth + 5.5}"
+                  stroke-linecap="round" stroke-linejoin="round" opacity="0.95" />
+          `;
+
+          // Layer B: Vibrant colored active route track
+          overlayHtml += `
+            <path d="${dStr}" fill="none" stroke="${strokeColor}" stroke-width="${strokeWidth}" ${dashArray}
+                  stroke-linecap="round" stroke-linejoin="round" filter="url(#glow-route)"
+                  class="geo-feat feat-route-leg"
+                  data-id="${escapeHtml(seg.segment_id)}"
+                  data-title="Leg ${lIdx + 1} (${mode.toUpperCase()}): ${escapeHtml(leg.origin)} ➔ ${escapeHtml(leg.destination)}"
+                  data-status="${escapeHtml(seg.geometry_status)}"
+                  data-desc="${escapeHtml(seg.notes)}" />
+          `;
+        }
+      });
+    });
+
+    gRouteOverlay.innerHTML = overlayHtml;
+
+    // 2. Render COMPLETE Selected Stop Sequence (Requirements 3, 4, 8)
+    const allStops = geomData.all_stops || [];
+    if (allStops.length > 0 && gRouteLabels) {
+      // Precompute projected coordinates for all stops
+      const pts = allStops.map((s) => {
+        if (s.has_coordinates && s.longitude != null && s.latitude != null) {
+          const p = projectCoord(s.longitude, s.latitude);
+          allRouteCoords.push(p);
+          return p;
+        }
+        return null;
+      });
+
+      // Cluster proximity detection (distance < 55 SVG units)
+      const isCrowdedWithPrev = allStops.map((_, i) => {
+        if (i === 0 || !pts[i] || !pts[i - 1]) return false;
+        return Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]) < 55;
+      });
+      const isCrowdedWithNext = allStops.map((_, i) => {
+        if (i >= allStops.length - 1 || !pts[i] || !pts[i + 1]) return false;
+        return Math.hypot(pts[i][0] - pts[i + 1][0], pts[i][1] - pts[i + 1][1]) < 55;
+      });
+
+      allStops.forEach((stop, sIdx) => {
+        const pt = pts[sIdx];
+        if (!pt) return;
+
+        if (stop.stop_type === "origin") {
+          // Direction-aware placement: if next stop is to the West/North-West, place origin badge to the South-East
+          const nextPt = pts[sIdx + 1];
+          let badgeOffsetX = 14;
+          let badgeOffsetY = 16;
+          if (nextPt && nextPt[0] > pt[0]) {
+            badgeOffsetX = -165;
+            badgeOffsetY = -24;
+          }
+          // Prominent Origin Marker & Callout Badge (Requirement 8)
+          routeLabelsHtml += `
+            <g class="route-callout-badge" transform="translate(${pt[0]}, ${pt[1]})">
+              <circle cx="0" cy="0" r="14" fill="#10b981" opacity="0.32" />
+              <circle cx="0" cy="0" r="8.5" fill="#10b981" stroke="#ffffff" stroke-width="2.8" />
+              <circle cx="0" cy="0" r="3" fill="#ffffff" />
+              <g transform="translate(${badgeOffsetX}, ${badgeOffsetY})">
+                <rect x="0" y="-12" width="155" height="24" fill="#065f46" rx="5" stroke="#ffffff" stroke-width="1.5" />
+                <text x="77.5" y="4" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🟢 1. ORIGIN: ${escapeHtml(stop.name)}</text>
+              </g>
+            </g>
+          `;
+        } else if (stop.stop_type === "destination") {
+          // Direction-aware placement: if preceding stop is to the North, place destination badge to the South
+          const prevPt = pts[sIdx - 1];
+          let badgeOffsetX = 12;
+          let badgeOffsetY = 14;
+          if (prevPt && prevPt[1] < pt[1]) {
+            badgeOffsetX = -75;
+            badgeOffsetY = 16;
+          }
+          // Prominent Destination Marker & Callout Badge (Requirement 8)
+          routeLabelsHtml += `
+            <g class="route-callout-badge" transform="translate(${pt[0]}, ${pt[1]})">
+              <circle cx="0" cy="0" r="14" fill="#ef4444" opacity="0.32" />
+              <circle cx="0" cy="0" r="8.5" fill="#ef4444" stroke="#ffffff" stroke-width="2.8" />
+              <circle cx="0" cy="0" r="3" fill="#ffffff" />
+              <g transform="translate(${badgeOffsetX}, ${badgeOffsetY})">
+                <rect x="0" y="-12" width="155" height="24" fill="#991b1b" rx="5" stroke="#ffffff" stroke-width="1.5" />
+                <text x="77.5" y="4" text-anchor="middle" font-size="11.5" font-weight="800" fill="#ffffff">🔴 ${stop.stop_number}. DEST: ${escapeHtml(stop.name)}</text>
+              </g>
+            </g>
+          `;
+        } else {
+          // Intermediate Stop Marker & Intelligent Collision-Free Label (Requirements 3 & 4)
+          const timeInfo = (stop.arrival_time || stop.departure_time)
+            ? ` | Arr: ${stop.arrival_time || 'N/A'} - Dep: ${stop.departure_time || 'N/A'}`
+            : '';
+          const haltInfo = stop.halt_minutes ? ` (${stop.halt_minutes}m halt)` : '';
+
+          const textLen = stop.name.length;
+          const pillW = Math.max(textLen * 7.5 + 16, 56);
+          let pillX, pillY, textX, textY, textAnchor;
+
+          const crowdedWithPrev = isCrowdedWithPrev[sIdx];
+          const crowdedWithNext = isCrowdedWithNext[sIdx];
+
+          if (crowdedWithNext) {
+            // First of a close cluster (e.g. Ashuganj): place strictly top-right / above
+            pillX = pt[0] + 12;
+            pillY = pt[1] - 22;
+            textX = pillX + (pillW / 2);
+            textY = pillY + 13;
+            textAnchor = "middle";
+          } else if (crowdedWithPrev) {
+            // Second of a close cluster (e.g. Bhairab): place strictly bottom-left / below
+            pillX = pt[0] - pillW - 12;
+            pillY = pt[1] + 6;
+            textX = pillX + (pillW / 2);
+            textY = pillY + 13;
+            textAnchor = "middle";
+          } else {
+            // Uncrowded: clean standard right-side placement
+            pillX = pt[0] + 10;
+            pillY = pt[1] - 9;
+            textX = pillX + (pillW / 2);
+            textY = pillY + 13;
+            textAnchor = "middle";
+          }
+
+          routeLabelsHtml += `
+            <g class="route-intermediate-stop-wrap">
+              <circle cx="${pt[0]}" cy="${pt[1]}" r="6.2" fill="#ffffff" stroke="#2563eb" stroke-width="2.6"
+                      class="geo-feat feat-route-stop"
+                      data-id="stop-${stop.stop_number}"
+                      data-title="Stop #${stop.stop_number}: ${escapeHtml(stop.name)}"
+                      data-desc="District: ${escapeHtml(stop.district)}${timeInfo}${haltInfo}."
+                      data-status="verified_geometry" />
+              <circle cx="${pt[0]}" cy="${pt[1]}" r="2.5" fill="#2563eb" />
+              <circle cx="${pt[0] - 8}" cy="${pt[1] - 8}" r="5.2" fill="#1e293b" stroke="#ffffff" stroke-width="1.0" />
+              <text x="${pt[0] - 8}" y="${pt[1] - 5.5}" font-size="7.0" fill="#ffffff" text-anchor="middle" font-weight="800">${stop.stop_number}</text>
+              <!-- Contrast Pill Card + Halo Text -->
+              <rect x="${pillX}" y="${pillY}" width="${pillW}" height="18" rx="4" class="route-stop-pill" />
+              <text x="${textX}" y="${textY}" text-anchor="${textAnchor}" class="route-stop-label">${escapeHtml(stop.name)}</text>
+            </g>
+          `;
+        }
+      });
+
+      gRouteLabels.innerHTML = routeLabelsHtml;
+    }
+
+    // Auto-fit viewBox to complete selected route (Requirement 7)
+    if (allRouteCoords.length > 0) {
+      fitSvgToRoute(allRouteCoords);
+    }
+
+    // 3. Render Journey Stop Itinerary Panel (Requirement 4)
+    if (itineraryPanel) {
+      itineraryPanel.classList.remove("hidden");
+      itineraryPanel.setAttribute("data-route-active", "true");
+
+      const modeIcon = route.kind.toLowerCase() === "train" ? "🚆" : (route.kind.toLowerCase() === "bus" ? "🚍" : "🔀");
+      const iconEl = $("#itinerary-icon");
+      if (iconEl) iconEl.textContent = modeIcon;
+
+      const titleEl = $("#itinerary-route-title");
+      if (titleEl) titleEl.textContent = `Route #${routeIdx + 1} (${route.kind.toUpperCase()})`;
+
+      const subEl = $("#itinerary-route-subtitle");
+      if (subEl) subEl.textContent = route.path ? route.path.join(" ➔ ") : "";
+
+      const sumBar = $("#itinerary-summary-bar");
+      if (sumBar) {
+        sumBar.innerHTML = `
+          <span>📍 ${allStops.length} Stops</span>
+          <span>🏁 ${route.distance_km || 0} km</span>
+          <span>⏱️ ${route.travel_time ? route.travel_time.expected_minutes + ' min' : 'Scheduled'}</span>
+        `;
+      }
+
+      const stopsListEl = $("#itinerary-stops-list");
+      if (stopsListEl) {
+        let listHtml = "";
+        allStops.forEach((s, sIdx) => {
+          const isOrig = s.stop_type === "origin";
+          const isDest = s.stop_type === "destination";
+          const badgeClass = isOrig ? "origin" : (isDest ? "destination" : "intermediate");
+          const badgeIcon = isOrig ? "🟢" : (isDest ? "🔴" : s.stop_number);
+          const timeStr = (s.arrival_time || s.departure_time)
+            ? `<div class="itinerary-stop-times">
+                 ${s.arrival_time ? `<span>Arr: ${escapeHtml(s.arrival_time)}</span>` : ''}
+                 ${s.departure_time ? `<span>Dep: ${escapeHtml(s.departure_time)}</span>` : ''}
+                 ${s.halt_minutes ? `<span>Halt: ${s.halt_minutes}m</span>` : ''}
+               </div>`
+            : '';
+          const coordWarning = s.has_coordinates ? '' : '<span style="color: #dc2626; font-size: 0.68rem; font-weight: 700;">⚠️ Unmapped</span>';
+
+          listHtml += `
+            <div class="itinerary-stop-card" data-stop-idx="${sIdx}" data-lon="${s.longitude || ''}" data-lat="${s.latitude || ''}">
+              <div class="itinerary-stop-badge ${badgeClass}">${badgeIcon}</div>
+              <div class="itinerary-stop-info">
+                <div class="itinerary-stop-name">
+                  <span>${s.stop_number}. ${escapeHtml(s.name)}</span>
+                  ${coordWarning}
+                </div>
+                <div class="itinerary-stop-district">${escapeHtml(s.district)}</div>
+                ${timeStr}
+              </div>
+            </div>
+          `;
+          if (sIdx < allStops.length - 1) {
+            listHtml += `<div class="itinerary-connector"></div>`;
+          }
+        });
+        stopsListEl.innerHTML = listHtml;
+
+        // Click on itinerary stop cards focuses map on station
+        stopsListEl.querySelectorAll(".itinerary-stop-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            stopsListEl.querySelectorAll(".itinerary-stop-card").forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+            const lon = parseFloat(card.getAttribute("data-lon"));
+            const lat = parseFloat(card.getAttribute("data-lat"));
+            if (!isNaN(lon) && !isNaN(lat)) {
+              const p = projectCoord(lon, lat);
+              const ring = $("#stop-highlight-ring");
+              if (ring) {
+                ring.setAttribute("cx", p[0]);
+                ring.setAttribute("cy", p[1]);
+                ring.setAttribute("opacity", "1");
+              }
+              if (inspectorText) {
+                const name = card.querySelector(".itinerary-stop-name span")?.textContent || "";
+                inspectorText.innerHTML = `📍 <b>Focused on Stop:</b> ${name} (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+              }
+            }
+          });
+        });
+      }
+
+      if ($("#close-itinerary-btn")) {
+        $("#close-itinerary-btn").onclick = () => {
+          itineraryPanel.classList.toggle("hidden");
+        };
+      }
+    }
+
+    // Interactivity: clicking map stop pin highlights corresponding card
+    const svgEl = $("#bd-vector-svg");
+    if (svgEl) {
+      svgEl.querySelectorAll(".feat-route-stop").forEach((stopMarker) => {
+        stopMarker.addEventListener("click", () => {
+          const id = stopMarker.getAttribute("data-id") || "";
+          const stopNum = parseInt(id.replace("stop-", ""), 10);
+          const card = document.querySelector(`.itinerary-stop-card[data-stop-idx="${stopNum - 1}"]`);
+          if (card) {
+            document.querySelectorAll(".itinerary-stop-card").forEach((c) => c.classList.remove("active"));
+            card.classList.add("active");
+            card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            const ring = $("#stop-highlight-ring");
+            const cx = stopMarker.getAttribute("cx");
+            const cy = stopMarker.getAttribute("cy");
+            if (ring && cx && cy) {
+              ring.setAttribute("cx", cx);
+              ring.setAttribute("cy", cy);
+              ring.setAttribute("opacity", "1");
+            }
+            if (inspectorText) {
+              const title = stopMarker.getAttribute("data-title") || "";
+              const desc = stopMarker.getAttribute("data-desc") || "";
+              inspectorText.innerHTML = `📍 <b>Selected Stop:</b> ${title} &mdash; ${desc}`;
+            }
+          }
+        });
+      });
+    }
+
+    setupMapTooltipListeners();
+
+    // Summary text in inspector bar
+    const sum = geomData.summary || {};
+    if (inspectorText) {
+      inspectorText.innerHTML = `
+        🧭 <b>Route #${routeIdx + 1} (${escapeHtml(route.kind.toUpperCase())}):</b>
+        ${escapeHtml(route.path ? route.path.join(" ➔ ") : "")} &bull;
+        <span class="legend-chip verified">🟢 Verified: ${sum.verified_geometry_km || 0} km</span>
+        <span class="legend-chip provisional">🟡 Provisional: ${sum.provisional_anchor_km || 0} km</span>
+        <span class="legend-chip schematic">🟣 Schematic: ${sum.schematic_connector_km || 0} km</span>
+        ${sum.missing_geometry_segments_count ? `<span class="legend-chip missing">⚪ Missing: ${sum.missing_geometry_segments_count}</span>` : ""}
+      `;
+    }
+  } catch (err) {
+    console.warn("Could not resolve route geometry:", err);
+    gRouteOverlay.innerHTML = '<text x="500" y="600" fill="#ef4444" text-anchor="middle" font-size="14">Could not load route geometry overlay.</text>';
   }
 }
 
@@ -4742,7 +5483,47 @@ function openMapModal() {
     viewport.scrollTop = 0;
     viewport.scrollLeft = 0;
   }
+  const itineraryPanel = $("#map-itinerary-panel");
+  if (itineraryPanel && !itineraryPanel.hasAttribute("data-route-active")) {
+    itineraryPanel.classList.add("hidden");
+    resetSvgViewBox();
+    const fitBtn = $("#map-fit-route");
+    if (fitBtn) fitBtn.style.display = "none";
+  }
+  loadGeoLayers();
 }
+
+// Mode Tabs
+if ($("#map-tab-vector")) {
+  $("#map-tab-vector").addEventListener("click", () => setMapMode("vector"));
+}
+if ($("#map-tab-image")) {
+  $("#map-tab-image").addEventListener("click", () => setMapMode("image"));
+}
+
+// Layer & Label Toggle Listeners
+function bindLayerToggle(elemId, groupElemId) {
+  const el = $(elemId);
+  const grp = $(groupElemId);
+  if (el && grp) {
+    el.addEventListener("change", (e) => {
+      grp.style.display = e.target.checked ? "inline" : "none";
+    });
+  }
+}
+
+// 1. Feature layers
+bindLayerToggle("#toggle-layer-corridors", "#layer-group-bus-corridors");
+bindLayerToggle("#toggle-layer-rail", "#layer-group-rail-tracks");
+bindLayerToggle("#toggle-layer-stations", "#layer-group-stations");
+bindLayerToggle("#toggle-layer-districts", "#layer-group-districts");
+bindLayerToggle("#toggle-layer-local", "#layer-group-local-links");
+bindLayerToggle("#toggle-layer-local", "#layer-group-local-places");
+
+// 2. Separate Place Name Label layers (Requirement 5)
+bindLayerToggle("#toggle-labels-districts", "#layer-labels-districts");
+bindLayerToggle("#toggle-labels-stations", "#layer-labels-stations");
+bindLayerToggle("#toggle-labels-local", "#layer-labels-local-places");
 
 if ($("#open-map-btn")) {
   $("#open-map-btn").addEventListener("click", openMapModal);
@@ -4762,6 +5543,20 @@ if ($("#map-zoom-out")) {
 }
 if ($("#map-zoom-reset")) {
   $("#map-zoom-reset").addEventListener("click", () => applyMapZoom(1));
+}
+
+// Auto-Fit Route & Full Country Viewport Buttons (Requirement 7)
+if ($("#map-fit-route")) {
+  $("#map-fit-route").addEventListener("click", () => {
+    const svg = $("#bd-vector-svg");
+    if (svg) svg.setAttribute("viewBox", activeRouteViewBox);
+    applyMapZoom(1);
+  });
+}
+if ($("#map-full-country")) {
+  $("#map-full-country").addEventListener("click", () => {
+    resetSvgViewBox();
+  });
 }
 
 // Mouse wheel zoom & pan support inside map viewport

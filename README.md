@@ -1,149 +1,177 @@
-# SmartRoute BD 🇧🇩
+# SmartRoute BD 🇧🇩 — Multimodal Transport Route Planner
 
-A database-driven, district-aware, schedule-aware multimodal transport route planner and timetable exploration system for Bangladesh, powered by **Python 3.13.16**, **FastAPI**, and **PostgreSQL**.
+A database-driven, timetable-aware multimodal transport route planner for Bangladesh, powered by **Python 3.13**, **FastAPI**, **PostgreSQL**, and an offline **interactive SVG vector basemap**.
 
-For a non-technical explanation of what the project does and how its folders fit together, see [the plain-language project overview](docs/project_overview.md).
+SmartRoute BD combines intercity buses, Bangladesh Railway trains, and local feeder connections into optimal journey plans with transparent fare calculations, rule-based peak traffic adjustments, and step-by-step route visualization.
 
 ---
 
 ## 🌟 Key Features
 
-1. **Multimodal Route Planning:**
-   - **Bus-Only Routes:** Shortest path routing across Bangladesh districts with deterministic reverse-route consistency.
-   - **Train-Only Routes:** Schedule-aware Bangladesh Railway journeys respecting ordered stop sequences, directions, operating days, and off-days.
-   - **Multimodal Journeys:** Destination-oriented combinations of bus, train, and local transport with realistic transfer buffers (30 mins train/bus, 15 mins local).
-   - **Route Comparisons:** Automatic side-by-side comparison identifying the **Cheapest**, **Fastest**, and **Shortest** routes.
+1. **Multimodal Journey Planning:**
+   - **Bus Routing:** Shortest path routing across all 64 Bangladesh districts with deterministic reverse-route consistency.
+   - **Train Routing:** Bangladesh Railway schedule-aware journeys respecting stop sequences, arrival/departure timetables, train numbers, operating days, and off-days.
+   - **Multimodal Engine:** Intelligent combinations of local feeder transport, bus, and train services with realistic transfer buffers (30 mins train/bus, 15 mins local).
+   - **Route Comparison:** Instant side-by-side comparison identifying the **Cheapest**, **Fastest**, and **Shortest** travel options.
 
-2. **Transparent Fare Calculations:**
+2. **Offline Interactive Vector Basemap:**
+   - Light, clean navigation basemap rendering district administrative boundaries, verified road corridors, and physical railway links.
+   - **Auto-Fit Viewport:** Dynamically scales SVG viewBox to fit the selected journey geometry.
+   - **High-Contrast Route Geometry:** White under-casing outlines separate active journey tracks from background map geometry.
+   - **Collision-Free Stop Labels:** Intelligent pairwise cluster detection positions adjacent stations into opposing quadrants with contrast pill cards.
+   - **Interactive Journey Drawer:** Step-by-step itinerary detailing stop order, arrival/departure times, and halt minutes; clicking any station card highlights and pulses its location on the map.
+   - **Zero Cloud Map APIs:** 100% self-contained offline vector map; zero external Google Maps, Mapbox, or CDN dependencies.
+
+3. **Transparent Fares & Traffic Estimation:**
    - **Bus Fare:** `50 + (50 × core_city_count) + (2 × total_distance_km)`
    - **Train Fare:** `40 + (1.5 × distance_km) + (60 if intermediate_stops ≤ 2 else 0)`
-   - **Local Transport:** Fixed 50 BDT per segment at 30 km/h assumed speed.
+   - **Local Transport:** Fixed 50 BDT per feeder segment at 30 km/h assumed speed.
+   - **Traffic Factors:** 24-hour time-slot traffic modifiers (peak rush hours 08:00–10:00 & 17:00–20:00, night discount 22:00–06:00) and major city congestion multipliers.
 
-3. **Rule-Based Traffic-Time Estimation:**
-   - 24-hour time-slot traffic factors (peak rush hours 08:00–10:00 & 17:00–20:00, night discount 22:00–06:00).
-   - Major city congestion modifiers (Dhaka, Chattogram, Khulna, Rajshahi, Sylhet).
-   - Transparent travel-time ranges (Minimum `0.85×`, Expected `1.0×`, Maximum `1.20×`).
-
-4. **Independent Timetable Search:**
-   - Search bus schedules by company name, service route ID, or origin/destination without needing a full route search.
-   - Search train timetables by train number, train name, or date with live off-day calculations.
-
-5. **Operational Administration Portal:**
-   - Protected web dashboard for CRUD operations on districts, locations, distances, bus timetables, train services, and routing rules directly in PostgreSQL.
+4. **Operational Administration Portal:**
+   - Protected dashboard (`/admin`) for managing transport disruptions, road closures, schedule updates, user reports, and audit logs.
 
 ---
 
-## 📁 Project Structure
+## 🛠️ Technology Stack
 
-```
-Smart_route_BD_VS - Anti/
-├── data/                               # Curated transport datasets
-│   ├── 64_districts.csv                # 121 district distance edges
-│   ├── bus_schedule_64_district.csv    # 10,134 bus departure schedules
-│   ├── local_distance.csv              # Local upazila/station connections
-│   ├── train_routes_final.csv          # 115 intercity train services
-│   └── train_stops.csv                 # 1,539 ordered railway stops
-├── src/
-│   ├── shared/                         # Domain models, enums & constants
-│   ├── database/                       # PostgreSQL connection, ORM models, seed & repo
-│   ├── data/                           # CSV loader, graph representation & normalization
+- **Backend:** Python 3.13+, FastAPI, Uvicorn, Pydantic v2
+- **Database:** PostgreSQL (with SQLAlchemy 2.0 ORM & Alembic migrations)
+- **Frontend:** Vanilla JavaScript (ES6+), CSS3, SVG Vector Map (zero external frameworks or CDNs)
+- **Default Local Port:** `8001` (`http://127.0.0.1:8001`)
+
+---
+
+## 📁 Repository Structure
+
+```text
+practice_412/
+├── alembic/                            # Database schema migration history (0001 to 0006)
+│   ├── env.py
+│   └── versions/
+├── data/                               # 5 authoritative CSVs & verified runtime geography
+│   ├── 64_districts.csv                # Authoritative 64 Bangladesh districts & 121 distance edges
+│   ├── bus_schedule_64_district_with_fares.csv # Authoritative 10,134 bus departure schedules
+│   ├── local_distance.csv              # Authoritative 202 local feeder connections
+│   ├── train_routes_final.csv          # Authoritative 115 intercity train services
+│   ├── train_stops.csv                 # Authoritative 1,539 railway station timetables
+│   └── geographic/                     # Verified runtime geographic assets
+│       ├── bus_corridor_geometry.geojson      # 11 verified highway corridors
+│       ├── bus_schedule_route_lookup.csv      # Bus route matching lookup
+│       ├── csv_location_master.csv            # Unified station, district & local place catalog
+│       ├── district_boundaries_simplified.json# 64 district boundary SVG paths for light basemap
+│       ├── local_geometry_lookup.csv          # Feeder link schematic connector lookup
+│       ├── railway_link_geometry.geojson      # 190 verified mainline rail links
+│       └── train_service_hop_lookup.csv       # Train consecutive stop hop lookup
+├── src/                                # Core application source code
+│   ├── api/                            # FastAPI app, endpoints, orchestrator & geo routes
+│   ├── auth/                           # Security, password hashing & JWT tokens
 │   ├── bus/                            # Dijkstra router, bus fare & traffic estimators
-│   ├── train/                          # Train scheduler, stops, train fare & timetable
-│   ├── multimodal/                     # Transfer buffers, local legs & multimodal engine
-│   ├── api/                            # FastAPI application, orchestrator & admin endpoints
-│   └── utils/                          # Time calculation and geographic helpers
+│   ├── data/                           # Graph builder, normalization & store
+│   ├── database/                       # PostgreSQL connection, models, seeder & repo
+│   ├── disruptions/                    # Road closures, disruption service & admin routes
+│   ├── multimodal/                     # Multimodal routing engine & transfer buffer
+│   ├── shared/                         # Domain models, enums & constants
+│   ├── train/                          # Train scheduler, timetable, fare & waiting models
+│   └── utils/                          # Time, projection & geographic helpers
 ├── static/                             # Web interface & Admin dashboard frontend
-│   ├── index.html                      # Public journey planner & timetable explorer
-│   ├── admin.html                      # Administrative database manager
-│   ├── app.js                          # Client-side search and rendering
-│   ├── admin.js                        # Authenticated CRUD management script
-│   └── app.css                         # Modern responsive theme
-├── tests/                              # Pytest test suite (30 automated tests)
-│   ├── conftest.py                     # SQLite test fixtures & FastAPI TestClient
-│   ├── test_core.py                    # Algorithm, fare, traffic & count tests
-│   ├── test_api.py                     # API endpoints and validation tests
-│   └── test_end_to_end.py              # Full search and admin workflow tests
-├── alembic/                            # Database migration files
-├── alembic.ini                         # Alembic configuration
-├── pytest.ini                          # Pytest configuration
-├── requirements.txt                    # Project dependencies
-├── .env.example                        # Environment variable template
-└── README.md                           # Documentation & hosting guide
+│   ├── admin.html                      # Administrative moderation dashboard
+│   ├── admin.js                        # Authenticated admin management script
+│   ├── app.css                         # Modern responsive stylesheet
+│   ├── app.js                          # Client-side map & journey planner application
+│   ├── index.html                      # Public journey planner & interactive vector map
+│   └── images/                         # Frontend map assets
+│       ├── bangladesh-districts-map.jpg
+│       └── hero-transport.jpg
+├── .vscode/                            # VS Code debugger & task configurations (Port 8001)
+│   ├── launch.json
+│   ├── settings.json
+│   └── tasks.json
+├── .env.example                        # Environment template with safe placeholders
+├── .gitignore                          # Git ignore rules
+├── alembic.ini                         # Alembic migration configuration
+├── requirements.txt                    # Python package dependencies
+├── run.bat                             # Windows batch one-click launcher
+├── run.ps1                             # PowerShell one-click launcher
+└── README.md                           # Project documentation
 ```
 
 ---
 
-## 🛠️ Prerequisites
+## 🚀 Quick Start & Installation
 
-- **Python:** 3.13.16
-- **PostgreSQL:** Version 14+ (currently running on local port `5432`)
-- **Database Credentials:**
-  - Database: `smartroute`
-  - User: `smartroute`
-  - Password: `change-me`
-  - Host: `localhost` / `127.0.0.1`
-  - Port: `5432`
+### 1. Prerequisites
+- **Python:** 3.13 or compatible (3.11+)
+- **PostgreSQL:** Local or remote PostgreSQL instance (running on port 5432 by default)
 
----
+### 2. Clone and Setup Environment
+```bash
+git clone https://github.com/alifsadman798/practice_412.git
+cd practice_412
 
-## 🚀 How to Host & Run Locally
+# Create virtual environment
+python -m venv .venv
 
-### Step 1: Open Terminal in Project Directory
-Open PowerShell or your command prompt in this directory:
-```powershell
-cd "c:\Users\alifs\OneDrive\Desktop\demo project\Smart_route_BD_VS - Anti"
+# Activate environment
+# On Windows (PowerShell):
+.\.venv\Scripts\Activate.ps1
+# On Linux/macOS:
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
 ```
 
-### Step 2: Configure Environment Variables
-Verify or edit `.env` in the root folder:
-```ini
+### 3. Configure Environment Variables
+Copy `.env.example` to `.env` and adjust the PostgreSQL credentials if needed:
+```bash
+cp .env.example .env
+```
+Default `.env` configuration:
+```env
 DATABASE_URL=postgresql+psycopg://smartroute:change-me@localhost:5432/smartroute
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=12345678
 APP_ENV=development
+PORT=8001
 ```
 
-### Step 3: Run Database Migrations
-Ensure PostgreSQL schema is at the latest revision:
-```powershell
+### 4. Database Setup & Migrations
+Create the PostgreSQL database `smartroute` and run Alembic migrations:
+```bash
 alembic upgrade head
 ```
 
-### Step 4: Seed the Database with Imported Datasets
-Load the curated CSV datasets into PostgreSQL:
-```powershell
-python -m src.database.seed --force
-```
-*Expected output:*
-```
-Seeded successfully: {'districts': 73, 'locations': 230, 'district_edges': 121, 'local_edges': 160, 'bus_schedules': 10134, 'train_services': 115, 'train_stops': 1539, 'routing_configs': 3}
-```
+### 5. Run the Application
+Start the server using any of the following methods:
 
-### Step 5: Start the Local Web Server
-Launch the application with Uvicorn:
-```powershell
-uvicorn src.api.main:app --host 127.0.0.1 --port 8080 --reload
-```
-
----
-
-## 🌐 Accessing the Application
-
-Once the server is running, open your web browser:
-
-| Interface | URL | Description |
-|-----------|-----|-------------|
-| **Public Website** | [http://127.0.0.1:8080](http://127.0.0.1:8080) | Journey planner, route comparison, bus & train timetable searches |
-| **Admin Dashboard** | [http://127.0.0.1:8080/admin](http://127.0.0.1:8080/admin) | Operational record management (Username: `admin`, Password: `12345678`) |
-| **Interactive API Docs** | [http://127.0.0.1:8080/docs](http://127.0.0.1:8080/docs) | Swagger UI for testing all REST endpoints interactively |
-| **ReDoc API Docs** | [http://127.0.0.1:8080/redoc](http://127.0.0.1:8080/redoc) | Alternative formatted API specification |
+- **PowerShell (Recommended):**
+  ```powershell
+  .\run.ps1
+  ```
+- **Command Prompt:**
+  ```cmd
+  run.bat
+  ```
+- **Direct Uvicorn Command:**
+  ```bash
+  uvicorn src.api.main:app --host 127.0.0.1 --port 8001 --reload
+  ```
 
 ---
 
-## 🧪 Running Automated Tests
+## 🌐 Application Access Points
 
-Run the complete test suite (unit, algorithm, API, and end-to-end tests):
-```powershell
-pytest -v
-```
-*All 30 tests will run and pass.*
+- **Journey Planner & Interactive Map:** [http://127.0.0.1:8001](http://127.0.0.1:8001)
+- **Admin Management Portal:** [http://127.0.0.1:8001/admin](http://127.0.0.1:8001/admin)
+  - Default Admin Username: `admin`
+  - Default Admin Password: `12345678`
+- **Interactive OpenAPI / Swagger Documentation:** [http://127.0.0.1:8001/docs](http://127.0.0.1:8001/docs)
+
+---
+
+## 🗺️ Known Geographic & Operational Notes
+
+- **Offline Vector Map:** District boundaries and geometry layers are rendered client-side using SVG paths without external geocoding or vector-tile servers.
+- **Railway Link Coverage:** 190 physical mainline railway links connect all active Bangladesh Railway passenger stations. Chord junctions across complex railway yards use direct station connectors pending sub-meter yard centerline traces.
+- **Local Feeder Coverage:** 202 local feeder connections provide schematic transit links between local upazilas/places and parent district administrative hubs.

@@ -792,13 +792,17 @@
         <div class="map-modal-title-wrap">
           <span class="map-modal-icon">🗺️</span>
           <div>
-            <h3 id="map-modal-title">Bangladesh Administrative District Map</h3>
-            <p class="map-modal-subtitle">Official 64 Districts, 8 Divisions & Transit Corridors</p>
+            <h3 id="map-modal-title">SmartRoute BD — Transit & Geographic Map</h3>
+            <p class="map-modal-subtitle">Verified OSM Highway Corridors, Mainline Tracks, Stations & 64 Districts</p>
           </div>
         </div>
         <div class="map-modal-top-actions">
+          <div class="map-mode-tabs">
+            <button type="button" id="map-tab-vector" class="button primary small">🗺️ Interactive Map</button>
+            <button type="button" id="map-tab-image" class="button outline small">🖼️ Administrative Image</button>
+          </div>
           <a href="/static/images/bangladesh-districts-map.jpg" target="_blank" class="button outline small" download="bangladesh-administrative-districts-map.jpg" title="Download High Resolution Map">
-            ⬇ Download High-Res
+            ⬇ High-Res Image
           </a>
           <button type="button" class="modal-close-btn" data-close="map-modal" aria-label="Close modal">&times;</button>
         </div>
@@ -809,26 +813,91 @@
           <button type="button" id="map-zoom-in" class="button secondary small" title="Zoom In">🔍+ Zoom In</button>
           <button type="button" id="map-zoom-out" class="button secondary small" title="Zoom Out">🔍- Zoom Out</button>
           <button type="button" id="map-zoom-reset" class="button secondary small" title="Reset Zoom">↺ Reset (100%)</button>
+          <button type="button" id="map-fit-route" class="button primary small" title="Auto-fit active route in view" style="display: none;">🎯 Fit Route</button>
+          <button type="button" id="map-full-country" class="button secondary small" title="View full Bangladesh overview">🇧🇩 Full Country</button>
           <span class="zoom-level-badge" id="map-zoom-val">100%</span>
         </div>
+
+        <div class="map-layer-toggles" id="map-layer-toggles">
+          <label class="layer-toggle-chip" title="Toggle 11 verified OSM highway corridors"><input type="checkbox" id="toggle-layer-corridors" checked> 🚍 Bus Corridors</label>
+          <label class="layer-toggle-chip" title="Toggle 190 mainline railway track links"><input type="checkbox" id="toggle-layer-rail" checked> 🚆 Rail Tracks</label>
+          <label class="layer-toggle-chip" title="Toggle 201 railway station markers"><input type="checkbox" id="toggle-layer-stations" checked> 🚉 Station Dots</label>
+          <label class="layer-toggle-chip" title="Toggle 64 district centroid markers"><input type="checkbox" id="toggle-layer-districts" checked> 🏛️ District Dots</label>
+          <label class="layer-toggle-chip" title="Toggle local feeder place markers"><input type="checkbox" id="toggle-layer-local"> 🛺 Local Places</label>
+          <span class="layer-toggle-divider"></span>
+          <label class="layer-toggle-chip" title="Toggle 64 district place name labels"><input type="checkbox" id="toggle-labels-districts" checked> 🏷️ District Names</label>
+          <label class="layer-toggle-chip" title="Toggle railway station name labels"><input type="checkbox" id="toggle-labels-stations" checked> 🏷️ Station Names</label>
+          <label class="layer-toggle-chip" title="Toggle local place name labels"><input type="checkbox" id="toggle-labels-local"> 🏷️ Local Place Names</label>
+        </div>
+
         <div class="map-toolbar-legend">
-          <span class="legend-chip dhaka">Dhaka</span>
-          <span class="legend-chip ctg">Chattogram</span>
-          <span class="legend-chip raj">Rajshahi</span>
-          <span class="legend-chip khul">Khulna</span>
-          <span class="legend-chip bar">Barishal</span>
-          <span class="legend-chip syl">Sylhet</span>
-          <span class="legend-chip rang">Rangpur</span>
-          <span class="legend-chip mym">Mymensingh</span>
+          <span class="legend-chip verified" title="Verified high-fidelity OpenStreetMap geometry">🟢 Verified geometry</span>
+          <span class="legend-chip provisional" title="Provisional highway anchor or centroid line">🟡 Provisional anchor</span>
+          <span class="legend-chip schematic" title="Straight-line connector only - NOT A VERIFIED ROAD">🟣 Schematic connector</span>
+          <span class="legend-chip manual" title="Complex multi-track yard/switch chord requiring manual review">🟠 Manual review required</span>
+          <span class="legend-chip missing" title="Coordinates absent from current OSM extract">⚪ Missing geometry</span>
         </div>
       </div>
 
-      <div class="map-viewport" id="map-viewport">
-        <img id="map-full-image" src="/static/images/bangladesh-districts-map.jpg" alt="Official Bangladesh Administrative Map with 64 Districts and 8 Divisions" class="map-full-img">
+      <div class="map-modal-body-layout">
+        <div class="map-viewport" id="map-viewport">
+          <!-- Vector Interactive SVG Map View -->
+          <div id="map-vector-container" class="map-vector-container">
+            <svg id="bd-vector-svg" viewBox="0 0 1000 1200" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <filter id="glow-route" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <!-- Google Maps-style Water Background (Bay of Bengal / Waterways) -->
+              <rect width="1000" height="1200" fill="#e0f2fe" rx="8" />
+              <!-- Map Base Geometry Layers -->
+              <g id="layer-group-district-boundaries"></g>
+              <g id="layer-group-districts"></g>
+              <g id="layer-group-bus-corridors"></g>
+              <g id="layer-group-rail-tracks"></g>
+              <g id="layer-group-local-links"></g>
+              <g id="layer-group-stations"></g>
+              <g id="layer-group-local-places"></g>
+              <!-- Place Name Label Layers -->
+              <g id="layer-labels-local-places" style="display: none;"></g>
+              <g id="layer-labels-stations"></g>
+              <g id="layer-labels-districts"></g>
+              <!-- Dynamic Route Overlay Layers -->
+              <g id="layer-group-route-overlay"></g>
+              <g id="layer-group-route-labels"></g>
+              <!-- Active Stop Selection Ring -->
+              <circle id="stop-highlight-ring" cx="-100" cy="-100" r="14" fill="none" stroke="#2563eb" stroke-width="3" opacity="0" />
+            </svg>
+            <div id="map-tooltip" class="map-tooltip hidden"></div>
+          </div>
+
+          <!-- Static Administrative Image View -->
+          <img id="map-full-image" src="/static/images/bangladesh-districts-map.jpg" alt="Official Bangladesh Administrative Map with 64 Districts and 8 Divisions" class="map-full-img hidden">
+        </div>
+
+        <!-- Journey Stop Itinerary Panel (PART 4) -->
+        <div id="map-itinerary-panel" class="map-itinerary-panel hidden">
+          <div class="itinerary-header">
+            <div class="itinerary-title-wrap">
+              <span id="itinerary-icon" class="itinerary-icon">📋</span>
+              <div>
+                <h4 id="itinerary-route-title">Journey Stop Sequence</h4>
+                <div id="itinerary-route-subtitle" class="itinerary-subtitle">Select a stop to focus on map</div>
+              </div>
+            </div>
+            <button type="button" id="close-itinerary-btn" class="itinerary-close-btn" title="Toggle Itinerary">&times;</button>
+          </div>
+          <div id="itinerary-summary-bar" class="itinerary-summary-bar"></div>
+          <div id="itinerary-stops-list" class="itinerary-stops-list"></div>
+        </div>
       </div>
 
       <div class="map-modal-footer">
-        <p>💡 Tip: Use mouse wheel or the zoom buttons above to magnify district boundaries, regional hubs, and divisional borders.</p>
+        <div id="map-inspector-bar" class="map-inspector-bar">
+          <span id="map-inspector-text">💡 <b>Interactive Transit Map:</b> Hover or click corridors, tracks, and stations to inspect geometry verification details.</span>
+        </div>
       </div>
     </div>
   </div>

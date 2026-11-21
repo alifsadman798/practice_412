@@ -41,7 +41,7 @@ from src.database.models import (
 )
 from src.data.normalize import normalize_name
 from src.train.router import train_timetable
-from src.api import user_routes
+from src.api import user_routes, geo_routes
 from src.disruptions.admin_routes import router as disruptions_admin_router
 from src.api.user_schemas import UserProfileResponse
 from src.api.admin_schemas import (
@@ -96,6 +96,7 @@ if (app_dir / "image").exists():
 
 app.include_router(user_routes.router)
 app.include_router(disruptions_admin_router)
+app.include_router(geo_routes.router)
 
 
 @app.exception_handler(SQLAlchemyError)

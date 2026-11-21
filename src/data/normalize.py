@@ -1,3 +1,4 @@
+
 DISTRICT_CANONICAL_MAP = {
     "chapai": "Chapainawabganj",
     "chapai nawabganj": "Chapainawabganj",
@@ -11,6 +12,11 @@ DISTRICT_CANONICAL_MAP = {
     "jessore": "Jashore",
     "barisal": "Barishal",
     "bogra": "Bogura",
+
+    # Additional GeoJSON aliases
+    "brahamanbaria": "Brahmanbaria",
+    "maulvibazar": "Moulvibazar",
+    "netrakona": "Netrokona",
 }
 
 
